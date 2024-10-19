@@ -1,4 +1,3 @@
-• isalpha
 • isdigit
 • isalnum
 • isascii
@@ -46,3 +45,4 @@ ft_lstmap
 
 DONE :
 • strlen
+• isalpha
