@@ -1,7 +1,6 @@
-• isdigit
-• isalnum
-• isascii
-• isprint
+
+
+
 
 • memset
 • bzero
@@ -45,4 +44,8 @@ ft_lstmap
 
 DONE :
 • strlen
-• isalpha
+• isalpha -> mettre le header 
+• isdigit -> mettre le header 
+• isalnum -> mettre le header 
+• isascii -> mettre le header 
+• isprint -> mettre le header 

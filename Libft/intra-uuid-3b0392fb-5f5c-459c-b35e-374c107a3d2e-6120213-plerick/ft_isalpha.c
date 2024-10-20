@@ -2,18 +2,9 @@
 
 #include "libft.h"
 
-int	ft_is_alpha(char *str)
+int	ft_is_alpha(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] < 64 || (str[i] > 90 && str[i] < 97 || str[i] > 123)
-		{
-			return(0);
-		}
-		i++;
-	}
+	if (c < 64 || (c > 90 && c < 97 || c > 123)
+		return(0);
 	return (1);
 }

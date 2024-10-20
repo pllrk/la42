@@ -16,3 +16,8 @@
 
 
 ft_strlen(char *str);
+ft_isalpha(int c);
+ft_isdigit(int c);
+ft_isalnum(int c);
+ft_isascii(int c);
+ft_isprint(int c);
