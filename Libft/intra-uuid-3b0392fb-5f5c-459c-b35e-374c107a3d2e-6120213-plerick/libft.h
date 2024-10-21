@@ -21,3 +21,7 @@ ft_isdigit(int c);
 ft_isalnum(int c);
 ft_isascii(int c);
 ft_isprint(int c);
+ft_toupper(int c);
+ft_tolower(int c);
+ft_atoi(const char *str);
+ft_strnstr(const char *str, const char *to_find, size_t len);

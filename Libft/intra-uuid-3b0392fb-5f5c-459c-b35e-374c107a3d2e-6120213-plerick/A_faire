@@ -1,26 +1,19 @@
-
-
-
-
 • memset
 • bzero
 • memcpy
 • memmove
 • strlcpy
 • strlcat
-• toupper
-• tolower
 • strchr
 • strrchr
 • strncmp
 • memchr
 • memcmp
-• strnstr
-• atoi
+
 • calloc
 • strdup
 ft_substr
-ft_strjoin
+ft_strjoin 
 ft_strtrim
 ft_split
 ft_itoa
@@ -44,8 +37,12 @@ ft_lstmap
 
 DONE :
 • strlen
-• isalpha -> mettre le header 
-• isdigit -> mettre le header 
-• isalnum -> mettre le header 
-• isascii -> mettre le header 
-• isprint -> mettre le header 
+• isalpha
+• isdigit
+• isalnum
+• isascii
+• isprint
+• toupper
+• tolower
+• atoi
+• strnstr
