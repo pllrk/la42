@@ -1,7 +1,4 @@
-• memset
 • bzero
-• memcpy
-• memmove
 • strlcpy
 • strlcat
 • strchr
@@ -9,7 +6,6 @@
 • strncmp
 • memchr
 • memcmp
-
 • calloc
 • strdup
 ft_substr
@@ -46,3 +42,6 @@ DONE :
 • tolower
 • atoi
 • strnstr
+• memset
+• memcpy
+• memmove

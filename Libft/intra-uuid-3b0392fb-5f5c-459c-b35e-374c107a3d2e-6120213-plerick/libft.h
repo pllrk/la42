@@ -25,3 +25,6 @@ ft_toupper(int c);
 ft_tolower(int c);
 ft_atoi(const char *str);
 ft_strnstr(const char *str, const char *to_find, size_t len);
+ft_memset(void *str, int to_include, size_t n);
+ft_memmove(void *dest, const void *src, size_t n);
+ft_memcpy(void *dest, const void *src, size_t n);
