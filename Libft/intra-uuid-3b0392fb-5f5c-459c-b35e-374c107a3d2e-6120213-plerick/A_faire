@@ -1,9 +1,4 @@
 • bzero
-
-• strchr
-• strrchr
-• strncmp
-• calloc
 • strdup
 ft_substr
 ft_strjoin 
@@ -46,3 +41,7 @@ DONE :
 ft_itoa
 • strlcpy
 • strlcat
+• strchr
+• strrchr
+• strncmp
+• calloc

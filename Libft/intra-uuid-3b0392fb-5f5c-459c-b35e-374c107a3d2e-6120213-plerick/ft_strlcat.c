@@ -30,8 +30,8 @@
 	{
 		src_len++;
 	}
-//	Si la taille spécifiée est inférieure ou égale à la longueur de la destination,
-//	il n'y a pas de place pour concaténer, donc on retourne la longueur de la destination
+//	Si la taille spécifiée est <= à la longueur de la destination,
+//	il n'y a pas de place pour concaténer -> retour longueur dest
 	if (size <= dest_len) 
 	{
 		return dest_len + src_len;
