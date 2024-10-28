@@ -38,7 +38,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			((char *)dest)[i] = ((char *)src)[i];
 			i--;
 		}
-	}	
+	}
 	return ((char *)dest);
 }
 /*

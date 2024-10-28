@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <unistd.h>
-// #include <stdio.h>
-// #include <stdlib.h>
+//#include <unistd.h>
+//#include <stdio.h>
+//#include <stdlib.h>
 
 int	get_len(int nb)
 {
-	int	len;
+	int		len;
 	long	num;
 
 	len = 1;
@@ -25,7 +25,7 @@ int	get_len(int nb)
 	if (num < 0)
 	{
 		len = len + 1;
-		num = (num * - 1);
+		num = (num * -1);
 	}
 	while (num >= 10)
 	{
@@ -38,32 +38,34 @@ int	get_len(int nb)
 char	*ft_itoa(int nb)
 {
 	char	*str;
-	int	len;
+	int		len;
+	long	nbr;
 
-	len = get_len(nb);
+	nbr = nb;
+	len = get_len(nbr);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
 		return (NULL);
 	str[len] = '\0';
-	if (nb < 0)
+	if (nbr < 0)
 	{
 		str[0] = '-';
-		nb = (nb * - 1);
+		nbr = (nbr * -1);
 	}
-	while (nb >= 10)
+	while (nbr >= 10)
 	{
 		len--;
-		str[len] = (nb % 10) + '0';
-		nb = nb / 10;
+		str[len] = (nbr % 10) + '0';
+		nbr = nbr / 10;
 	}
 	len--;
-	str[len] = (nb + '0');
+	str[len] = (nbr + '0');
 	return (str);
 }
 /*
 int main(void)
 {
-	int	nb = -2214215;
+	int	nb = -2147483648;
 	char	str[12];
 
 	printf("%s\n", ft_itoa(42));

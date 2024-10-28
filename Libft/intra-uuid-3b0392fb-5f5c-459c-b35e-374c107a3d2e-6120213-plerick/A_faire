@@ -1,6 +1,5 @@
 • bzero
-• strlcpy
-• strlcat
+
 • strchr
 • strrchr
 • strncmp
@@ -45,3 +44,5 @@ DONE :
 • memchr
 • memcmp
 ft_itoa
+• strlcpy
+• strlcat
