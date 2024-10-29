@@ -38,3 +38,4 @@ char	*ft_strrchr(const char *str, int c);
 int	ft_strncmp(const char *str1, const char *str2, size_t n);
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_strdup(const char *str);
+void	ft_bzero(void *str, size_t n);

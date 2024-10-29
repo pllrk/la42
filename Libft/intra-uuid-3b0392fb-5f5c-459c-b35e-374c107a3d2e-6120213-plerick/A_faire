@@ -1,4 +1,4 @@
-• bzero
+
 • strdup
 ft_substr
 ft_strjoin 
@@ -45,3 +45,4 @@ ft_itoa
 • strrchr
 • strncmp
 • calloc
+• bzero (incorporer le header)
