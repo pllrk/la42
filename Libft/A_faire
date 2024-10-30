@@ -1,7 +1,4 @@
 
-• strdup
-ft_substr
-ft_strjoin 
 ft_strtrim
 ft_split
 ft_strmapi
@@ -38,11 +35,14 @@ DONE :
 • memmove
 • memchr
 • memcmp
-ft_itoa
+ft_itoa (check again si ok par rapport au sujet)
 • strlcpy
 • strlcat
 • strchr
 • strrchr
 • strncmp
 • calloc
-• bzero (incorporer le header)
+• bzero
+• strdup
+ft_substr (check again si ok par rapport au sujet)
+ft_strjoin 

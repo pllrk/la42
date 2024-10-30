@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 
 ft_strlen(char *str);
@@ -39,3 +40,5 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n);
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_strdup(const char *str);
 void	ft_bzero(void *str, size_t n);
+char	*ft_substr(const char *str, int start, int lengh);
+char	*ft_strjoin(char const *str1, char const *str2);
