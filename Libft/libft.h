@@ -42,3 +42,4 @@ char	*ft_strdup(const char *str);
 void	ft_bzero(void *str, size_t n);
 char	*ft_substr(const char *str, int start, int lengh);
 char	*ft_strjoin(char const *str1, char const *str2);
+char	*ft_strtrim(char const *s1, char const *set);

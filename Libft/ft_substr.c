@@ -62,7 +62,6 @@ char	*ft_substr(const char *str, int start, int lengh)
 	ft_strncpy(new_str, &str[start], lengh);
 	new_str[lengh] = '\0';
 	return (new_str);
-	
 }
 /*
 int	main(void)

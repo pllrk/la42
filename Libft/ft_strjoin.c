@@ -6,7 +6,7 @@
 /*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 01:22:13 by plerick           #+#    #+#             */
-/*   Updated: 2024/10/30 02:38:30 by plerick          ###   ########.fr       */
+/*   Updated: 2024/10/31 04:55:34 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while(s[i] != '\0')
+	while (s[i] != '\0')
 		i++;
 	return (i);
 }

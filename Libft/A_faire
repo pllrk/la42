@@ -1,5 +1,3 @@
-
-ft_strtrim
 ft_split
 ft_strmapi
 ft_striteri
@@ -46,3 +44,4 @@ ft_itoa (check again si ok par rapport au sujet)
 • strdup
 ft_substr (check again si ok par rapport au sujet)
 ft_strjoin 
+ft_strtrim
