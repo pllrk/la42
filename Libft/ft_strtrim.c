@@ -30,7 +30,7 @@ static char	*cpy_str_trim(const char *s1, size_t len_str, size_t count1)
 	{
 		new_str[n] = s1[count1];
 		n++;
-		count1++;:w
+		count1++;
 	}
 	new_str[n] = '\0';
 	return (new_str);
