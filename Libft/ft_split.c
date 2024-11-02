@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+//#include "libft.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,33 +20,41 @@ static int	ft_count(char const *s, char c)
 	size_t	count;
 	size_t	i;
 
-	count = 0;
+	count = 1;
 	i = 0;
-	while (s[i] != c && s[i] != '\0')
+	if (s[i] == c)
+		count = 0;
+	while (s[i] != '\0')
 	{
 		while (s[i] == c)
 		{
 			i++;
+			if (s[i] != c && s[i] != '\0')
+				count++;
 		}
 		i++;
 	}
+	return (count);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	i;
+	size_t	nb_word;
 
-	i = 0;
-	while 
+	if (*s == '\0' || c == '\0')
+		return (NULL);
+	nb_words = (ft_count(s, c));
+	return (0);
 }
 
 int	main(void)
 {
-	char const s[] = "bonjour--je-suis-un-ordinateur";
+	char const s[] = "-------Bonjour-je-suis-un-pc----";
 	char	c = '-';
 	char new_str;
 
+//	printf("%d\n", ft_count(s, c));
 	new_str = ft_split(s, c);
-	printf("%s\n", new);
+	printf("%s\n", new_str);
 	return (0);
 }
