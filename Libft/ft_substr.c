@@ -11,12 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <unistd.h>
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
 
-static char	*ft_strncpy(char *dest, const char *src, unsigned int n)
+static char	*my_strncpy(char *dest, const char *src, unsigned int n)
 {
 	unsigned int	i;
 
@@ -34,7 +30,7 @@ static char	*ft_strncpy(char *dest, const char *src, unsigned int n)
 	return (dest);
 }
 
-static size_t	ft_strlen(const char *str)
+static size_t	my_strlen(const char *str)
 {
 	size_t	i;
 
@@ -44,32 +40,30 @@ static size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_substr(const char *str, int start, int lengh)
+char	*ft_substr(char const *str, unsigned int start, size_t lengh)
 {
-	int	lengh_of_str;
-	int	lengh_of_nstr;
-	char	*new_str;
+	size_t		lengh_of_str;
+	size_t		lengh_of_nstr;
+	char		*new_str;
 
-	lengh_of_str = ft_strlen(str);
-	if (start > lengh_of_str || start < 0 || lengh < 0)
-		return (NULL);
+	lengh_of_str = my_strlen(str);
 	lengh_of_nstr = lengh_of_str - start;
 	if (lengh > lengh_of_nstr)
 		lengh = lengh_of_nstr;
 	new_str = (char *)malloc(sizeof(char) * (lengh + 1));
 	if (new_str == NULL)
 		return (NULL);
-	ft_strncpy(new_str, &str[start], lengh);
+	my_strncpy(new_str, &str[start], lengh);
 	new_str[lengh] = '\0';
 	return (new_str);
 }
 /*
 int	main(void)
 {
-	const char	str[] = "1234567890";
-	const char	*new_str;
-	int	lengh = 4;
-	int	start = 0;
+	char const	str[] = "1234";
+	char const	*new_str;
+	size_t		lengh = 10;
+	unsigned int	start = 10;
 
 	new_str = ft_substr(str, start, lengh);
 	printf("%s\n", new_str);

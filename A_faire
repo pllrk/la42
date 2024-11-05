@@ -1,10 +1,4 @@
-ft_split
-ft_strmapi
-ft_striteri
-ft_putchar_fd
-ft_putstr_fd
-ft_putendl_fd
-ft_putnbr_fd
+
 
 Bonus :
 ft_lstnew
@@ -33,7 +27,7 @@ DONE :
 • memmove
 • memchr
 • memcmp
-ft_itoa (check again si ok par rapport au sujet)
+ft_itoa 
 • strlcpy
 • strlcat
 • strchr
@@ -42,6 +36,13 @@ ft_itoa (check again si ok par rapport au sujet)
 • calloc
 • bzero
 • strdup
-ft_substr (check again si ok par rapport au sujet)
+ft_substr
 ft_strjoin 
 ft_strtrim
+ft_split
+ft_strmapi
+ft_striteri
+ft_putchar_fd
+ft_putstr_fd
+ft_putendl_fd
+ft_putnbr_fd

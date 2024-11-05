@@ -6,60 +6,41 @@
 /*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 22:51:38 by plerick           #+#    #+#             */
-/*   Updated: 2024/11/02 22:22:29 by plerick          ###   ########.fr       */
+/*   Updated: 2024/11/04 19:03:39 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
-static	char	*ft_strcpy(char *tabg, char const *s, char c)
+void	*ft_null(char **tabg, int i)
 {
-	size_t	i;
-
-	i = 0;
-	while (*s != c || *s == s[0])
-	{
-		i++;
-		s--;
-	}
-	if (*s == s[0])
-	{
-		i++;
-		while (i-- > 0)
-			*tabg++ = *s++;
-	}
-	else
-	{
-		s++;
-		while (i-- > 0)
-			*tabg++ = *s++;
-	}
-	*tabg = '\0';
-	return (tabg);
+	while (i-- >= 0)
+		free(tabg[i]);
+	free(*tabg);
+	return (NULL);
 }
 
-static size_t	ft_word(char const *s, char c)
+static char	*ft_strcpy(char const *start, int temp)
 {
-	size_t	i;
+	int		i;
+	char	*to_return;
 
 	i = 0;
-	while (*s != c || *s == s[0])
+	to_return = (char *)malloc(sizeof(char) * (temp + 1));
+	if (to_return == NULL)
+		return (NULL);
+	while (i < temp)
 	{
+		to_return[i] = start[i];
 		i++;
-		s--;
 	}
-	if (*s == s[0])
-		i++;
-	return (i);
+	to_return[i] = '\0';
+	return (to_return);
 }
 
 static int	ft_count(char const *s, char c)
 {
-	int	count;
+	int		count;
 	size_t	i;
 
 	count = 1;
@@ -81,46 +62,48 @@ static int	ft_count(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	size_t	nb_word;
+	size_t	temp;
 	char	**tabg;
-	int	i;
+	int		i;
+	size_t	start;
 
 	i = 0;
-	if (*s == '\0' || c == '\0')
+	start = 0;
+	if (!s)
 		return (NULL);
-	nb_word = (ft_count(s, c));
-	tabg = (char **)malloc(sizeof(char *) * (nb_word + 1));
+	tabg = (char **)malloc(sizeof(char *) * (ft_count(s, c) + 1));
 	if (tabg == NULL)
 		return (NULL);
-	while (*s)
+	while (s[start])
 	{
-		if ((*s != c) && ((*s + 1) == (int)c || (*s + 1) == '\0'))
-		{
-			tabg[i] = (char *)malloc(sizeof(char) * ft_word(s, c) + 1);
-			if (tabg[i] == NULL)
-				{
-					while (i-- >= 0)
-						free(tabg[i]);
-					return (NULL);
-				}
-			tabg[i] = ft_strcpy(tabg[i], s, c);
-			i++;
-		}
-		s++;
+		while (s[start] == c)
+			start++;
+		temp = 0;
+		while (s[start + temp] && s[start + temp] != c)
+			temp++;
+		if (s[start])
+			tabg[i++] = ft_strcpy(&s[start], temp);
+		start = start + temp;
 	}
 	tabg[i] = NULL;
 	return (tabg);
 }
-
+/*
 int	main(void)
 {
-	char const s[] = "Bonjour-je-suis-un---pc";
-	char	c = '-';
+	char const s[] = "\0aa\0bbb";
+	char	c = '\0';
 	char **new_str;
+	int	i = 0;
 
-//	printf("%d\n", ft_count(s, c));
 	new_str = ft_split(s, c);
-	printf("%s\n", new_str[1]);
+	while (new_str[i] != NULL)
+	{
+		printf("%s\n", new_str[i]);
+		free(new_str[i]);
+		i++;
+	}
 	free(new_str);
 	return (0);
 }
+*/

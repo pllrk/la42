@@ -1,46 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 16:48:08 by plerick           #+#    #+#             */
-/*   Updated: 2024/10/25 17:30:17 by plerick          ###   ########.fr       */
+/*   Created: 2024/11/04 23:14:52 by plerick           #+#    #+#             */
+/*   Updated: 2024/11/04 23:15:52 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *str, int c, size_t n)
+static void	my_putchar(char c, int fd)
 {
-	size_t	i;
-	char	*string;
+	write(fd, &c, 1);
+}
 
-	i = 0;
-	string = (void *)str;
-	while (i < n)
+void	ft_putnbr_fd(int nb, int fd)
+{
+	if (nb == -2147483648)
 	{
-		if ((string)[i] == c)
-			return (&string[i]);
-		i++;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	return (NULL);
+	if (nb < 0)
+	{
+		write(fd, "-", 1);
+		nb = nb * -1;
+	}
+	if (nb >= 0 && nb < 10)
+	{
+		my_putchar(nb + '0', fd);
+	}
+	else
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		ft_putnbr_fd(nb % 10, fd);
+	}
 }
 /*
 int	main(void)
 {
-	const char	str[] = "0123456qhohohoho";
-	char	c = '\0';
-	size_t n = 7;
+	int	nb;
+	char	fd = 1;
 
-	const char	str2[] = "0123456qhohohoho";
-	char	c2 = '\0';
-	size_t n2 = 7;
-	
-
-	printf("%s\n", (char *)ft_memchr(str, c, n));
-	printf("%s\n", (char *)memchr(str2, c2, n2));
+	nb = -12345;
+	ft_putnbr_fd(nb, fd);
 	return (0);
 }
 */

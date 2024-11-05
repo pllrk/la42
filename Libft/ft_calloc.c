@@ -6,16 +6,13 @@
 /*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 21:01:04 by plerick           #+#    #+#             */
-/*   Updated: 2024/10/28 22:46:28 by plerick          ###   ########.fr       */
+/*   Updated: 2024/11/05 02:41:35 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <unistd.h>
-//#include <stdio.h>
-//#include <stdlib.h>
 
-static void	*memset(void *s, int c, size_t n)
+static void	*my_memset(void *s, int c, size_t n)
 {
 	size_t	i;
 
@@ -32,20 +29,19 @@ void	*ft_calloc(size_t num, size_t size)
 {
 	void	*ptr;
 
-	if (num == 0 || size == 0)
+	ptr = malloc(num * size);
+	if (ptr == NULL)
 		return (NULL);
-	if ((ptr = malloc(num * size)) == NULL)
-		return (NULL);
-	memset((int *)ptr, 0, (num * size));
+	my_memset((int *)ptr, 0, (num * size));
 	return (ptr);
 }
 /*
 int	main(void)
 {
-	int	num_elements = 5;
+	int	num_elements = 0;
 	int	*array;
 	int	i = 0;
-	array = (int*)ft_calloc(num_elements, sizeof(int));
+	array = (int*)ft_calloc(num_elements, 0);
 	if (array == NULL) 
 	{
         	printf("echec de l'allocation de memoire.\n");

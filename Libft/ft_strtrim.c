@@ -17,11 +17,9 @@
 
 static char	*cpy_str_trim(const char *s1, size_t len_str, size_t count1)
 {
-	char		*new_str;
-	unsigned int	i;
-	size_t		n;
+	char			*new_str;
+	size_t			n;
 
-	i = 0;
 	n = 0;
 	new_str = (char *)malloc(sizeof(char) * len_str + 1);
 	if (new_str == NULL)
@@ -47,7 +45,7 @@ static int	limit_trim(const char s, const char *set)
 	return (0);
 }
 
-static int	ft_strlen(const char *str)
+static int	my_strlen(const char *str)
 {
 	size_t	i;
 
@@ -66,7 +64,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (s1 == NULL || set == NULL)
 		return (NULL);
 	count1 = 0;
-	count2 = ft_strlen(s1) - 1;
+	count2 = my_strlen(s1) - 1;
 	while (s1[count1] != '\0')
 	{
 		if (limit_trim(s1[count1], set))

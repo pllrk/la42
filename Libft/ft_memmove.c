@@ -11,15 +11,12 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <stdio.h>
-// #include <unistd.h>
-// #include <string.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	size_t	i;
 
-	if (dest == NULL || src == NULL)
+	if (dest == NULL && src == NULL)
 		return (0);
 	if (dest < src)
 	{
@@ -46,12 +43,12 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 int main()
 {
-	char dest[] = "Hello_world";
+	char dest[] = "0123456789";
 	char *src = &dest[4];
 	char *stock1 = (char *)ft_memmove(dest, src, 3);
 
 
-	char dest2[] = "Hello_world";
+	char dest2[] = "0123456789";
 	char *src2 = &dest2[4];
 	char *stock2 = (char *)ft_memmove(dest2, src2, 3);
 
@@ -59,7 +56,8 @@ int main()
 	printf("%s\n", stock2);
 	return (0);
 }
-
+*/
+/*
 // dest > src
 
 int main()

@@ -11,12 +11,8 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <unistd.h>
-//#include <stdio.h>
-//#include <string.h>
-//#include <stdlib.h>
 
-static size_t	ft_strlen(const char *s)
+static size_t	my_strlen(const char *s)
 {
 	size_t	i;
 
@@ -46,15 +42,14 @@ static char	*ft_strcat(char *dest, const char *src)
 
 char	*ft_strjoin(char const *str1, char const *str2)
 {
-	int	i;
 	size_t	total_lengh;
 	char	*new_str;
 
-	i = 0;
-	total_lengh = ft_strlen(str1) + ft_strlen(str2);
-	new_str = (char *)malloc(sizeof(char) * total_lengh + 1);
+	total_lengh = my_strlen(str1) + my_strlen(str2);
+	new_str = (char *)malloc(sizeof(char) * (total_lengh + 1));
 	if (new_str == NULL)
 		return (NULL);
+	new_str[0] = '\0';
 	new_str = ft_strcat(new_str, str1);
 	new_str = ft_strcat(new_str, str2);
 	return (new_str);
@@ -62,7 +57,7 @@ char	*ft_strjoin(char const *str1, char const *str2)
 /*
 int	main(void)
 {
-	char const	str1[] = "un";
+	char const	str1[] = "asd";
 	char const	str2[] = "deux";
 	char	*result;
 

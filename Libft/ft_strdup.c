@@ -6,14 +6,11 @@
 /*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 23:08:20 by plerick           #+#    #+#             */
-/*   Updated: 2024/10/28 23:46:22 by plerick          ###   ########.fr       */
+/*   Updated: 2024/11/05 04:07:11 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
 
 char	*ft_strdup(const char *str)
 {
@@ -32,6 +29,7 @@ char	*ft_strdup(const char *str)
 		new_str[i] = str[i];
 		i++;
 	}
+	new_str[i] = '\0';
 	return (new_str);
 }
 /*

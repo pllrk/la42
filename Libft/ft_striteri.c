@@ -1,46 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 16:48:08 by plerick           #+#    #+#             */
-/*   Updated: 2024/10/25 17:30:17 by plerick          ###   ########.fr       */
+/*   Created: 2024/11/04 19:56:45 by plerick           #+#    #+#             */
+/*   Updated: 2024/11/04 20:38:42 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+//#include "libft.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-void	*ft_memchr(const void *str, int c, size_t n)
+/*
+void	my_toupper(unsigned int index, char *c) 
+{
+	(void)index;
+	if (*c >= 'a' && *c <= 'z')
+		*c = (*c - 32);
+	return;
+}
+*/
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	size_t	i;
-	char	*string;
 
+	if (s == NULL || f == NULL)
+		return ;
 	i = 0;
-	string = (void *)str;
-	while (i < n)
+	while (s[i])
 	{
-		if ((string)[i] == c)
-			return (&string[i]);
+		f(i, &s[i]);
 		i++;
 	}
-	return (NULL);
+	return ;
 }
 /*
 int	main(void)
 {
-	const char	str[] = "0123456qhohohoho";
-	char	c = '\0';
-	size_t n = 7;
-
-	const char	str2[] = "0123456qhohohoho";
-	char	c2 = '\0';
-	size_t n2 = 7;
+	char	str[] = "couCou";
 	
+	ft_striteri(str, my_toupper);
 
-	printf("%s\n", (char *)ft_memchr(str, c, n));
-	printf("%s\n", (char *)memchr(str2, c2, n2));
+	printf("%s\n", str);
 	return (0);
 }
 */

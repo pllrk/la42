@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <unistd.h>
-// #include <stdio.h>
-// #include <string.h>
 
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
@@ -25,8 +22,9 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if ((((char *)str1)[i]) != (((char *)str2)[i]))
-			return (diff = (((char *)str1)[i]) - (((char *)str2)[i]));
+		if ((((unsigned char *)str1)[i]) != (((unsigned char *)str2)[i]))
+			return (diff = (((unsigned char *)str1)[i])
+				- (((unsigned char *)str2)[i]));
 		i++;
 	}
 	return (0);
@@ -34,12 +32,12 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 /*
 int	main(void)
 {
-	char	str1[] = "abc";
-	char	str2[] = "abc";
-	size_t	n = -1;
+	char	str1[] = "abcdef";
+	char	str2[] = "abc\375xx";
+	size_t	n = 5;
 	
-	char	str3[] = "abc";
-	char	str4[] = "abc";
+	char	str3[] = "abcdef";
+	char	str4[] = "abc\375xx";
 	printf("%d\n", ft_memcmp(str1, str2, n));
 	printf("%d\n", memcmp(str3, str4, n));
 	return (0);
