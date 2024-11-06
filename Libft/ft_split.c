@@ -20,7 +20,7 @@ void	*ft_null(char **tabg, int i)
 	return (NULL);
 }
 
-static char	*ft_strcpy(char const *start, int temp)
+static char	*my_strcpy(char const *start, int temp)
 {
 	int		i;
 	char	*to_return;
@@ -38,42 +38,37 @@ static char	*ft_strcpy(char const *start, int temp)
 	return (to_return);
 }
 
-static int	ft_count(char const *s, char c)
+static int	my_count(char const *s, char c)
 {
 	int		count;
 	size_t	i;
 
-	count = 1;
+	count = 0;
 	i = 0;
-	if (s[i] == c)
-		count = 0;
+	if (s == NULL)
+		return (0);
 	while (s[i] != '\0')
 	{
 		while (s[i] == c)
-		{
 			i++;
-			if (s[i] != c && s[i] != '\0')
-				count++;
+		if (s[i] != '\0')
+		{
+			count++;
+			while (s[i] != c && s[i] != '\0')
+				i++;
 		}
-		i++;
 	}
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**my_tab(char const *s, char c, char **tabg)
 {
 	size_t	temp;
-	char	**tabg;
-	int		i;
 	size_t	start;
+	int		i;
 
-	i = 0;
 	start = 0;
-	if (!s)
-		return (NULL);
-	tabg = (char **)malloc(sizeof(char *) * (ft_count(s, c) + 1));
-	if (tabg == NULL)
-		return (NULL);
+	i = 0;
 	while (s[start])
 	{
 		while (s[start] == c)
@@ -81,18 +76,35 @@ char	**ft_split(char const *s, char c)
 		temp = 0;
 		while (s[start + temp] && s[start + temp] != c)
 			temp++;
-		if (s[start])
-			tabg[i++] = ft_strcpy(&s[start], temp);
+		if (temp > 0)
+		{
+			tabg[i] = my_strcpy(&s[start], temp);
+			if (tabg[i] == NULL)
+				return (ft_null(tabg, i));
+			i++;
+		}
 		start = start + temp;
 	}
 	tabg[i] = NULL;
 	return (tabg);
 }
+
+char	**ft_split(char const *s, char c)
+{
+	char	**tabg;
+
+	if (!s)
+		return (NULL);
+	tabg = (char **)malloc(sizeof(char *) * (my_count(s, c) + 1));
+	if (tabg == NULL)
+		return (NULL);
+	return (my_tab(s, c, tabg));
+}
 /*
 int	main(void)
 {
-	char const s[] = "\0aa\0bbb";
-	char	c = '\0';
+	char const s[] = "hello!";
+	char	c = 32;
 	char **new_str;
 	int	i = 0;
 

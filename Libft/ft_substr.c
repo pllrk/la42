@@ -46,7 +46,17 @@ char	*ft_substr(char const *str, unsigned int start, size_t lengh)
 	size_t		lengh_of_nstr;
 	char		*new_str;
 
+	if (!str)
+		return (NULL);
 	lengh_of_str = my_strlen(str);
+	if (start >= lengh_of_str)
+	{
+		new_str = (char *)malloc(sizeof(char) * 1);
+		if (new_str == NULL)
+			return (NULL);
+		new_str[0] = '\0';
+		return (new_str);
+	}
 	lengh_of_nstr = lengh_of_str - start;
 	if (lengh > lengh_of_nstr)
 		lengh = lengh_of_nstr;
