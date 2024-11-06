@@ -11,22 +11,21 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <string.h>
 
 char	*ft_strchr(const char *str, int c)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	vc;
 
 	i = 0;
+	vc = (unsigned char) c;
 	while (str[i] != '\0')
 	{
-		if (c == str[i])
+		if (vc == str[i])
 			return (&(((char *)str)[i]));
 		i++;
 	}
-	if (c == '\0' && str[i] == '\0')
+	if (vc == '\0' && str[i] == '\0')
 		return (&(((char *)str)[i]));
 	return (NULL);
 }

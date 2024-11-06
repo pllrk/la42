@@ -60,12 +60,12 @@ char	*ft_substr(char const *str, unsigned int start, size_t lengh)
 /*
 int	main(void)
 {
-	char const	str[] = "1234";
+	char const	str[] = "hola";
 	char const	*new_str;
-	size_t		lengh = 10;
-	unsigned int	start = 10;
+//	size_t		lengh = 10;
+//	unsigned int	start = 10;
 
-	new_str = ft_substr(str, start, lengh);
+	new_str = ft_substr(str, 4294967295, 0);
 	printf("%s\n", new_str);
 	free((void *)new_str);
 	return (0);

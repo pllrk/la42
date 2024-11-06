@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <unistd.h>
-// #include <stdio.h>
-// #include <string.h>
-// #include <stddef.h>  // Pour size_t
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {

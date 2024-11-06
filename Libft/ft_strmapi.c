@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
 /*
 static char	my_toupper(unsigned int index, char c) 

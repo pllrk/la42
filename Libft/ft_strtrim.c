@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdlib.h>
-//#include <stdio.h>
-//#include <string.h>
 
 static char	*cpy_str_trim(const char *s1, size_t len_str, size_t count1)
 {

@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <unistd.h>
-// #include <stdio.h>
-// #include <string.h>
 
 void	*ft_memset(void *str, int to_include, size_t n)
 {

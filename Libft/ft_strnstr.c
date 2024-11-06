@@ -11,9 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-// #include <unistd.h>
-// #include <stdio.h>
-// #include <bsd/string.h>
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
@@ -44,7 +41,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 int	main(void)
 {
 	const char	la_phrase[] = "toto est rigolo";
-	const char	motyes[] = "";
+	const char	motyes[] = "est";
 	size_t	len = 8;
 
 	printf("le mot a ete trouve : %s \n", ft_strnstr(la_phrase, motyes, len));
