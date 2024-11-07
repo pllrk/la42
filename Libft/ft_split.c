@@ -12,94 +12,88 @@
 
 #include "libft.h"
 
-void	*ft_null(char **tabg, int i)
+static void	*ft_free(char **tab, int i)
 {
-	while (i-- >= 0)
-		free(tabg[i]);
-	free(*tabg);
+	while (i >= 0)
+		free(tab[i--]);
+	free(tab);
 	return (NULL);
 }
 
-static char	*my_strcpy(char const *start, int temp)
+static int	ft_strlen_nextsep(char const *str, char c)
 {
-	int		i;
-	char	*to_return;
+	int	i;
 
 	i = 0;
-	to_return = (char *)malloc(sizeof(char) * (temp + 1));
-	if (to_return == NULL)
-		return (NULL);
-	while (i < temp)
-	{
-		to_return[i] = start[i];
+	while (str[i] && (str[i] != c))
 		i++;
-	}
-	to_return[i] = '\0';
-	return (to_return);
+	return (i);
 }
 
-static int	my_count(char const *s, char c)
+static int	ft_countwords(char const *str, char c)
 {
-	int		count;
-	size_t	i;
+	int	i;
+	int	count;
 
-	count = 0;
 	i = 0;
-	if (s == NULL)
-		return (0);
-	while (s[i] != '\0')
+	count = 0;
+	while (str[i] != '\0')
 	{
-		while (s[i] == c)
+		while (str[i] != '\0' && str[i] == c)
 			i++;
-		if (s[i] != '\0')
-		{
+		if (str[i] != '\0')
 			count++;
-			while (s[i] != c && s[i] != '\0')
-				i++;
-		}
+		while (str[i] != '\0' && str[i] != c)
+			i++;
 	}
 	return (count);
 }
 
-char	**my_tab(char const *s, char c, char **tabg)
+static char	*ft_strndup(char const *str, int n)
 {
-	size_t	temp;
-	size_t	start;
 	int		i;
+	char	*dest;
 
-	start = 0;
 	i = 0;
-	while (s[start])
+	dest = (char *) malloc(sizeof(char) * (n + 1));
+	if (!dest)
+		return (NULL);
+	while (i < n)
 	{
-		while (s[start] == c)
-			start++;
-		temp = 0;
-		while (s[start + temp] && s[start + temp] != c)
-			temp++;
-		if (temp > 0)
-		{
-			tabg[i] = my_strcpy(&s[start], temp);
-			if (tabg[i] == NULL)
-				return (ft_null(tabg, i));
-			i++;
-		}
-		start = start + temp;
+		dest[i] = str[i];
+		i++;
 	}
-	tabg[i] = NULL;
-	return (tabg);
+	dest[i] = '\0';
+	return (dest);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**tabg;
+	char	**tab;
+	int		i;
 
-	if (!s)
-		return (NULL);
-	tabg = (char **)malloc(sizeof(char *) * (my_count(s, c) + 1));
-	if (tabg == NULL)
-		return (NULL);
-	return (my_tab(s, c, tabg));
+	i = 0;
+	tab = (char **) malloc(sizeof (char *) * (ft_countwords(s, c) + 1));
+	if (!tab)
+		return (0);
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (*s)
+		{
+			tab[i] = ft_strndup(s, ft_strlen_nextsep(s, c));
+			if (!tab[i])
+				return (ft_free(tab, i));
+			i++;
+		}
+		while (*s && *s != c)
+			s++;
+	}
+	tab[i] = 0;
+	return (tab);
 }
+
 /*
 int	main(void)
 {
