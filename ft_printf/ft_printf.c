@@ -15,59 +15,75 @@
 int	my_check(va_list args, const char *str)
 {
 	int	i;
-	int	fd;
+	int	count;
 	
 	i = 0;
-	fd = 1;
+	count = 0;
 	if (str[i + 1] == 'c')
-		ft_putchar_fd(va_arg(args, int), fd);
+		count += ft_printchar(va_arg(args, int));
 	else if (str[i + 1] == 's')
-		ft_putstr_fd(va_arg(args, char *), fd);
+		count += ft_printstr(va_arg(args, char *));
 	else if ((str[i + 1] == 'd') || (str[i + 1] == 'i'))
-		ft_putnbr_fd(va_arg(args, int), fd);
+		count += ft_printnbr(va_arg(args, int));
 	else if (str[i + 1] == '%')
-		ft_putchar_fd('%', fd);
-
+		count += ft_printchar('%');
+	else if (str[i + 1] == 'x')
+		count += ft_printbase_lo(va_arg(args, long));
+	else if (str[i + 1] == 'X')
+		count += ft_printbase_up(va_arg(args, long));
+		
+		
 	else
 		{
-			ft_putchar_fd(str[i], fd);
+			count += ft_printchar(str[i]);
 			if (str[i + 1] != '\0')
-				ft_putchar_fd(str[i + 1], fd);
+				count += ft_printchar(str[i + 1]);
 		}
-	return 0;
+	return (count);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	int	i;
-	int	fd;
+	int	count;
 	
 	i = 0;
-	fd = 1;
+	count = 0;
 	va_list args;
 	va_start(args, str);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
-			my_check(args, &str[i]);
+			count = count + (my_check(args, &str[i]));
 			i++;
 		}
 		else
-			ft_putchar_fd(str[i], fd);
+		{
+			ft_printchar(str[i]);
+			count++;
+		}
 		if (str[i] != '\0')
 			i++;
+			
 	}
-	return (1);
+	return (count);
 }
 
 int	main(void)
 {
-	int	i = 5;
-	int	a = 'g';
-	char s[] = "Haha";
-	int	iii = 456;
-
-	ft_printf("%c %s, % j'vai %d !%% % wooooow plein de chiffre %i", a, s, i, iii);
-	return (0);
+//	int	i = 5;
+//	int	a = 'g';
+//	char s[] = "Haha";
+//	int	iii = 456;
+	int	count = 0;
+	long	base1 = 255;
+	long	base2 = 4095;
+	
+	
+//	count = ft_printf("%c %s, % j'vai %d !%% % wooooow plein de chiffre %i\n", a, s, i, iii);
+//	count = ft_printf("%s\n", s);
+	count = ft_printf("%x\n%X\n", base1, base2);
+	ft_printf("%i", count);
+	return (count);
 }
