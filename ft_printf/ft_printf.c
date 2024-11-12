@@ -31,7 +31,8 @@ int	my_check(va_list args, const char *str)
 		count += ft_printbase_lo(va_arg(args, long));
 	else if (str[i + 1] == 'X')
 		count += ft_printbase_up(va_arg(args, long));
-		
+	else if (str[i + 1] == 'p')
+		count += ft_printptr(va_arg(args, void*));	
 		
 	else
 		{

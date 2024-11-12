@@ -22,5 +22,6 @@ int	ft_printnbr(int nb);
 int	ft_printstr(char *s);
 int	ft_printbase_lo(long nb);
 int	ft_printbase_up(long nb);
+int	ft_printptr(void *ptr);
 
 #endif
