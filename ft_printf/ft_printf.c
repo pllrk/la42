@@ -73,20 +73,19 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-//	int	i = 5;
-//	int	a = 'g';
-//	char s[] = "Haha";
-//	int	iii = 456;
+	int	d = 5;
+	int	c = 'g';
+	char s[] = "Haha";
+	int	iii = 455;
 	int	count = 0;
-//	long	base1 = 1;
-//	long	base2 = '\0';
+	unsigned int	base1 = 255;
+	unsigned int	base2 = 4095;
 	int	nbptr = 1;
 	int	*ptr = &nbptr;
 
-//	count = ft_printf("%c %s, % j'vai %d !%% % wooooow plein de chiffre %i\n", a, s, i, iii);
-//	count = ft_printf("%s\n", s);
-//	count = ft_printf("%s\n%X\n", (char *)NULL, base2);
-	count = ft_printf("%p", ptr);
-	ft_printf("%i", count);
+	count = ft_printf("c : %c\ns : %s\nd : %d\npourcent: %%\ni : %i\nx : %x\nX : %X\np : %p\n", c, s, d, iii, base1, base2, ptr);
+	ft_printf("Mon printf : %i\n\n", count);
+	count = printf("c : %c\ns : %s\nd : %d\npourcent : %%\ni : %i\nx : %x\nX : %X\np : %p\n", c, s, d, iii, base1, base2, ptr);
+	printf("Vrai printf : %i\n", count);
 	return (count);
 }

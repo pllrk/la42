@@ -24,6 +24,8 @@ int	ft_printbase_lo(long nb)
 	long	nbl;
 
 	i = 0;
+	if (nb == '\0')
+		return (0);
 	nbl = (long)nb;
 	if (nbl < 0)
 	{

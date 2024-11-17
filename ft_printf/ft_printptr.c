@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-//#include <unistd.h>
-//#include <stdio.h>
 
 static void	my_putchar(char c)
 {
@@ -32,21 +30,21 @@ int	ft_printptr(void *ptr)
 	n = 0;
 	if (num == 0)
 		return (write (1, "0x0", 3));
-	while (num > 15)
+	while (num > 0)
 	{
 		if ((num % 16) < 10)
 			temp[i++] = ((num % 16) + '0');
-		else if ((num % 16) > 10)
+		else if ((num % 16) >= 10)
 			temp[i++] = ((num % 16) - 10 + 'a');
 		num = num / 16;
 	}
 	write(1, "0x", 2);
-	while (i > 0)
+	while (i >= 0)
 	{
 		my_putchar(temp[i--]);
 		n++;
 	}
-	return (n + 1);
+	return (n + 2);
 }
 /*
 int	main(void)

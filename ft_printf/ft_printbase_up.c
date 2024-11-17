@@ -24,6 +24,8 @@ int	ft_printbase_up(long nb)
 	long	nbl;
 
 	i = 0;
+	if (nb == '\0')
+		return (0);
 	nbl = (long)nb;
 	if (nbl < 0)
 	{
@@ -41,8 +43,8 @@ int	ft_printbase_up(long nb)
 	}
 	else
 	{
-		i = i + (ft_printbase_lo(nbl / 16));
-		ft_printbase_lo(nbl % 16);
+		i = i + (ft_printbase_up(nbl / 16));
+		ft_printbase_up(nbl % 16);
 		return (i + 1);
 	}
 }
