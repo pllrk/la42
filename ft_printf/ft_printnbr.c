@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include <unistd.h>
+#include "ft_printf.h"
 
 static void	my_putchar(char c)
 {

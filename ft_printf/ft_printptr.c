@@ -10,26 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-
-static void	my_putchar(char c)
-{
-	write(1, &c, 1);
-	return ;
-}
+#include "ft_printf.h"
 
 int	ft_printptr(void *ptr)
 {
-	int	i;
+	int				i;
 	unsigned long	num;
-	char	temp[20];
-	int	n;	
-		
+	char			temp[20];
+	int				n;	
+
 	num = (unsigned long)ptr;
 	i = 0;
 	n = 0;
-	if (num == 0)
-		return (write (1, "0x0", 3));
+	if (num == '\0')
+		return (write (1, "(nil)", 5));
 	while (num > 0)
 	{
 		if ((num % 16) < 10)
@@ -38,21 +32,25 @@ int	ft_printptr(void *ptr)
 			temp[i++] = ((num % 16) - 10 + 'a');
 		num = num / 16;
 	}
-	write(1, "0x", 2);
-	while (i >= 0)
-	{
-		my_putchar(temp[i--]);
-		n++;
-	}
-	return (n + 2);
+	n += write(1, "0x", 2);
+	while (i > 0)
+		n += ft_printchar(temp[--i]);
+	return (n);
 }
 /*
 int	main(void)
 {
-	long	nb;
+	char	*nb;
 
-	nb = 0;
-	printf("\n%d\n",ft_printptr((long *)nb));
+	nb = "salut";
+	ft_printf("\n%d\n\n",ft_printptr(nb));
+	printf("\n%d\n",ft_printptr(nb));
+	printf("Mon ft_printf\n%d", ft_printf("\n%p\n", nb));
+	printf("Vrai printf\n%d", printf("\n%p\n", nb));
+	ft_printf("%p %p", (void *)0, (void *)0);
+	printf("%p %p", (void *)0, (void *)0);
+	ft_printf("%d", ft_printf("%p %p", (void *)0, (void *)0));
+	printf("%d", printf("%p %p", (void *)0, (void *)0));
 	return (0);
 }
 */

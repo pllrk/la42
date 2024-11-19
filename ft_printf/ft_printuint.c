@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printbase_lo.c                                  :+:      :+:    :+:   */
+/*   ft_printuint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 22:53:51 by plerick           #+#    #+#             */
-/*   Updated: 2024/11/12 00:42:15 by plerick          ###   ########.fr       */
+/*   Created: 2024/11/18 21:06:07 by plerick           #+#    #+#             */
+/*   Updated: 2024/11/18 21:09:24 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,46 +15,32 @@
 static void	my_putchar(char c)
 {
 	write(1, &c, 1);
-	return ;
 }
 
-int	ft_printbase_lo(long nb)
+int	ft_printuint(unsigned int nb)
 {
-	int		i;
-	long	nbl;
+	int	i;
 
 	i = 0;
-	if (nb == '\0')
-		return (0);
-	nbl = (long)nb;
-	if (nbl < 0)
+	if (nb >= 0 && nb < 10)
 	{
-		write(1, "-", 1);
-		i++;
-		nbl = nbl * -1;
-	}
-	if (nbl >= 0 && nbl < 16)
-	{
-		if (nbl < 10)
-			my_putchar(nbl + '0');
-		else
-			my_putchar(nbl - 10 + 'a');
+		my_putchar(nb + '0');
 		return (i = i + 1);
 	}
 	else
 	{
-		i = i + (ft_printbase_lo(nbl / 16));
-		ft_printbase_lo(nbl % 16);
+		i = i + (ft_printuint(nb / 10));
+		ft_printuint(nb % 10);
 		return (i + 1);
 	}
 }
 /*
 int	main(void)
 {
-	long	nb;
+	int	nb;
 
-	nb = 4095;
-	printf("\n%d\n",ft_printbase_lo(nb));
+	nb = 12;
+	printf("\n%d\n",ft_printuint(nb));
 	return (0);
 }
 */

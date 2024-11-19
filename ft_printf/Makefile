@@ -2,7 +2,7 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g -I.libft
 LIBFT_MAKEFILE = libft/Makefile
-SRCS =	ft_printf.c ft_printchar.c ft_printnbr.c ft_printstr.c ft_printbase_lo.c ft_printbase_up.c ft_printptr.c
+SRCS =	ft_printf.c ft_printchar.c ft_printnbr.c ft_printstr.c ft_printbase_lo.c ft_printbase_up.c ft_printptr.c ft_printuint.c
 OBJS = ${SRCS:.c=.o}
 LIBC = -L./libft -lft
 

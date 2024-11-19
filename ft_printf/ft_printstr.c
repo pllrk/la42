@@ -10,13 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printstr(char *s)
 {
 	int	i;	
 
 	i = 0;
+	if (s == NULL)
+		return (write(1, "(null)", 6));
 	while (s[i] != '\0')
 	{
 		write(1, &s[i], 1);
@@ -27,11 +29,11 @@ int	ft_printstr(char *s)
 /*
 int	main(void)
 {
-	int	fd;
-	char	c[] = "hohohoho";
+//	char	c[] = "\0";
 
-	fd = 1;
-	ft_putstr_fd(c, fd);
+//	ft_printstr(NULL);
+	ft_printf(" NULL %s NULL \n", NULL);
+	printf(" NULL %s NULL ", (char *)NULL);
 	return (0);
 }
 */

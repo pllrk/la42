@@ -10,17 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static void	my_putchar(char c)
 {
-		write(1, &c, 1);
-		return ;
+	write(1, &c, 1);
+	return ;
 }
 
 int	ft_printbase_up(long nb)
 {
-	int	i;
+	int		i;
 	long	nbl;
 
 	i = 0;
@@ -37,7 +37,7 @@ int	ft_printbase_up(long nb)
 	{
 		if (nbl < 10)
 			my_putchar(nbl + '0');
-		else
+		else if ((nbl > 9) && (nbl < 16))
 			my_putchar(nbl - 10 + 'A');
 		return (i = i + 1);
 	}
@@ -54,7 +54,7 @@ int	main(void)
 	long	nb;
 
 	nb = 4095;
-	printf("\n%d\n",ft_printbase_lo(nb));
+	printf("\n%d\n",ft_printbase_up(nb));
 	return (0);
 }
 */
