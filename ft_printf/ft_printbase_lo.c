@@ -18,33 +18,25 @@ static void	my_putchar(char c)
 	return ;
 }
 
-int	ft_printbase_lo(long nb)
+int	ft_printbase_lo(unsigned int nb)
 {
-	int		i;
-	long	nbl;
+	int	i;
 
 	i = 0;
 	if (nb == '\0')
-		return (0);
-	nbl = (long)nb;
-	if (nbl < 0)
+		return (write(1, "0", 1));
+	if (nb >= 0 && nb < 16)
 	{
-		write(1, "-", 1);
-		i++;
-		nbl = nbl * -1;
-	}
-	if (nbl >= 0 && nbl < 16)
-	{
-		if (nbl < 10)
-			my_putchar(nbl + '0');
+		if (nb < 10)
+			my_putchar(nb + '0');
 		else
-			my_putchar(nbl - 10 + 'a');
+			my_putchar(nb - 10 + 'a');
 		return (i = i + 1);
 	}
 	else
 	{
-		i = i + (ft_printbase_lo(nbl / 16));
-		ft_printbase_lo(nbl % 16);
+		i = i + (ft_printbase_lo(nb / 16));
+		ft_printbase_lo(nb % 16);
 		return (i + 1);
 	}
 }
@@ -54,7 +46,17 @@ int	main(void)
 	long	nb;
 
 	nb = 4095;
-	printf("\n%d\n",ft_printbase_lo(nb));
+	ft_printf(" mon ft_printf %d\n",ft_printbase_lo(nb));
+	printf(" Vrai printf %d\n",ft_printbase_lo(nb));
+	ft_printf("%x\n", nb);
+	printf("%x", (unsigned int)nb);
+	printf("%d\n", ft_printf("%x\n", nb));
+	ft_printf("%d", printf("%x\n", (unsigned int)nb));
+
+//	ft_printf("mon ft_printf %x\n ", 4294967295);
+//	printf("%x", (unsigned int)4294967295);
+	printf("%d\n", ft_printf("%x", 4294967295));
+	printf("%d", printf("%x", (unsigned int)4294967295));
 	return (0);
 }
 */

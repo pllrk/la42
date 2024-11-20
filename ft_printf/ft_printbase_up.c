@@ -18,33 +18,25 @@ static void	my_putchar(char c)
 	return ;
 }
 
-int	ft_printbase_up(long nb)
+int	ft_printbase_up(unsigned int nb)
 {
-	int		i;
-	long	nbl;
+	int	i;
 
 	i = 0;
 	if (nb == '\0')
-		return (0);
-	nbl = (long)nb;
-	if (nbl < 0)
+		return (write(1, "0", 1));
+	if (nb >= 0 && nb < 16)
 	{
-		write(1, "-", 1);
-		i++;
-		nbl = nbl * -1;
-	}
-	if (nbl >= 0 && nbl < 16)
-	{
-		if (nbl < 10)
-			my_putchar(nbl + '0');
-		else if ((nbl > 9) && (nbl < 16))
-			my_putchar(nbl - 10 + 'A');
+		if (nb < 10)
+			my_putchar(nb + '0');
+		else if ((nb > 9) && (nb < 16))
+			my_putchar(nb - 10 + 'A');
 		return (i = i + 1);
 	}
 	else
 	{
-		i = i + (ft_printbase_up(nbl / 16));
-		ft_printbase_up(nbl % 16);
+		i = i + (ft_printbase_up(nb / 16));
+		ft_printbase_up(nb % 16);
 		return (i + 1);
 	}
 }

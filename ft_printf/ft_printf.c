@@ -12,35 +12,40 @@
 
 #include "ft_printf.h"
 
-int	my_check(va_list args, const char *str)
+static int	my_check_nof(const char *str)
 {
-	int	i;
 	int	count;
 
-	i = 0;
 	count = 0;
-	if (str[i + 1] == 'c')
+	count += ft_printchar(str[0]);
+	if (str[1] != '\0')
+		count += ft_printchar(str[1]);
+	return (count);
+}
+
+static int	my_check(va_list args, const char *str)
+{
+	int	count;
+
+	count = 0;
+	if (str[1] == 'c')
 		count += ft_printchar(va_arg(args, int));
-	else if (str[i + 1] == 's')
+	else if (str[1] == 's')
 		count += ft_printstr(va_arg(args, char *));
-	else if ((str[i + 1] == 'd') || (str[i + 1] == 'i'))
+	else if ((str[1] == 'd') || (str[1] == 'i'))
 		count += ft_printnbr(va_arg(args, int));
-	else if (str[i + 1] == '%')
+	else if (str[1] == '%')
 		count += ft_printchar('%');
-	else if (str[i + 1] == 'x')
+	else if (str[1] == 'x')
 		count += ft_printbase_lo(va_arg(args, long));
-	else if (str[i + 1] == 'X')
+	else if (str[1] == 'X')
 		count += ft_printbase_up(va_arg(args, long));
-	else if (str[i + 1] == 'p')
+	else if (str[1] == 'p')
 		count += ft_printptr(va_arg(args, void *));
-	else if (str[i + 1] == 'u')
+	else if (str[1] == 'u')
 		count += ft_printuint(va_arg(args, unsigned int));
 	else
-	{
-		count += ft_printchar(str[i]);
-		if (str[i + 1] != '\0')
-			count += ft_printchar(str[i + 1]);
-	}
+		my_check_nof(str);
 	return (count);
 }
 
@@ -89,9 +94,13 @@ int	main(void)
 
 	unsigned int	l = 4;
 
-	count1 = ft_printf("c : %c\ns : %s\nd : %d\npourcent: %%\ni : %i\nx : %x\nX : %X\np : %p\nu : %u\n", c, s, d, iii, base1, base2, ptr, l);
+	count1 = ft_printf("c : %c\ns : %s\nd : %d\n
+	pourcent: %%\ni : %i\nx : %x\nX : %X\n p : %p\nu : %u\n"
+	, c, s, d, iii, base1, base2, ptr, l);
 	ft_printf("Mon printf : %i\n\n", count1);
-	count2 = printf("c : %c\ns : %s\nd : %d\npourcent : %%\ni : %i\nx : %x\nX : %X\np : %p\nu : %u\n", c, s, d, iii, base1, base2, ptr, l);
+	count2 = printf("c : %c\ns : %s\nd : %d\n
+	pourcent : %%\ni : %i\nx : %x\nX : %X\np : %p\nu : %u\n"
+	, c, s, d, iii, base1, base2, ptr, l);
 	printf("Vrai printf : %i\n", count2);
 //	count = ft_printf("%x\n%X\n", base1, base2);
 //	count = printf("\n%x\n%X\n", base1, base2);

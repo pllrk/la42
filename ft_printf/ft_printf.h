@@ -20,8 +20,8 @@ int	ft_printf(const char *str, ...);
 int	ft_printchar(char c);
 int	ft_printnbr(int nb);
 int	ft_printstr(char *s);
-int	ft_printbase_lo(long nb);
-int	ft_printbase_up(long nb);
+int	ft_printbase_lo(unsigned int nb);
+int	ft_printbase_up(unsigned int nb);
 int	ft_printptr(void *ptr);
 int	ft_printuint(unsigned int nb);
 
