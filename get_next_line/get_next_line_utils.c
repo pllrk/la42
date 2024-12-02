@@ -10,7 +10,51 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static size_t	my_strlen(const char *s)
+#include "get_next_line.h"
+
+char	*ft_strchr(const char *str, int c)
+{
+	size_t			i;
+	unsigned char	vc;
+
+	i = 0;
+	vc = (unsigned char) c;
+	while (str[i] != '\0')
+	{
+		if (vc == str[i])
+			return (&(((char *)str)[i]));
+		i++;
+	}
+	if (vc == '\0' && str[i] == '\0')
+		return (&(((char *)str)[i]));
+	return (NULL);
+}
+
+void	*my_memset(void *s, int c, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+	{
+		((char *)s)[i] = c;
+		i++;
+	}
+	return (s);
+}
+
+void	*ft_calloc(size_t num, size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(num * size);
+	if (ptr == NULL)
+		return (NULL);
+	my_memset((int *)ptr, 0, (num * size));
+	return (ptr);
+}
+
+size_t	my_strlen(const char *s)
 {
 	size_t	i;
 
@@ -20,35 +64,26 @@ static size_t	my_strlen(const char *s)
 	return (i);
 }
 
-static char	*ft_strcat(char *dest, const char *src)
+char	*ft_strjoin(char *str1, char *str2)
 {
-	int	i;
-	int	count;
-
-	count = 0;
-	while (dest[count] != '\0')
-		count++;
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i + count] = src[i];
-		i++;
-	}
-	dest[i + count] = '\0';
-	return (dest);
-}
-
-static char	*ft_strjoin(char const *str1, char const *str2)
-{
-	size_t	total_lengh;
+	int		total_lengh;
 	char	*new_str;
+	int		i;
+	int		j;
 
+	i = 0;
+	j = 0;
 	total_lengh = my_strlen(str1) + my_strlen(str2);
 	new_str = (char *)malloc(sizeof(char) * (total_lengh + 1));
-	if (new_str == NULL)
+	if (new_str == NULL || str1 == NULL || str2 == NULL)
 		return (NULL);
-	new_str[0] = '\0';
-	new_str = ft_strcat(new_str, str1);
-	new_str = ft_strcat(new_str, str2);
+	while (str1[i] != 0)
+	{
+		new_str[i] = str1[i];
+		i++;
+	}
+	while (str2[j] != 0)
+		new_str[i++] = str2[j++];
+	new_str[total_lengh] = 0;
 	return (new_str);
 }

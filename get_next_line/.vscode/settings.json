@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "get_next_line.h": "c",
+        "unistd.h": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "algorithm": "c",
+        "__bit_reference": "c",
+        "unordered_map": "c",
+        "*.tcc": "c",
+        "istream": "c"
+    }
+}
