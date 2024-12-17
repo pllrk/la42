@@ -1,0 +1,50 @@
+Where to find the .vdi ?
+
+Basic functions de la machine
+Pourquoi Debian
+Diff entre Debian et Rocky
+Avantage d'une virtual machine
+Diff entre apt et apitude
+What is APPArmor
+
+No graphical interface (connect with nonroot user)
+Verif que OS is debian
+UFW launched
+SSH launched
+
+Verify user is in "sudo" and "User42" groups
+Verify rules for password
+Create a new user, donner un MDP
+Donner des explications sur comment j'ai implementer les regles de MDP (montrer les fichiers)
+Creer un groupe "evaluating", y ajouter le new user
+Check que le new user est dans le nouveau group
+Expliquer le but d'une police de MDP forte, avantage et inconveniant
+
+Verifier le hostname de la machine (plerick42)
+changer le hostname avec le login de l'evaluateur puis restart la machine, le resultat doit apparaitre
+Remettre le bon hostname
+Display les partitions disk et comparer a l'example 
+Donner une explication de comment LVM marche et pourquoi c'est bien
+
+Verifier que sudo est installe
+Montrer comment ajouter un new user au group sudo
+Expliquer l'interet d'avoir sudo
+Montrer les regles restrictive pour sudo
+Verife que "/var/log/sudo" existe et contient qqchose, dans le fichier il doit y avoir l'historique des commandes (faire une new command pour test que ca met a jour le fichier)
+
+Verife que UFW est installed
+Verife que ca marche correctement
+Donner une explication de ce que UFW est et pk c'est important de l'utiliser
+Afficher les rules dans UFW (doit y avoi 4243* car 4242 est deja used)
+Ajouter une regles pour le port 8080, verifier puis si ok delete
+
+Verife que SSH est installed et fonctionne ok
+Donner une explication de SSH et pourquoi c'est important de l'utiliser
+Verife que SSH utilise 4243*
+Se co avec SSH avec le new user, essayer d'abord avc root(Ca ne doit pas marcher)
+
+Expliquer simplement les operations dans le script en le montrant
+Expliquer ce qu'est cron
+Changer le temps d'exec du script a 1 minute
+Faire que le script stop, meme au lancement de la MV, verifier que le script existe encore 
+
