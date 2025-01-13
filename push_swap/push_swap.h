@@ -17,6 +17,6 @@ typedef struct s_stack
     t_list *top;
 } t_stack;
 
-void    init_stack(t_stack *top);
+void    init_stack(t_stack *stack);
 
 #endif

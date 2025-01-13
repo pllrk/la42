@@ -47,13 +47,11 @@ Ce que je dois faire pour le projet :
 void	init_stack(t_stack *stack)
 {
 	stack->top = NULL;
+	return;
 }
 
-int	main(void)
+void push(t_stack *stack, int value);
 {
-	int a = 4;
-	int b = 2;
-	int c = 1;
 	int d = 0;
 	int e = 3;
 	int f = 5;
