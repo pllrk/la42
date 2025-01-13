@@ -9,10 +9,13 @@ Limitation :
 
 Ce que je dois faire pour le projet :
 
+- Inclure GNL de Lucas dans ma Libft + changer la dest du makefile après (voir pour faire appel à la libft directement dans le github (si je fais ça je dois aussi changer la dest dans le makefile de printf))
+
 - Voir comment utiliser le checker
 - Me renseigner sur les listes chainées (voir si c'et completement necessaire pour le tri)
     - Pour une liste chainée il faut d'abord savoir ce qu'est une structure 
 - Créer le makefile
+- Créer le fichier .h
 - Faire le code
     - Créer les stack A et B
     - Récupérer les variables et créer une liste chainée (voir comment faire et le principe de fonctionnement)
@@ -26,11 +29,12 @@ Ce que je dois faire pour le projet :
 
 */
 
-#include <stdio.h>
+#include "push_swap.h"
 
 int main(void)
 {
-	int a = {2,3,8,7,9,4,1,0,5,6};
+	int a[] = {0, 2, 3, 4, 5, 6, 7, 8, 9, 1};
 
-	
+    printf("%d\n", a[1]);
+    return (0);
 }
