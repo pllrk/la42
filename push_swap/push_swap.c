@@ -44,14 +44,34 @@ Ce que je dois faire pour le projet :
 
 #include "push_swap.h"
 
+void	fill_stack_a(t_stack *stack, int value)
+{
+	static int a;
+	a = 0;
+	t_list *new_node = malloc(sizeof(t_list));
+	if (new_node == NULL)
+		return (free(new_node));
+	new_node->value = value;
+	new_node->index = a++;
+	if (stack->top == NULL)
+	{
+		new_node->next = stack->top;
+		stack->top = new_node;
+		return;
+	}
+	/*Je dois faire en sorte que ce que je place au dessus du stack je le place en dessous avec un swap (1er devient dernier) */
+}
+
 void	init_stack(t_stack *stack)
 {
 	stack->top = NULL;
-	return;
 }
 
-void push(t_stack *stack, int value);
+int	main(void)
 {
+	int a = 4;
+	int b = 2;
+	int c = 1;
 	int d = 0;
 	int e = 3;
 	int f = 5;
@@ -60,8 +80,16 @@ void push(t_stack *stack, int value);
 	t_stack	stack_b;
 
 	init_stack(&stack_a);
-	init_stack(&stack_b);	
+	init_stack(&stack_b);
 
-	ft_printf("%d\n", a[1]);
+	fill_stack_a(&stack_a, a);
+	fill_stack_a(&stack_a, b);
+	fill_stack_a(&stack_a, c);
+	fill_stack_a(&stack_a, d);
+	fill_stack_a(&stack_a, e);
+	fill_stack_a(&stack_a, f);
+
+	print_stack(&stack_a);
+//	ft_printf("%d\n", a[1]);
 	return (0);
 }
