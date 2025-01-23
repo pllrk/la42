@@ -69,6 +69,7 @@ void	init_stack(t_stack *stack)
 
 int	main(int argc, char *argv[])
 {
+	int	array_size;
 	if (argc != 2)
 		return (0);
 	t_stack	stack_a;
@@ -76,6 +77,10 @@ int	main(int argc, char *argv[])
 
 	init_stack(&stack_a);
 	init_stack(&stack_b);
+	array_size = calc_array_size(argv[1]);
+	int	array[array_size];
+
+	// Avec la taille de l'array et l'array init, possible de le remplir avec split, rencontre un nombre, le atoi, le place à en dernier dans l'array et remonte pour les avoir dans le sens inverse > quand on va file le stack alors seulement on va suiivre l'array
 
 	fill_stack_a(&stack_a, argv[1]);
 
