@@ -44,23 +44,23 @@ Ce que je dois faire pour le projet :
 
 #include "push_swap.h"
 
-void	fill_stack_a(t_stack *stack, int **value)
-{
-	// ft_printf("%d", value[5]);
-	static int a;
-	a = 0;
-	t_list *new_node = malloc(sizeof(t_list));
-	if (new_node == NULL)
-		return (free(new_node));
-	new_node->value = value[0];
-	new_node->index = a++;
-	if (stack->top == NULL)
-	{
-		new_node->next = stack->top;
-		stack->top = new_node;
-		return;
-	}
-}
+// void	fill_stack_a(t_stack *stack, int **value)
+// {
+// 	// ft_printf("%d", value[5]);
+// 	static int a;
+// 	a = 0;
+// 	t_list *new_node = malloc(sizeof(t_list));
+// 	if (new_node == NULL)
+// 		return (free(new_node));
+// 	new_node->value = value[0];
+// 	new_node->index = a++;
+// 	if (stack->top == NULL)
+// 	{
+// 		new_node->next = stack->top;
+// 		stack->top = new_node;
+// 		return;
+// 	}
+// }
 
 void	init_stack(t_stack *stack)
 {
@@ -78,6 +78,7 @@ int	main(int argc, char *argv[])
 	init_stack(&stack_a);
 	init_stack(&stack_b);
 	array_size = calc_array_size(argv[1]);
+	/*
 	int	array[array_size];
 
 	// Avec la taille de l'array et l'array init, possible de le remplir avec split, rencontre un nombre, le atoi, le place à en dernier dans l'array et remonte pour les avoir dans le sens inverse > quand on va file le stack alors seulement on va suiivre l'array
@@ -86,5 +87,7 @@ int	main(int argc, char *argv[])
 
 	print_stack(&stack_a);
 //	ft_printf("%d\n", a[1]);
+	*/
+	printf("%d\n", array_size);
 	return (0);
 }

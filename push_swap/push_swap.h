@@ -22,5 +22,6 @@ typedef struct s_stack
 void    init_stack(t_stack *stack);
 void	fill_stack_a(t_stack *stack, int *value);
 void    print_stack(t_stack *stack);
+int     calc_array_size(char *argv);
 
 #endif
