@@ -44,7 +44,7 @@ Ce que je dois faire pour le projet :
 
 #include "push_swap.h"
 
-// void	fill_stack_a(t_stack *stack, int **value)
+// void	fill_stack_a(t_stack *stack, int array)
 // {
 // 	// ft_printf("%d", value[5]);
 // 	static int a;
@@ -62,6 +62,20 @@ Ce que je dois faire pour le projet :
 // 	}
 // }
 
+int check_array_ok(char *argv)
+{
+    int	i;
+	
+	i = 0;
+	while (argv[i] == ' ' || ft_isdigit(argv[i]) == 1 || argv[i] == '\0')
+	{
+        if (argv[i] == '\0')
+            return (1);
+        i++;
+    }
+	return(0);
+}
+
 void	init_stack(t_stack *stack)
 {
 	stack->top = NULL;
@@ -70,6 +84,7 @@ void	init_stack(t_stack *stack)
 int	main(int argc, char *argv[])
 {
 	int	array_size;
+	int	check_array;
 	if (argc != 2)
 		return (0);
 	t_stack	stack_a;
@@ -77,17 +92,20 @@ int	main(int argc, char *argv[])
 
 	init_stack(&stack_a);
 	init_stack(&stack_b);
+	check_array = check_array_ok(argv[1]);
+	if (check_array == 0)
+		return (write(1, "error\n", 6));
 	array_size = calc_array_size(argv[1]);
 	/*
 	int	array[array_size];
 
 	// Avec la taille de l'array et l'array init, possible de le remplir avec split, rencontre un nombre, le atoi, le place à en dernier dans l'array et remonte pour les avoir dans le sens inverse > quand on va file le stack alors seulement on va suiivre l'array
 
-	fill_stack_a(&stack_a, argv[1]);
+	fill_stack_a(&stack_a, array);
 
 	print_stack(&stack_a);
 //	ft_printf("%d\n", a[1]);
-	*/
+*/
 	printf("%d\n", array_size);
 	return (0);
 }
