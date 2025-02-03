@@ -67,18 +67,22 @@ Ce que je dois faire pour le projet :
 
 // }
 
-int check_array_ok(char *argv)
+char	**init_array_nosplit(int argc, char **argv)
 {
-    int	i;
-	
-	i = 0;
-	while (argv[i] == ' ' || ft_isdigit(argv[i]) == 1 || argv[i] == '\0')
+	int i;
+	char	**array;
+
+	i = 1;
+	array = malloc(sizeof(char *) * argc + 1);
+	if (array == NULL)
+		return(NULL);
+	while (argv[i] != NULL)
 	{
-        if (argv[i] == '\0')
-            return (1);
-        i++;
-    }
-	return(0);
+		array[i - 1] = ft_strdup(argv[i]);
+		i++;
+	}
+	array[i] = NULL;
+	return (array);
 }
 
 void	init_stack(t_stack *stack)
@@ -88,21 +92,27 @@ void	init_stack(t_stack *stack)
 
 int	main(int argc, char *argv[])
 {
-	int	array_size;
 	char	**array;
-	int	check_array;
-	if (argc != 2)
+	int		check_array;
+
+	if (argc < 2)
 		return (0);
+	array = NULL;
+	if (argc == 2)
+		array = ft_split(argv[1], ' ');
+	else 
+		array = init_array_nosplit(argc, argv);
+	check_array = check_array_ok(array);
+	if (check_array == 0)
+		return (write(1, "error\n", 6));	
+
 	t_stack	stack_a;
 	t_stack	stack_b;
 
 	init_stack(&stack_a);
 	init_stack(&stack_b);
-	check_array = check_array_ok(argv[1]);
-	if (check_array == 0)
-		return (write(1, "error\n", 6));
-	array_size = calc_array_size(argv[1]);
-	array = ft_split(argv[1], ' ');
+
+
 	int i = 0;
 	while (array[i])
 	{
@@ -118,6 +128,6 @@ int	main(int argc, char *argv[])
 	print_stack(&stack_a);
 //	ft_printf("%d\n", a[1]);
 */
-	printf("Array size = %d\n", array_size);
+	// printf("Array size = %d\n", array_size);
 	return (0);
 }

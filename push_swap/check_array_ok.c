@@ -6,22 +6,30 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:02:26 by plerick           #+#    #+#             */
-/*   Updated: 2025/01/31 17:02:29 by plerick          ###   ########.fr       */
+/*   Updated: 2025/02/03 19:26:44 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "push_swap.h"
+#include "push_swap.h"
 
-// int check_array_ok(char *argv)
-// {
-//     int	i;
-	
-// 	i = 0;
-// 	while (argv[i] == ' ' || ft_isdigit(argv[i]) == 1 || argv[i] == '\0')
-// 	{
-//         if (argv[i] == '\0')
-//             return (1);
-//         i++;
-//     }
-// 	return(0);
-// }
+int check_array_ok(char **array)
+{
+    int	i;
+    int j;
+
+	i = 0;
+    j = 0;
+    while (array[i] != NULL)
+    {
+        while (array[i][j] != '\0')
+        {
+            if (ft_isdigit(array[i][j]) == 1)
+                 j++;
+            else
+                return (0);
+        }
+        i++;
+        j = 0;
+    }
+    return (1);
+}
