@@ -94,6 +94,8 @@ int	main(int argc, char *argv[])
 {
 	char	**array;
 	int		check_array;
+	int		*array_int;
+	int		i;
 
 	if (argc < 2)
 		return (0);
@@ -104,8 +106,17 @@ int	main(int argc, char *argv[])
 		array = init_array_nosplit(argc, argv);
 	check_array = check_array_ok(array);
 	if (check_array == 0)
-		return (write(1, "error\n", 6));	
-
+		return (write(2, "Error\n", 6));
+	array_int = malloc(sizeof(int) * ((sizeof(array) / (sizeof(array[0]))))); //faire la verif malloc apres
+	i = 0;
+	while (array[i] != NULL)
+	{
+		array_int[i] = push_atol(array[i]);
+		i++;
+		if (array_int[i] > INT_MAX || array_int[i] < INT_MIN)
+			return (write(2, "Error\n", 6));
+	}
+	free(array);
 	t_stack	stack_a;
 	t_stack	stack_b;
 
@@ -113,13 +124,14 @@ int	main(int argc, char *argv[])
 	init_stack(&stack_b);
 
 
-	int i = 0;
-	while (array[i])
+	i = 0;
+	while (array_int[i])
 	{
-		ft_printf("The array : %s\n", array[i]);
+		ft_printf("The array : %d\n", array_int[i]);
 		i++;
 	}
 	
+	free(array_int);
 /*
 	// Avec la taille de l'array et l'array init, possible de le remplir avec split, rencontre un nombre, le atoi, le place à en dernier dans l'array et remonte pour les avoir dans le sens inverse > quand on va file le stack alors seulement on va suiivre l'array
 
