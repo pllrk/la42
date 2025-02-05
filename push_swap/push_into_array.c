@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_array_ok.c                                   :+:      :+:    :+:   */
+/*   push_into_array.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 17:02:26 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/05 18:41:35 by plerick          ###   ########.fr       */
+/*   Created: 2025/02/05 18:54:36 by plerick           #+#    #+#             */
+/*   Updated: 2025/02/05 18:56:41 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int check_array_ok(char **array)
+int *push_into_array(char **array)
 {
-    int	i;
-    int j;
+    int *temp;
 
-	i = 0;
-    j = 0;
     while (array[i] != NULL)
-    {
-        while (array[i][j] != '\0')
-        {
-            if (ft_isdigit(array[i][j]) == 1 || array[i][j] == '-')
-                 j++;
-            else
-                return (0);
-        }
-        i++;
-        j = 0;
-    }
-    return (1);
+	{
+		temp[i] = push_atol(array[i]);
+		i++;
+		if (array_int[i] > INT_MAX || array_int[i] < INT_MIN)
+			return (write(2, "Error\n", 6)); // must free l'array
+	}
+    return (temp);
 }

@@ -93,7 +93,6 @@ void	init_stack(t_stack *stack)
 int	main(int argc, char *argv[])
 {
 	char	**array;
-	int		check_array;
 	int		*array_int;
 	int		i;
 
@@ -104,18 +103,12 @@ int	main(int argc, char *argv[])
 		array = ft_split(argv[1], ' ');
 	else 
 		array = init_array_nosplit(argc, argv);
-	check_array = check_array_ok(array);
-	if (check_array == 0)
-		return (write(2, "Error\n", 6));
+	if (check_array_ok(array) == 0)
+		return (write(2, "Error\n", 6)); // must free l'array
 	array_int = malloc(sizeof(int) * ((sizeof(array) / (sizeof(array[0]))))); //faire la verif malloc apres
 	i = 0;
-	while (array[i] != NULL)
-	{
-		array_int[i] = push_atol(array[i]);
-		i++;
-		if (array_int[i] > INT_MAX || array_int[i] < INT_MIN)
-			return (write(2, "Error\n", 6));
-	}
+	array_int = push_into_array(array);
+
 	free(array);
 	t_stack	stack_a;
 	t_stack	stack_b;
