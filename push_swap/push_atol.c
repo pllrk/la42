@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_atoi.c                                        :+:      :+:    :+:   */
+/*   push_atol.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:37:27 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/04 18:45:00 by plerick          ###   ########.fr       */
+/*   Updated: 2025/02/06 19:52:05 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long push_atol(const char *str)
+int push_atoil(const char *str)
 {
 	int	i;
 	int	neg;
-	int	chif;
+	long int	chif;
 
 	i = 0;
 	neg = 1;

@@ -95,6 +95,9 @@ int	main(int argc, char *argv[])
 	char	**array;
 	int		*array_int;
 	int		i;
+	int		j;
+	t_stack	stack_a;
+	t_stack	stack_b;
 
 	if (argc < 2)
 		return (0);
@@ -103,25 +106,19 @@ int	main(int argc, char *argv[])
 		array = ft_split(argv[1], ' ');
 	else 
 		array = init_array_nosplit(argc, argv);
-	if (check_array_ok(array) == 0)
-		return (write(2, "Error\n", 6)); // must free l'array
-	array_int = malloc(sizeof(int) * ((sizeof(array) / (sizeof(array[0]))))); //faire la verif malloc apres
 	i = 0;
-	array_int = push_into_array(array);
-
-	free(array);
-	t_stack	stack_a;
-	t_stack	stack_b;
-
+	while (array[i] != NULL)
+		i++;
+	array_int = transfo_str_int(array);
+	free(array); // a free dans transfo etc
 	init_stack(&stack_a);
 	init_stack(&stack_b);
 
-
-	i = 0;
-	while (array_int[i])
+	j = 0;
+	while (j < i)
 	{
-		ft_printf("The array : %d\n", array_int[i]);
-		i++;
+		printf("The array : %d\n", array_int[j]);
+		j++;
 	}
 	
 	free(array_int);

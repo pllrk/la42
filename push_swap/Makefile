@@ -2,7 +2,7 @@ NAME = push_swap.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 LIBFT_MAKEFILE = libft/Makefile 
-SRCS =	push_swap.c calc_array_size.c check_array_ok.c print_stack.c push_atoi.c push_into_array.c
+SRCS =	push_swap.c calc_array_size.c check_array_ok.c print_stack.c push_atol.c push_into_array.c transfo_str_int.c
 OBJS = ${SRCS:.c=.o}
 LIBC = -L./libft -lft
 

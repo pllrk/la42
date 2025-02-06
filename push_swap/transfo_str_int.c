@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_into_array.c                                  :+:      :+:    :+:   */
+/*   transfo_str_int.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/05 18:54:36 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/06 19:48:49 by plerick          ###   ########.fr       */
+/*   Created: 2025/02/06 19:31:32 by plerick           #+#    #+#             */
+/*   Updated: 2025/02/06 19:47:22 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int *push_into_array(char **array)
+int *transfo_str_int(char **array)
 {
-    long *temp;
 	int	i;
-	int	j;
+	int	*array_int;
 
-	j = 0;
-	while (array[j] != NULL)
-		j++;
-	temp = malloc(sizeof(long) * j);
-	i = 0;
-    while (j > 0)
+	if (check_array_ok(array) == 0)
 	{
-		temp[i] = push_atol(array[i]);
-		if (temp[i] > INT_MAX || temp[i] < INT_MIN)
-		{
-			write(2, "Error\n", 6);
-			free(temp);
-			exit; // must free l'array
-		}
-		j--;
-		i++;
+		free(array); //faire ft_free
+		write(2, "Error\n", 6);
+		exit;
 	}
-    return (temp);
+	i = 0;
+	while (array[i] != NULL)
+		i++;
+	array_int = malloc(sizeof(long) * i); //faire la verif malloc apres
+	array_int = push_into_array(array);
 }

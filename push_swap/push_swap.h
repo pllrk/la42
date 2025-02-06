@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:03:33 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/05 18:57:08 by plerick          ###   ########.fr       */
+/*   Updated: 2025/02/06 19:49:05 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void    print_stack(t_stack *stack);
 int		calc_array_size(char *argv);
 int		check_array_ok(char **array);
 char	**init_array_nosplit(int argc, char **argv);
-long	push_atol(const char *str);
-int		*push_into_array(char **array);
+int 	push_atol(const char *str);
+int 	*push_into_array(char **array);
+int     *transfo_str_int(char **array);
 
 #endif
