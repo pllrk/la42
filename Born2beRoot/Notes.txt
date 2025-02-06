@@ -1,0 +1,126 @@
+Where to find the .vdi ?
+
+Basic functions de la machine
+		Simuler un ordinateur qui peux utiliser n'importe quel OS et ainsi faire tourner n'importe quel 		
+		programme
+Diff entre Debian et Rocky
+		Debian est un OS qui est plutot beginner friendly, de plus il a beaucoup de support et de package 	
+		maj regulierement. Il peut si necessaire supporter un front.
+Avantage d'une virtual machine
+		Elle peut tourner en permanence sur n'importe quel machine, quelque soit la config
+Diff entre apt et apitude
+		apt va etre un outils plus "simple", pratique pour l'instalation de package basic
+		apitude va permettre de rentrer plus en details dans l'instalation des package et peut resoudre 			
+		d'une meilleur maniere les problemes d'instalation des package
+What is APPArmor
+		A security module in the Linux kernel that allows the system administrator to restrict the capabilities of a program.
+Donner une explication de comment LVM marche et pourquoi c'est bien
+		Logical volume manager : Permet d'allouer de l'espace de maniere virtuelle sur un disque, il peut aussi faire des snapshot et manipuler le donnee pour optimiser l'espace.
+COMMAND : No graphical interface (connect with nonroot user)	> ls /usr/bin/*session
+COMMAND : Verif que OS is debian				> uname -v "ou" uname --kernel-version
+COMMAND : UFW launched						> sudo ufw status "ou" sudo service ufw status
+COMMAND : SSH launched						> sudo service ssh status
+
+COMMAND : Verify user is in "sudo" and "User42" groups		> getent group sudo + getent group user42
+COMMAND : Verify rules for password				> sudo chage -l plerick
+COMMAND : Create a new user, donner un MDP			> sudo adduser name_user
+COMMAND : Expliquer comment j'ai put les regles de MDP		> vim /etc/login.defs + vim /etc/pam.d/common-	 
+								  password
+COMMAND : Creer un groupe "evaluating", y ajouter le new user	> sudo addgroup evaluating
+COMMAND : Check que le new user est dans le nouveau group	> getent group evaluating
+Expliquer le but d'une police de MDP forte, avantage et inconveniant
+		Instal de PWD (passwordquality), une politique de mdp forte va securiser l'ensemble du reseau
+
+COMMAND : Verifier le hostname de la machine (plerick42)	> hostname
+COMMAND : changer le hostname pour nom eval puis restart	> sudo vim /etc/hostname + sudo vim /etc/hosts
+COMMAND : Remettre le bon hostname				> sudo reboot + same above
+COMMAND : Display les partitions disk et comparer a l'example 	> lsblk
+
+
+COMMAND : Verifier que sudo est installe			> which sudo "ou" dpkg -s sudo
+COMMAND : Montrer comment ajouter un new user au group sudo	> sudo adduser name_user sudo
+COMMAND : Expliquer l'interet d'avoir sudo			> getent group sudo
+COMMAND : Montrer les regles restrictive pour sudo		> vim /etc/sudoers.d/sudo_config
+COMMAND : Verife que "/var/log/sudo" contient qqchose		> cd /var/log/sudo + sudo vim helloworld
+
+COMMAND : Verife que UFW est installed				> dpkg -s ufw
+COMMAND : Verife que ca marche correctement			> sudo service ufw status
+Expliquer UFW et pk c'est important de l'utiliser
+		Firewall, important pour controler et empecher l'utilisation des ports comme on souhaite
+COMMAND : Afficher les rules dans UFW				> sudo ufw status numbered
+COMMAND : Add regles pour le port 8080, si ok delete		> sudo ufw allow 8080 + sudo ufw status (numbered)
+								> sudo ufw delete num_rule
+								
+COMMAND : Verife que SSH est installed et fonctionne ok		> which ssh
+Donner une explication de SSH et pourquoi c'est important de l'utiliser
+		SSH permet de se connecter a distance a la machine, c'est un peu comme une signature
+COMMAND : Se co avec SSH avec le new user			> ssh newuser@localhost -p 4242
+
+Expliquer simplement les operations dans le script en le montrant
+		grep = chercher
+		awk = transforme le fichier de maniere a se qu'on puisse compter des colonnes et retrives les 
+		      infos
+Expliquer ce qu'est cron
+		cron permet d'executer des scripts de maniere automatique et reguliere
+COMMAND : Changer le temps d'exec du script a 1 minute		> sudo crontab -u root -e
+COMMAND : Faire que le script stop				> sudo /etc/init.d/cron stop
+
+--------------------------------------------------------------------------------------------------------
+1) DL ISO Debian + lancer virtual box -> Faire new
+2) Allouer environ 8000MB de memoire (C'est la memoire que la VM va avoir (ram), c'est un peu comme une partion de PC) + Allouer 6 proc
+3) Allouer 30Go d'espace disk puis valider
+4) Aller dans les reglages > Storage > sous controller IDE > Optical drive > Select l'iso de Debian
+5) Start la VM
+6) Install de l'OS Debian
+	6.1) Pendant l'install, en Hostname (admin login) : plerick42
+				en Domain Name : On peut le laisser blanc, mais c'est parce que nous allons pas l'utiliser. Il faudrait l'utiliser si nous voulions avoir d'autres utilisateurs externe devant se connecter ou si nous devloppons une des apps qui s'y connecte par exemple.
+	6.2) setup du MDP du compte admin : J3s3u!sl'ad-
+	6.3) setup d'un compte user > Login : plerick
+				      MDP : C'3sLt'!erpp
+	6.4) setup d'un LVM (logical volume manager), cel sert a encrypter les donnees sur un serveur ou dans un groupe de disques (volume group or virtual volumes). Un LVM va servir a manager plus facilement les espaces et gerer des copies ou la repartions des disques et de la memoire.
+				      encryption passphrase : Glob-gLob-wabala'dou
+	6.5) Preciser la taille de volume a attribuer aux disques (1 seul disque ici donc max)
+	6.6) Choisir un package manager (deb.debian.org) > Cela sert a faciliter l'instalation et la mise a jour de logiciel sur le disque tout en gerant les dependances qui vont avec l'instalation des differents paquets.
+	6.7) Install de GRUB > C'est un outils qui permet de gerer le boot du pc, cela permet egalement de boot le system en mode rescue, c'est l'outils qui se lance entre le lancement du bios et le lancement du Kernel pour permettre une meilleur transition.
+7) On doit passer le compte user en root pour installer le package avec la command sudo> utilisation de la commande 'su' pour switch de user (pour passer sur le root user) > utilisation de apt
+8) Apres redemarage, on check si "sudo" est bien install, pour ca on utilise la commande sudo -V (v for version) qui va nous donner des infos sur la configuration d'instalation de sudo et la version.
+9) Creation de groupe, cela sert dans la gestion des permissions entre autre > Ca donne un GID (Group ID) > Pour voir les groupes : getent group <groupname> or we can also use cat /etc/group 
+10) Instalation de SSH
+	10.1) Pour preparer la mise en place de ssh, nous devons mettre a jour avec "sudo apt update"
+	10.2) Utiliser la commande "sudo apt install openssh-server" > Pour check : sudo service ssh status
+	10.3) DL VIm avec : sudo apt install vim > Cela va nous servir pour editer des fichiers (On pourrait aussi utiliser la commande nano)
+	10.4) Le premier fichier a modifier se trouve ici : /etc/ssh/sshd_config > "vim /etc/ssh/sshd_config"
+11) Instalation du Firewall (UFW = Uncomplicated Firewall)
+	11.1) Install avec sudo "apt install ufw"
+	11.2) Pour le lancer : "sudo ufw enable"
+	11.3) Autoriser le port 4242 : "sudo ufw allow 4242"
+	11.4) Check si ok : "sudo ufw status"
+12) Setting sudo rules
+	12.1) Il faut creer un fichier dans /etc/sudoers.d/ nomme sudo_config
+	12.2) Il faut creer un dossier pour les logs de sudo dans /var/log/sudo
+	12.3) Ajout des regles dans sudo_config :
+		Defaults  passwd_tries=3
+		Defaults  badpass_message="Mensaje de error personalizado"
+		Defaults  logfile="/var/log/sudo/sudo_config"
+		Defaults  log_input, log_output
+		Defaults  iolog_dir="/var/log/sudo"
+		Defaults  requiretty
+		Defaults  secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+13) Strong password policies > Go into /etc/login.defs et changer les max/;in day pour les mdp
+14) DL pam(C'est une librairie) > apt install libpam > Edit /etc/pam.d/common-password > setup les autres regles pour le mdp 
+	minlen=10
+	ucredit=-1
+	dcredit=-1
+	lcredit=-1
+	maxrepeat=3
+	reject_username
+	difok=7
+	enforce_for_root
+15) Il faut changer les regles des comptes root et plerick42 qui ne sont pas affectes car crees avant
+16) Pour se connecter en SSH, voici la commande : ssh plerick@localhost -p 4243
+
+
+https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md#5--script-
+
+
+
