@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:03:33 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/06 19:49:05 by plerick          ###   ########.fr       */
+/*   Updated: 2025/02/11 19:36:30 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ int		calc_array_size(char *argv);
 int		check_array_ok(char **array);
 
 int     verif_and_all(int argc, char *argv[]);
-int     nosplit(char *argv[]);
+int     verif_string(char *argv[]);
 int     no_char(char *argv[]);
 int	    no_big(char *argv[]);
+int		no_double(char *argv[]);
 // struct  t_stack push_into_a(argc, argv);
 // struct  t_stack with_split(argc, argv);
 long 	push_atol(const char *str);
