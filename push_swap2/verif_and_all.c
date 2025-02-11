@@ -12,6 +12,6 @@ int verif_and_all(int argc, char *argv[])
 	else 
         if (nosplit(argv))
             // a = push_into_a(argv);
-            printf("ok");
+            printf("ok\n");
     return(1);
 }

@@ -102,7 +102,7 @@ int	main(int argc, char *argv[])
 	i = 0;
 	i = (verif_and_all(argc, argv));
 	if (i == 1)
-		write(1, "lol", 3);
+		write(1, "lol\n", 4);
 
 
 

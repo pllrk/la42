@@ -32,18 +32,20 @@ int no_char(char *argv[])
     int i;
     int j;
 
-    i = 0;
+    i = 1;
     j = 0;
     while (argv[i] != NULL)
     {
-        while (*argv[j] != '\0')
+        while (argv[i][j] != '\0')
         {  
-            if (ft_isdigit(*argv[j]) && ((*argv[j] != '-') || (*argv[j] != '+')))
-            {
+			if (((argv[i][j] == '-') || (argv[i][j] == '+')) )
+				j++;
+            if (!ft_isdigit(argv[i][j])) 
+			{
                 write(1, "bla\n", 4);
                 exit(0);
-            }
-            j++;
+			}
+			j++;
         }
         i++;
         j = 0;
