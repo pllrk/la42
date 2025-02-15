@@ -2,6 +2,17 @@
 
 #include "push_swap.h"
 
+void	*free_all(char **tab, int argc)
+{
+	int i;
+
+	i = argc;
+	while (i >= 0)
+		free(tab[i--]);
+	free(tab);
+	exit(1);
+}
+
 int	verif_and_all(int argc, char *argv[])
 {
 	char **a;
@@ -15,14 +26,16 @@ int	verif_and_all(int argc, char *argv[])
 		if (argv[1][0] == '\0')
 			exit(0);
 		a = ft_split(argv[1], ' ');
-		if (verif_string(a))
+		if (verif_string(a) == 0)
+		{
 			fprintf(stderr , "Error\n");
+			free_all(a, argc);
+		}
 	}
-	else
-		(verif_string(argv + 1));
+	else if (verif_string(argv + 1) == 0)
 	{
-		// a = push_into_a(argv);
-		printf("ok\n");
+		ft_printf("error no string\n");
+		exit(1);
 	}
 	return (1);
 }

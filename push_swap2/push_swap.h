@@ -18,18 +18,18 @@
 # include "libft/libft.h"
 # include <limits.h>
 
-// typedef struct s_node
-// {
-//     int value;
-//     int index;
-//     struct s_node *next;
-//     struct s_node *previous;
-// } t_list;
+typedef struct s_node
+{
+    int value;
+    int index;
+    struct s_node *next;
+    struct s_node *previous;
+} t_list;
 
-// typedef struct s_stack
-// {
-//     t_list *top;
-// } t_stack;
+typedef struct s_stack
+{
+    t_list *top;
+} t_stack;
 
 // void    init_stack(t_stack *stack);
 // void	fill_stack_a(t_stack *stack, int *value);
@@ -45,5 +45,6 @@ int		no_double(char *argv[]);
 // struct  t_stack push_into_a(argc, argv);
 // struct  t_stack with_split(argc, argv);
 long 	push_atol(const char *str);
+void	*free_all(char **tab, int argc);
 
 #endif

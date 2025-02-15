@@ -20,8 +20,8 @@ int	no_double(char *argv[])
 				j++;
 			else
 			{
-				ft_fprintf(stderr, "erreur dans double");
-				exit(1);
+				write(2,  "erreur dans double\n", 20);
+				return(0);
 			}
 		}
 		i++;		
@@ -38,8 +38,8 @@ int	no_big(char *argv[])
     {
 		if ((push_atol(argv[i]) > INT_MAX) || (push_atol(argv[i]) < INT_MIN))
 		{
-			printf("erreur dans big");
-			exit(1);
+			write(2,  "erreur dans big\n", 16);
+			return(0);
 		}
 		i++;
 	}
@@ -61,8 +61,8 @@ int no_char(char *argv[])
 				j++;
             if (!ft_isdigit(argv[i][j])) 
 			{
-                printf("erreur dans char");
-                exit(1);
+				write(2,  "erreur dans char\n", 17);
+                return(0);
 			}
 			j++;
         }
@@ -74,9 +74,9 @@ int no_char(char *argv[])
 
 int verif_string(char *argv[])
 {
-    int i;
+    // int i;
 
-    i = 0;
+    // i = 0;
     if ((no_char(argv) == 1) && (no_big(argv) == 1) && (no_double(argv) == 1))
        	return (1);
     // if (no_big(argv) == 1)
