@@ -44,79 +44,53 @@ Ce que je dois faire pour le projet :
 
 #include "push_swap.h"
 
-// void	fill_stack_a(t_stack *stack, int array)
-// {
-// 	// ft_printf("%d", value[5]);
-// 	static int a;
-// 	a = 0;
-// 	t_list *new_node = malloc(sizeof(t_list));
-// 	if (new_node == NULL)
-// 		return (free(new_node));
-// 	new_node->value = value[0];
-// 	new_node->index = a++;
-// 	if (stack->top == NULL)
-// 	{
-// 		new_node->next = stack->top;
-// 		stack->top = new_node;
-// 		return;
-// 	}
-// }
+void	fill_stack_a(t_stack *stack, int *argv)
+{
+	// ft_printf("%d", value[5]);
+	static int a;
 
-// int	*array_filling(int *array, int array_size, char *argv)
-// {
+	a = 0;
+	t_list *new_node = malloc(sizeof(t_list));
+	if (new_node == NULL)
+		return (free(new_node));
+	new_node->value = value[0];
+	new_node->index = a++;
+	if (stack->top == NULL)
+	{
+		new_node->next = stack->top;
+		stack->top = new_node;
+		return;
+	}
+}
 
-// }
-
-// char	**init_array_nosplit(int argc, char **argv)
-// {
-// 	int i;
-// 	char	**array;
-
-// 	i = 1;
-// 	array = malloc(sizeof(char *) * argc + 1);
-// 	if (array == NULL)
-// 		return(NULL);
-// 	while (argv[i] != NULL)
-// 	{
-// 		array[i - 1] = ft_strdup(argv[i]);
-// 		i++;
-// 	}
-// 	array[i] = NULL;
-// 	return (array);
-// }
-
-// void	init_stack(t_stack *stack)
-// {
-// 	stack->top = NULL;
-// }
+void	init_stack(t_stack *stack)
+{
+	stack->top = NULL;
+}
 
 int	main(int argc, char *argv[])
 {
-	// char	**array;
-	// int		*array_int;
-	// int		i;
-	// int		j;
-	// struct	t_stack	stack_a;
+
+	t_stack stack_a;
+	t_stack stack_b;
 	int	i;
 
-	i = 0;
-	i = (verif_and_all(argc, argv));
-	if (i == 1)
-		//push dans les structures
-		write(1, "lol\n", 4);
+	i = 1;
+	if (i != (verif_and_all(argc, argv)))
+		exit(0);
+	init_stack(&stack_a);
+	init_stack(&stack_b);
+	// if (i == 1)
+	// 	write(1, "lol1", 4);
+	if (argc == 2)
+	{
+		while (argc)
+	}
+	/* ici il faut que je split si c'est dans "", pour après :
+		- faire atoi sur les chiffre 1 par 1 pour les placer dans a, je veux les placer par ordre inverse, comme ça ils sont 
+		deja dans le bon ordre.
+		Ou, je peux les mettre comme ça et utilise après une commande donnée (sa) pour inverser l'ordre*/
 
-
-
-
-
-	
-	// i = 0;
-	// while (array[i] != NULL)
-	// 	i++;
-	// array_int = transfo_str_int(array);
-	// free(array); // a free dans transfo etc
-	// init_stack(&stack_a);
-	// init_stack(&stack_b);
 
 	// j = 0;
 	// while (j < i)

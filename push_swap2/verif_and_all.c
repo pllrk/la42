@@ -28,14 +28,15 @@ int	verif_and_all(int argc, char *argv[])
 		a = ft_split(argv[1], ' ');
 		if (verif_string(a) == 0)
 		{
-			fprintf(stderr , "Error\n");
+			write(2, "error\n", 6);
 			free_all(a, argc);
 		}
+		free_all(a, argc);
 	}
 	else if (verif_string(argv + 1) == 0)
 	{
 		ft_printf("error no string\n");
-		exit(1);
+		exit(0);
 	}
 	return (1);
 }

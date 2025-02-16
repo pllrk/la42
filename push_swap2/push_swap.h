@@ -31,8 +31,8 @@ typedef struct s_stack
     t_list *top;
 } t_stack;
 
-// void    init_stack(t_stack *stack);
-// void	fill_stack_a(t_stack *stack, int *value);
+void    init_stack(t_stack *stack);
+void	fill_stack_a(t_stack *stack, int *value);
 // void    print_stack(t_stack *stack);
 int		calc_array_size(char *argv);
 int		check_array_ok(char **array);
