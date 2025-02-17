@@ -44,16 +44,19 @@ Ce que je dois faire pour le projet :
 
 #include "push_swap.h"
 
-void	fill_stack_a(t_stack *stack, int *argv)
+
+
+void	fill_stack_a(t_stack *stack, int argv)
 {
-	// ft_printf("%d", value[5]);
+	int	i;
 	static int a;
 
 	a = 0;
+	i = 0;
 	t_list *new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return (free(new_node));
-	new_node->value = value[0];
+	new_node->value = argv;
 	new_node->index = a++;
 	if (stack->top == NULL)
 	{
@@ -61,6 +64,30 @@ void	fill_stack_a(t_stack *stack, int *argv)
 		stack->top = new_node;
 		return;
 	}
+}
+
+t_stack	init_a(char **argv, int argc)
+{
+	int		*chiffres;
+	int		i;
+	t_stack stack_a;
+
+	i = 0;
+	if (argc == 2)
+		argv = ft_split(argv[1][0], ' ');
+	while (argv[i + 1] != NULL)
+	{
+		chiffres[i] = ft_atoi(argv[i + 1]);
+		i++;
+	}
+	while (i > 0)
+	{
+		stack_a = fill_stack_a(stack_a, chiffres[i]);
+		i--;
+	}
+	
+
+	return ();
 }
 
 void	init_stack(t_stack *stack)
@@ -73,19 +100,19 @@ int	main(int argc, char *argv[])
 
 	t_stack stack_a;
 	t_stack stack_b;
-	int	i;
 
-	i = 1;
+	int		i;
+
+	i = 0;
 	if (i != (verif_and_all(argc, argv)))
 		exit(0);
 	init_stack(&stack_a);
 	init_stack(&stack_b);
-	// if (i == 1)
-	// 	write(1, "lol1", 4);
-	if (argc == 2)
-	{
-		while (argc)
-	}
+	stack_a = init_a(argv, argc);
+	
+
+
+
 	/* ici il faut que je split si c'est dans "", pour après :
 		- faire atoi sur les chiffre 1 par 1 pour les placer dans a, je veux les placer par ordre inverse, comme ça ils sont 
 		deja dans le bon ordre.
