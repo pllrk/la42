@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:03:33 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/17 20:40:57 by plerick          ###   ########.fr       */
+/*   Updated: 2025/02/18 16:59:09 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ int		no_double(char *argv[]);
 // struct  t_stack with_split(argc, argv);
 long 	push_atol(const char *str);
 void	*free_all(char **tab, int argc);
-t_stack init_a(char **argv, int argc);
+t_stack init_a(char **argv, int argc, t_stack *stack_a);
 
 #endif

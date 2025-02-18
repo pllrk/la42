@@ -46,31 +46,32 @@ Ce que je dois faire pour le projet :
 
 
 
-void	fill_stack_a(t_stack *stack, int argv)
+void	fill_stack_a(t_stack **stack, int argv)
 {
 	int	i;
 	static int a;
+	t_list *new_node;
 
 	a = 0;
 	i = 0;
-	t_list *new_node = malloc(sizeof(t_list));
+	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return (free(new_node));
 	new_node->value = argv;
 	new_node->index = a++;
-	if (stack->top == NULL)
+	if (*stack == NULL)
 	{
 		new_node->next = stack->top;
 		stack->top = new_node;
 		return;
 	}
+	/*https://www.youtube.com/watch?v=OaG81sDEpVk&t=2945s*/
 }
 
-t_stack	init_a(char **argv, int argc)
+void	init_a(char **argv, int argc, t_stack **a)
 {
 	int		*chiffres;
 	int		i;
-	t_stack stack_a;
 
 	i = 0;
 	if (argc == 2)
@@ -80,14 +81,12 @@ t_stack	init_a(char **argv, int argc)
 		chiffres[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
+	free_all(argv, argc);
 	while (i > 0)
 	{
-		stack_a = fill_stack_a(stack_a, chiffres[i]);
+		fill_stack_a(a, chiffres[i]);
 		i--;
 	}
-	
-
-	return ();
 }
 
 void	init_stack(t_stack *stack)
@@ -98,17 +97,17 @@ void	init_stack(t_stack *stack)
 int	main(int argc, char *argv[])
 {
 
-	t_stack stack_a;
-	t_stack stack_b;
+	t_stack *a;
+	t_stack *b;
 
 	int		i;
 
 	i = 0;
 	if (i != (verif_and_all(argc, argv)))
 		exit(0);
-	init_stack(&stack_a);
-	init_stack(&stack_b);
-	stack_a = init_a(argv, argc);
+	init_stack(&a);
+	init_stack(&b);
+	init_a(argv, argc, &a);
 	
 
 
