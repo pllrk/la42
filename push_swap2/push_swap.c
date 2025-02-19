@@ -44,31 +44,47 @@ Ce que je dois faire pour le projet :
 
 #include "push_swap.h"
 
+void	add_last(t_list **stack, t_list *new_node)
+{
+	t_list *tmp;
 
+	if (NULL == *stack)
+	{
+		*stack = new_node;
+		return ;
+	}
+	else
+	{
+		tmp = *stack;
+		while (tmp->next)
+		{
+			tmp = tmp->next;
+		}
+		tmp->next = new_node;
+		new_node->previous = tmp;
+	}
+}
 
-void	fill_stack_a(t_stack **stack, int argv)
+void	fill_stack_a(t_list **stack, int argv)
 {
 	int	i;
 	static int a;
 	t_list *new_node;
+	t_list *last_node;
 
 	a = 0;
-	i = 0;
 	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return (free(new_node));
 	new_node->value = argv;
 	new_node->index = a++;
-	if (*stack == NULL)
-	{
-		new_node->next = stack->top;
-		stack->top = new_node;
-		return;
-	}
+	add_last(stack, new_node);
+	
+	
 	/*https://www.youtube.com/watch?v=OaG81sDEpVk&t=2945s*/
 }
 
-void	init_a(char **argv, int argc, t_stack **a)
+void	init_a(char **argv, int argc, t_list **a)
 {
 	int		*chiffres;
 	int		i;
@@ -76,7 +92,10 @@ void	init_a(char **argv, int argc, t_stack **a)
 	i = 0;
 	if (argc == 2)
 		argv = ft_split(argv[1][0], ' ');
-	while (argv[i + 1] != NULL)
+	while (argv[i + 1] != NULL)r *argv[])
+{
+
+	t_list *a;
 	{
 		chiffres[i] = ft_atoi(argv[i + 1]);
 		i++;
@@ -88,8 +107,9 @@ void	init_a(char **argv, int argc, t_stack **a)
 		i--;
 	}
 }
+}
 
-void	init_stack(t_stack *stack)
+void	init_list(t_list *stack)
 {
 	stack->top = NULL;
 }
@@ -97,16 +117,17 @@ void	init_stack(t_stack *stack)
 int	main(int argc, char *argv[])
 {
 
-	t_stack *a;
-	t_stack *b;
+	t_list *a;
+	t_list *b;
 
 	int		i;
-
+	a = NULL;
+	b = NULL;
 	i = 0;
 	if (i != (verif_and_all(argc, argv)))
 		exit(0);
-	init_stack(&a);
-	init_stack(&b);
+	init_list(&a);
+	init_list(&b);
 	init_a(argv, argc, &a);
 	
 
@@ -131,7 +152,7 @@ int	main(int argc, char *argv[])
 
 	fill_stack_a(&stack_a, array);
 
-	print_stack(&stack_a);
+	print_list(&stack_a);
 //	ft_printf("%d\n", a[1]);
 */
 	// printf("Array size = %d\n", array_size);
