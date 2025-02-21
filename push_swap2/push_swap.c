@@ -48,7 +48,7 @@ void	add_last(t_list **stack, t_list *new_node)
 {
 	t_list *tmp;
 
-	if (NULL == *stack)
+	if (*stack == NULL)
 	{
 		*stack = new_node;
 		return ;
@@ -65,21 +65,18 @@ void	add_last(t_list **stack, t_list *new_node)
 	}
 }
 
-void	fill_stack_a(t_list **stack, int argv)
+void	fill_stack_a(t_list **stack, int argv, int i)
 {
-	int	i;
-	static int a;
 	t_list *new_node;
 	t_list *last_node;
 
-	a = 0;
 	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return (free(new_node));
 	new_node->value = argv;
-	new_node->index = a++;
+	new_node->index = i;
 	add_last(stack, new_node);
-	
+	//should probably free new_node here ?
 	
 	/*https://www.youtube.com/watch?v=OaG81sDEpVk&t=2945s*/
 }
@@ -91,43 +88,42 @@ void	init_a(char **argv, int argc, t_list **a)
 
 	i = 0;
 	if (argc == 2)
-		argv = ft_split(argv[1][0], ' ');
-	while (argv[i + 1] != NULL)r *argv[])
-{
-
-	t_list *a;
+		argv = ft_split(argv[1], ' ');
+	while (argv[i + 1] != NULL)
 	{
-		chiffres[i] = ft_atoi(argv[i + 1]);
-		i++;
+		// t_list *a;
+		{
+			chiffres[i] = ft_atoi(argv[i + 1]);
+			i++;
+		}
+		free_all(argv, argc);
+		while (i > 0)
+		{
+			fill_stack_a(a, chiffres[i], i);
+			i--;
+		}
 	}
-	free_all(argv, argc);
-	while (i > 0)
-	{
-		fill_stack_a(a, chiffres[i]);
-		i--;
-	}
-}
 }
 
-void	init_list(t_list *stack)
-{
-	stack->top = NULL;
-}
+// void	init_list(t_list *stack)
+// {
+// 	stack->top = NULL;
+// }
 
 int	main(int argc, char *argv[])
 {
 
 	t_list *a;
-	t_list *b;
+	// t_list *b;
 
 	int		i;
 	a = NULL;
-	b = NULL;
+	// b = NULL;
 	i = 0;
 	if (i != (verif_and_all(argc, argv)))
 		exit(0);
-	init_list(&a);
-	init_list(&b);
+	// init_list(a);
+	// init_list(b);
 	init_a(argv, argc, &a);
 	
 
