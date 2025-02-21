@@ -44,18 +44,18 @@ Ce que je dois faire pour le projet :
 
 #include "push_swap.h"
 
-void	add_last(t_list **stack, t_list *new_node)
+void	add_last(t_list **a, t_list *new_node)
 {
 	t_list *tmp;
 
-	if (*stack == NULL)
+	if (*a == NULL)
 	{
-		*stack = new_node;
+		*a = new_node;
 		return ;
 	}
 	else
 	{
-		tmp = *stack;
+		tmp = *a;
 		while (tmp->next)
 		{
 			tmp = tmp->next;
@@ -63,19 +63,20 @@ void	add_last(t_list **stack, t_list *new_node)
 		tmp->next = new_node;
 		new_node->previous = tmp;
 	}
+	//free tmp
 }
 
-void	fill_stack_a(t_list **stack, int argv, int i)
+void	fill_stack_a(t_list **a, int argv, int i)
 {
 	t_list *new_node;
-	t_list *last_node;
+	// t_list *last_node;
 
 	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return (free(new_node));
 	new_node->value = argv;
 	new_node->index = i;
-	add_last(stack, new_node);
+	add_last(a, new_node);
 	//should probably free new_node here ?
 	
 	/*https://www.youtube.com/watch?v=OaG81sDEpVk&t=2945s*/
@@ -87,21 +88,33 @@ void	init_a(char **argv, int argc, t_list **a)
 	int		i;
 
 	i = 0;
+	chiffres = NULL;
 	if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	while (argv[i + 1] != NULL)
 	{
-		// t_list *a;
+		argv = ft_split(argv[1], ' ');
+		chiffres = malloc(sizeof(int) * 100);
+		while (argv[i] != NULL)
 		{
+			// t_list *a;
+			chiffres[i] = ft_atoi(argv[i]);
+			i++;
+		}
+	}
+	else
+	{
+		chiffres = malloc(sizeof(int) * 100);
+		while (argv[i + 1] != NULL)
+		{
+			// t_list *a;
 			chiffres[i] = ft_atoi(argv[i + 1]);
 			i++;
 		}
-		free_all(argv, argc);
-		while (i > 0)
-		{
-			fill_stack_a(a, chiffres[i], i);
-			i--;
-		}
+	}
+	// free_all(argv, argc); // remettre une condition si argc = 2 car sinon free sans besoin
+	while (i > 0)
+	{
+		fill_stack_a(a, chiffres[i - 1], i);
+		i--;
 	}
 }
 
@@ -119,38 +132,23 @@ int	main(int argc, char *argv[])
 	int		i;
 	a = NULL;
 	// b = NULL;
-	i = 0;
+	i = 1;
 	if (i != (verif_and_all(argc, argv)))
 		exit(0);
 	// init_list(a);
 	// init_list(b);
 	init_a(argv, argc, &a);
-	
 
-
-
-	/* ici il faut que je split si c'est dans "", pour après :
-		- faire atoi sur les chiffre 1 par 1 pour les placer dans a, je veux les placer par ordre inverse, comme ça ils sont 
-		deja dans le bon ordre.
-		Ou, je peux les mettre comme ça et utilise après une commande donnée (sa) pour inverser l'ordre*/
-
-
-	// j = 0;
-	// while (j < i)
-	// {
-	// 	printf("The array : %d\n", array_int[j]);
-	// 	j++;
-	// }
-	
-	// free(array_int);
-/*
-	// Avec la taille de l'array et l'array init, possible de le remplir avec split, rencontre un nombre, le atoi, le place à en dernier dans l'array et remonte pour les avoir dans le sens inverse > quand on va file le stack alors seulement on va suiivre l'array
-
-	fill_stack_a(&stack_a, array);
-
-	print_list(&stack_a);
-//	ft_printf("%d\n", a[1]);
-*/
+	// printf("Chiffre : %d\nIndex : %d", a->value, a->index);
+	while(a->value)
+	{
+		printf("Chiffre : %d\nIndex : %d\n", a->value, a->index);
+		a = a->next;
+	}
+	// print_list(&stack_a);
+	//	ft_printf("%d\n", a[1]);
 	// printf("Array size = %d\n", array_size);
 	return (0);
 }
+
+/*https://excalidraw.com/#json=IC2eNsBNOlYQYhTLBvtTp,Et3Y-2CKEWPDW4EuVIzYRw*/

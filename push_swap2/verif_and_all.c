@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:06:30 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/17 20:06:34 by plerick          ###   ########.fr       */
+/*   Updated: 2025/02/21 17:36:56 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	verif_and_all(int argc, char *argv[])
 			write(2, "error\n", 6);
 			free_all(a, argc);
 		}
-		free_all(a, argc);
+		// free_all(a, argc);
+		return (1);
 	}
 	else if (verif_string(argv + 1) == 0)
 	{
