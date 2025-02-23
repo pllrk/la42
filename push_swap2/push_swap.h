@@ -45,4 +45,5 @@ void	*free_all(char **tab, int argc);
 void    init_a(char **argv, int argc, t_list **a);
 void	add_last(t_list **a, t_list *new_node);
 
+void	sa(t_list **a);
 #endif

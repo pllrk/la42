@@ -92,7 +92,7 @@ void	init_a(char **argv, int argc, t_list **a)
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		chiffres = malloc(sizeof(int) * 100);
+		chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à mallox
 		while (argv[i] != NULL)
 		{
 			// t_list *a;
@@ -102,7 +102,7 @@ void	init_a(char **argv, int argc, t_list **a)
 	}
 	else
 	{
-		chiffres = malloc(sizeof(int) * 100);
+		chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à mallox
 		while (argv[i + 1] != NULL)
 		{
 			// t_list *a;
@@ -139,12 +139,20 @@ int	main(int argc, char *argv[])
 	// init_list(b);
 	init_a(argv, argc, &a);
 
-	// printf("Chiffre : %d\nIndex : %d", a->value, a->index);
-	while(a->value)
-	{
-		printf("Chiffre : %d\nIndex : %d\n", a->value, a->index);
-		a = a->next;
-	}
+	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
+	a = a->next;
+	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
+	a = a->next;
+	sa(&a);
+	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
+
+
+	// while(a->value)
+	// {
+	// 	printf("Chiffre : %d\nIndex : %d\n", a->value, a->index);
+	// 	a = a->next;
+	// }
+
 	// print_list(&stack_a);
 	//	ft_printf("%d\n", a[1]);
 	// printf("Array size = %d\n", array_size);
