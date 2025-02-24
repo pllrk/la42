@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:03:33 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/21 16:19:01 by plerick          ###   ########.fr       */
+/*   Updated: 2025/02/24 20:58:20 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void	*free_all(char **tab, int argc);
 void    init_a(char **argv, int argc, t_list **a);
 void	add_last(t_list **a, t_list *new_node);
 
-void	sa(t_list **a);
+void sa(t_list **a);
+void	rra(t_list **a);
 #endif

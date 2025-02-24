@@ -86,35 +86,35 @@ void	init_a(char **argv, int argc, t_list **a)
 {
 	int		*chiffres;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	chiffres = NULL;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
-		chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à mallox
+		chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à malloc
 		while (argv[i] != NULL)
 		{
-			// t_list *a;
 			chiffres[i] = ft_atoi(argv[i]);
 			i++;
 		}
 	}
 	else
 	{
-		chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à mallox
+		chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à malloc
 		while (argv[i + 1] != NULL)
 		{
-			// t_list *a;
 			chiffres[i] = ft_atoi(argv[i + 1]);
 			i++;
 		}
 	}
 	// free_all(argv, argc); // remettre une condition si argc = 2 car sinon free sans besoin
-	while (i > 0)
+	while (i > j)
 	{
-		fill_stack_a(a, chiffres[i - 1], i);
-		i--;
+		fill_stack_a(a, chiffres[j], j);
+		j++;
 	}
 }
 
@@ -128,8 +128,10 @@ int	main(int argc, char *argv[])
 
 	t_list *a;
 	// t_list *b;
-
 	int		i;
+	
+	t_list *test; // a suppr apres test
+	
 	a = NULL;
 	// b = NULL;
 	i = 1;
@@ -138,13 +140,22 @@ int	main(int argc, char *argv[])
 	// init_list(a);
 	// init_list(b);
 	init_a(argv, argc, &a);
+	
+	
+	test = a;
+	printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
+	test = test->next;
+	printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
+	test = test->next;
+	printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
 
-	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
-	a = a->next;
-	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
-	a = a->next;
 	sa(&a);
 	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
+	a = a->next;
+	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
+	a = a->next;
+	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
+	// printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
 
 
 	// while(a->value)

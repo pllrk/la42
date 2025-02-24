@@ -74,15 +74,8 @@ int no_char(char *argv[])
 
 int verif_string(char *argv[])
 {
-    // int i;
-
-    // i = 0;
     if ((no_char(argv) == 1) && (no_big(argv) == 1) && (no_double(argv) == 1))
        	return (1);
-    // if (no_big(argv) == 1)
-	//     i++;
-	// if (no_double(argv) == 1)
-	// 	i++;
 	else
     	return (0);
 }
