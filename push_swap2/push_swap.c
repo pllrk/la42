@@ -127,18 +127,16 @@ int	main(int argc, char *argv[])
 {
 
 	t_list *a;
-	// t_list *b;
+	t_list *b;
 	int		i;
 	
 	t_list *test; // a suppr apres test
 	
 	a = NULL;
-	// b = NULL;
+	b = NULL;
 	i = 1;
 	if (i != (verif_and_all(argc, argv)))
 		exit(0);
-	// init_list(a);
-	// init_list(b);
 	init_a(argv, argc, &a);
 	
 	
@@ -149,7 +147,7 @@ int	main(int argc, char *argv[])
 	test = test->next;
 	printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
 
-	sa(&a);
+	ra(&a);
 	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
 	a = a->next;
 	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
