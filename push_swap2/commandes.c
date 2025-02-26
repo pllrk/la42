@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   commande_a.c                                       :+:      :+:    :+:   */
+/*   commandes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 18:40:20 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/25 18:34:48 by plerick          ###   ########.fr       */
+/*   Updated: 2025/02/26 19:46:46 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,3 +88,30 @@ void rra(t_list **a)
 	*a = go_last;
 }
 
+/*Prend le premier élément au sommet de a et le met sur b.
+Ne fait rien si a est vide.*/
+void pb(t_list **a, t_list **b)
+{
+	t_list	*tmp_a;
+	t_list	*tmp_b;
+	t_list	*go_last;
+
+	tmp_a = *a;
+	go_last = *a;
+	tmp_b = *b;
+
+	
+	if (tmp_a->next == NULL)
+	{
+		*b = tmp_a;
+		*a = NULL;
+		return;
+	}
+	if (tmp_b->next == NULL)
+	{
+		tmp_a->next = NULL;
+		tmp_a->previous = NULL;
+	}
+
+
+}
