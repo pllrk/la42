@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 18:40:20 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/26 19:46:46 by plerick          ###   ########.fr       */
+/*   Updated: 2025/02/27 18:43:38 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,28 +90,33 @@ void rra(t_list **a)
 
 /*Prend le premier élément au sommet de a et le met sur b.
 Ne fait rien si a est vide.*/
-void pb(t_list **a, t_list **b)
+void pb(t_list **stack_from, t_list **stack_to)
 {
-	t_list	*tmp_a;
-	t_list	*tmp_b;
-	t_list	*go_last;
+	t_list	*tmp_stack_from;
+	t_list	*tmp_stack_to;
+	t_list	*go_last_a;
+	t_list	*go_last_b;
 
-	tmp_a = *a;
-	go_last = *a;
-	tmp_b = *b;
-
+	tmp_stack_from = *stack_from;
+	go_last_a = *stack_from;
+	go_last_a = go_last_a->next;
+	tmp_stack_to = *stack_to;
 	
-	if (tmp_a->next == NULL)
+	*stack_from = (*stack_from)->next;
+	go_last_a = *stack_from;
+	go_last_a = go_last_a->next;
+	go_last_a->previous = ()
+
+	if (tmp_stack_from->next == NULL)
 	{
-		*b = tmp_a;
-		*a = NULL;
-		return;
+		*stack_to = tmp_stack_from;
+		*stack_from = NULL;
 	}
-	if (tmp_b->next == NULL)
+	if (tmp_stack_to->next == NULL)
 	{
-		tmp_a->next = NULL;
-		tmp_a->previous = NULL;
+		tmp_stack_from->next = NULL;
+		tmp_stack_from->previous = NULL;
 	}
 
-
+/*https://github.com/arommers/push_swap/blob/master/src/push.c*/
 }
