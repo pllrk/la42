@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:03:33 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/25 18:17:25 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/10 19:49:33 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,20 @@ void	*free_all(char **tab, int argc);
 void    init_a(char **argv, int argc, t_list **a);
 void	add_last(t_list **a, t_list *new_node);
 
-void    sa(t_list **a);
-void    ra(t_list **a);
+void    push(t_list **dst, t_list **src);
+void    pa(t_list **a, t_list **b);
+void	pb(t_list **b, t_list **a);
+void	rev_rotate(t_list **stack);
 void	rra(t_list **a);
+void	rrb(t_list **b);
+void	rrr(t_list **a, t_list **b);
+void	rotate(t_list **stack);
+void	ra(t_list **a);
+void	rb(t_list **b);
+void	rr(t_list **a, t_list **b);
+void	swap(t_list **stack);
+void	sa(t_list	**a);
+void	sb(t_list **b);
+void	ss(t_list **a, t_list **b);
+
 #endif

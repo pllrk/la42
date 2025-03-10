@@ -168,4 +168,7 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
+// Faire les modifs dans le makefile pour le fichier commands
+
+/* https://github.com/Thuggonaut/42IC_Ring02_Push_swap */
 /*https://excalidraw.com/#json=IC2eNsBNOlYQYhTLBvtTp,Et3Y-2CKEWPDW4EuVIzYRw*/
