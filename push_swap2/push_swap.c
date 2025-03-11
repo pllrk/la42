@@ -63,26 +63,21 @@ void	add_last(t_list **a, t_list *new_node)
 		tmp->next = new_node;
 		new_node->previous = tmp;
 	}
-	//free tmp
 }
 
 void	fill_stack_a(t_list **a, int argv, int i)
 {
 	t_list *new_node;
-	// t_list *last_node;
 
 	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
-		return (free(new_node));
+		return (free(new_node));// free_all(argv, arg
 	new_node->value = argv;
 	new_node->index = i;
 	add_last(a, new_node);
-	//should probably free new_node here ?
-	
-	/*https://www.youtube.com/watch?v=OaG81sDEpVk&t=2945s*/
 }
 
-void	init_a(char **argv, int argc, t_list **a)
+void	init_a(char **argv, t_list **a)
 {
 	int		*chiffres;
 	int		i;
@@ -90,38 +85,19 @@ void	init_a(char **argv, int argc, t_list **a)
 
 	i = 0;
 	j = 0;
-	chiffres = NULL;
-	if (argc == 2)
+	chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à malloc
+	while (argv[i] != NULL)
 	{
-		argv = ft_split(argv[1], ' ');
-		chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à malloc
-		while (argv[i] != NULL)
-		{
-			chiffres[i] = ft_atoi(argv[i]);
-			i++;
-		}
+		chiffres[i] = ft_atoi(argv[i]);
+		i++;
 	}
-	else
-	{
-		chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à malloc
-		while (argv[i + 1] != NULL)
-		{
-			chiffres[i] = ft_atoi(argv[i + 1]);
-			i++;
-		}
-	}
-	// free_all(argv, argc); // remettre une condition si argc = 2 car sinon free sans besoin
 	while (i > j)
 	{
 		fill_stack_a(a, chiffres[j], j);
 		j++;
 	}
+	free(chiffres);
 }
-
-// void	init_list(t_list *stack)
-// {
-// 	stack->top = NULL;
-// }
 
 int	main(int argc, char *argv[])
 {
@@ -135,10 +111,17 @@ int	main(int argc, char *argv[])
 	a = NULL;
 	b = NULL;
 	i = 1;
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
+		return (1);
 	if (i != (verif_and_all(argc, argv)))
 		exit(0);
-	init_a(argv, argc, &a);
-	
+	if (argc == 2)
+	{
+		argv = ft_split(argv[1], ' ');
+		init_a(argv, &a);
+	}
+	else
+		init_a(argv + 1, &a);
 	
 	test = a;
 	printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
@@ -147,7 +130,7 @@ int	main(int argc, char *argv[])
 	test = test->next;
 	printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
 
-	ra(&a);
+	sa(&a);
 	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
 	a = a->next;
 	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
@@ -165,6 +148,8 @@ int	main(int argc, char *argv[])
 	// print_list(&stack_a);
 	//	ft_printf("%d\n", a[1]);
 	// printf("Array size = %d\n", array_size);
+	
+	free_all(a);
 	return (0);
 }
 

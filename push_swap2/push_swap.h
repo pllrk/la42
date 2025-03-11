@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:03:33 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/10 19:49:33 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/11 19:39:16 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,13 @@ int		no_double(char *argv[]);
 // struct  t_stack push_into_a(argc, argv);
 // struct  t_stack with_split(argc, argv);
 long 	push_atol(const char *str);
-void	*free_all(char **tab, int argc);
-void    init_a(char **argv, int argc, t_list **a);
+
 void	add_last(t_list **a, t_list *new_node);
 
+
+void	free_split(char **a);
+void	free_all(t_list	*stack);
+void    init_a(char **argv, t_list **a);
 void    push(t_list **dst, t_list **src);
 void    pa(t_list **a, t_list **b);
 void	pb(t_list **b, t_list **a);
