@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 20:06:30 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/11 19:48:47 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/11 19:55:06 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,13 @@ void	free_split(char **a)
 void	free_all(t_list	*stack)
 {
 	t_list	*tmp;
-	t_list	*current;
 
-	current = stack;
-	if(stack == NULL)
-		return ;
-	while (current)
+	while (stack)
 	{
-		tmp = current->next;
-		free(current);
-		current = tmp;
+		tmp = stack;
+		stack = stack->next;
+		free(tmp);
 	}
-	stack = NULL;
-
 }
 
 int	verif_and_all(int argc, char *argv[])

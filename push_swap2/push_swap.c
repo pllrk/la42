@@ -51,6 +51,7 @@ void	add_last(t_list **a, t_list *new_node)
 	if (*a == NULL)
 	{
 		*a = new_node;
+		new_node->previous = NULL;
 		return ;
 	}
 	else
@@ -71,32 +72,28 @@ void	fill_stack_a(t_list **a, int argv, int i)
 
 	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
-		return (free(new_node));// free_all(argv, arg
+		return (free_all(*a));
 	new_node->value = argv;
 	new_node->index = i;
+	new_node->next = NULL;
+	new_node->previous = NULL;
 	add_last(a, new_node);
 }
 
 void	init_a(char **argv, t_list **a)
 {
-	int		*chiffres;
+	int		chiffres;
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	chiffres = malloc(sizeof(int) * 100); // A changer pour calculer une vrai taille à malloc
 	while (argv[i] != NULL)
 	{
-		chiffres[i] = ft_atoi(argv[i]);
+		chiffres = ft_atoi(argv[i]);
+		fill_stack_a(a, chiffres, j);
 		i++;
 	}
-	while (i > j)
-	{
-		fill_stack_a(a, chiffres[j], j);
-		j++;
-	}
-	free(chiffres);
 }
 
 int	main(int argc, char *argv[])
@@ -106,7 +103,7 @@ int	main(int argc, char *argv[])
 	t_list *b;
 	int		i;
 	
-	t_list *test; // a suppr apres test
+	// t_list *test; // a suppr apres test
 	
 	a = NULL;
 	b = NULL;
@@ -119,23 +116,24 @@ int	main(int argc, char *argv[])
 	{
 		argv = ft_split(argv[1], ' ');
 		init_a(argv, &a);
+		free_split(argv);
 	}
 	else
 		init_a(argv + 1, &a);
 	
-	test = a;
-	printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
-	test = test->next;
-	printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
-	test = test->next;
-	printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
+	// test = a;
+	// printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
+	// test = test->next;
+	// printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
+	// test = test->next;
+	// printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
 
 	sa(&a);
 	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
-	a = a->next;
-	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
-	a = a->next;
-	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
+	// a = a->next;
+	// printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
+	// a = a->next;
+	// printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
 	// printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
 
 
