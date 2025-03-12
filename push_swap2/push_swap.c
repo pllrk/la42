@@ -77,6 +77,7 @@ void	fill_stack_a(t_list **a, int argv, int i)
 	new_node->index = i;
 	new_node->next = NULL;
 	new_node->previous = NULL;
+	new_node->cheapest = 0;
 	add_last(a, new_node);
 }
 
@@ -98,13 +99,10 @@ void	init_a(char **argv, t_list **a)
 
 int	main(int argc, char *argv[])
 {
-
 	t_list *a;
 	t_list *b;
 	int		i;
-	
-	// t_list *test; // a suppr apres test
-	
+
 	a = NULL;
 	b = NULL;
 	i = 1;
@@ -120,7 +118,18 @@ int	main(int argc, char *argv[])
 	}
 	else
 		init_a(argv + 1, &a);
+	if (!stack_sorted(a))
+	{
+		if (stack_len(a) == 2)
+			sa(&a);
+		else if (stack_len(a) == 3)
+			sort_three(&a);
+		else
+			sort_stack(&a, &b);
+	}
 	
+
+	// t_list *test; // a suppr apres test
 	// test = a;
 	// printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
 	// test = test->next;
@@ -128,8 +137,8 @@ int	main(int argc, char *argv[])
 	// test = test->next;
 	// printf("\nChiffre test: %d\nIndex : %d\n", test->value, test->index);
 
-	sa(&a);
-	printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
+	// sa(&a);
+	// printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
 	// a = a->next;
 	// printf("\nChiffre : %d\nIndex : %d\n", a->value, a->index);
 	// a = a->next;

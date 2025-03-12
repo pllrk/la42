@@ -2,7 +2,7 @@ NAME = push_swap.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 LIBFT_MAKEFILE = libft/Makefile
-SRCS =	push_swap.c push_atol.c verif_and_all.c verif_string.c push_into_a.c with_split.c push.c rev_rotate.c rev_rotate.c swap.c
+SRCS =	push_swap.c push_atol.c verif_and_all.c verif_string.c push_into_a.c push.c rotate.c rev_rotate.c swap.c stack_utils.c sort_three.c sort_stack.c init_a_to_b.c
 OBJS = ${SRCS:.c=.o}
 LIBC = -L./libft -lft
 
