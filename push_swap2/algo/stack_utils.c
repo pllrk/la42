@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 17:05:02 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/12 17:33:48 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/13 16:29:54 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,25 @@ bool	stack_sorted(t_list *stack)
 		stack = stack->next;
 	}
 	return (true);
+}
+
+void	prep_for_push(t_list **stack, t_list *top_node, char stack_name)
+{
+	while (*stack != top_node)
+	{
+		if (stack_name == 'a')
+		{
+			if (top_node->above_median)
+				ra(stack);
+			else
+				rra(stack);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->above_median)
+				rb(stack);
+			else
+				rrb(stack);
+		}
+	}
 }

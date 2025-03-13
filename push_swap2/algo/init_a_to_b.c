@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:28:35 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/12 18:48:53 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/13 16:13:50 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,25 @@ static void	cost_analysis_a(t_list *a, t_list *b)
 	}
 }
 
+void	set_cheapest(t_list *stack)
+{
+	long	cheapest_value;
+	t_list	*cheapest_node;
 
+	if (!stack)
+		return ;
+	cheapest_value = LONG_MAX;
+	while (stack)
+	{
+		if (stack->push_cost < cheapest_value)
+		{
+			cheapest_value = stack->push_cost;
+			cheapest_node = stack;
+		}
+		stack = stack->next;
+	}
+	cheapest_node->cheapest = true;
+}
 
 void	init_nodes_a(t_list *a, t_list *b)
 {
@@ -88,5 +106,5 @@ void	init_nodes_a(t_list *a, t_list *b)
 	current_index(b);
 	set_target_a(a, b);
 	cost_analysis_a(a, b);
-	set_cheapest(a); // a reprendre ici
+	set_cheapest(a);
 }

@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:03:33 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/12 18:48:01 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/13 16:30:11 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void	init_nodes_a(t_list *a, t_list *b);
 void	current_index(t_list *stack);
 static void	set_target_a(t_list *a, t_list *b);
 static void	cost_analysis_a(t_list *a, t_list *b);
+void	set_cheapest(t_list *stack);
+static void	move_a_to_b(t_list **a, t_list **b);
+static void	rotate_both(t_list **a, t_list **b, t_list *cheapest_node);
+static void	rev_rotate_both(t_list **a, t_list **b, t_list *cheapest_node);
+void	prep_for_push(t_list **stack, t_list *top_node, char stack_name);
 
 //*** Check for errors
 int     verif_and_all(int argc, char *argv[]);
