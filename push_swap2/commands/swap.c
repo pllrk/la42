@@ -6,11 +6,11 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 19:34:53 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/11 16:32:59 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/13 21:14:19 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /*Intervertit les 2 premiers éléments au sommet de la pile a*/
 void	swap(t_list	**stack)

@@ -6,16 +6,16 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:37:27 by plerick           #+#    #+#             */
-/*   Updated: 2025/02/06 19:52:05 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/13 21:45:19 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-long push_atol(const char *str)
+long	push_atol(const char *str)
 {
-	int	i;
-	int	neg;
+	int			i;
+	int			neg;
 	long int	chif;
 
 	i = 0;

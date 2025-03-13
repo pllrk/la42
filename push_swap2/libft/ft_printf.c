@@ -6,10 +6,9 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:48:23 by plerick           #+#    #+#             */
-/*   Updated: 2025/01/13 19:45:56 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/13 21:13:00 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "libft.h"
 
@@ -64,10 +63,7 @@ int	ft_printf(const char *str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-		{
-			count = count + (my_check(args, &str[i]));
-			i++;
-		}
+			count = count + (my_check(args, &str[i++]));
 		else
 		{
 			ft_printchar(str[i]);
@@ -79,34 +75,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (count);
 }
-/*
-int	main(void)
-{
-	int	d = 5;
-	int	c = 'g';
-	char s[] = "Haha";
-	int	iii = 455;
-
-	int	count1 = 0;
-	int	count2 = 0;
-	unsigned int	base1 = 255;
-	unsigned int	base2 = 4095;
-
-	int	nbptr = 1;
-	int	*ptr = &nbptr;
-
-	unsigned int	l = 4;
-
-	count1 = ft_printf("c : %c\ns : %s\nd : %d\n
-	pourcent: %%\ni : %i\nx : %x\nX : %X\n p : %p\nu : %u\n"
-	, c, s, d, iii, base1, base2, ptr, l);
-	ft_printf("Mon printf : %i\n\n", count1);
-	count2 = printf("c : %c\ns : %s\nd : %d\n
-	pourcent : %%\ni : %i\nx : %x\nX : %X\np : %p\nu : %u\n"
-	, c, s, d, iii, base1, base2, ptr, l);
-	printf("Vrai printf : %i\n", count2);
-//	count = ft_printf("%x\n%X\n", base1, base2);
-//	count = printf("\n%x\n%X\n", base1, base2);
-	return (count1);
-}
-*/

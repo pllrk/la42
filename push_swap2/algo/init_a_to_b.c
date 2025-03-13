@@ -6,11 +6,11 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:28:35 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/13 16:13:50 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/13 22:02:28 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	current_index(t_list *stack)
 {
@@ -33,7 +33,7 @@ void	current_index(t_list *stack)
 	}
 }
 
-static void	set_target_a(t_list *a, t_list *b)
+void	set_target_a(t_list *a, t_list *b)
 {
 	t_list	*current_b;
 	t_list	*target_node;
@@ -45,7 +45,8 @@ static void	set_target_a(t_list *a, t_list *b)
 		current_b = b;
 		while (current_b)
 		{
-			if (current_b->value < a->value && current_b->value > best_match_index)
+			if (current_b->value < a->value
+				&& current_b->value > best_match_index)
 			{
 				best_match_index = current_b->value;
 				target_node = current_b;
@@ -60,7 +61,7 @@ static void	set_target_a(t_list *a, t_list *b)
 	}
 }
 
-static void	cost_analysis_a(t_list *a, t_list *b)
+void	cost_analysis_a(t_list *a, t_list *b)
 {
 	int	len_a;
 	int	len_b;

@@ -6,11 +6,11 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 17:05:02 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/13 16:29:54 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/13 21:38:43 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_list	*find_big(t_list *stack)
 {
@@ -30,6 +30,26 @@ t_list	*find_big(t_list *stack)
 		stack = stack->next;
 	}
 	return (max_node);
+}
+
+t_list	*find_min(t_list *stack)
+{
+	long	min;
+	t_list	*min_mode;
+
+	if (!stack)
+		return (NULL);
+	min = LONG_MAX;
+	while (stack)
+	{
+		if (stack->value < min)
+		{
+			min = stack->value;
+			min_mode = stack;
+		}
+		stack = stack->next;
+	}
+	return (min_mode);
 }
 
 int	stack_len(t_list *stack)
