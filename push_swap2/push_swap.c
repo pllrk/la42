@@ -99,9 +99,6 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
+
+// Regler pb main trop long
 // Faire les modifs dans le makefile pour le fichier commands
-
-/* https://github.com/Thuggonaut/42IC_Ring02_Push_swap */
-/*https://excalidraw.com/#json=IC2eNsBNOlYQYhTLBvtTp,Et3Y-2CKEWPDW4EuVIzYRw*/
-
-// Faire le test avec -5-8 (dans verif_string)

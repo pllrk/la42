@@ -12,32 +12,28 @@
 
 #include "../push_swap.h"
 
-int	verif_no_more(char *str[])
+int	verif_no_more(char *argv[])
 {
 	int	i;
-	int	neg;
-	int	chif;
+	int	j;
 
 	i = 0;
-	neg = 1;
-	chif = 0;
-	if (*str == '\0')
-		return (0);
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
-	if (str[i] == '+')
-		i++;
-	else if (str[i] == '-')
+	j = 0;
+	while (argv[i] != NULL)
 	{
-		neg = neg * -1;
+		while (argv[i][j] != '\0')
+		{
+			if (argv[i][j + 1] == '+' || argv[i][j + 1] == '-' )
+			{
+				write(2, "error\n", 6);
+				return (0);
+			}
+			j++;
+		}
 		i++;
+		j = 0;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		chif = chif * 10 + (str[i] - '0');
-		i++;
-	}
-	return (chif * neg);
+	return (1);
 }
 
 int	no_double(char *argv[])
@@ -113,7 +109,8 @@ int	no_char(char *argv[])
 
 int	verif_string(char *argv[])
 {
-	if ((no_char(argv) == 1) && (no_big(argv) == 1) && (no_double(argv) == 1))
+	if ((no_char(argv) == 1) && (no_big(argv) == 1) && (no_double(argv) == 1) 
+		&& (verif_no_more(argv) == 1))
 		return (1);
 	else
 		return (0);
