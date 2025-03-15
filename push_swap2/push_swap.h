@@ -87,5 +87,6 @@ t_list	*find_big(t_list *stack);
 t_list	*find_min(t_list *stack);
 void	sort_three(t_list **a);
 t_list	*get_cheapest(t_list *stack);
+void	sort_the_stack(t_list *a, t_list *b);
 
 #endif

@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+void	sort_the_stack(t_list *a, t_list *b)
+{
+	if (!stack_sorted(a))
+	{
+		if (stack_len(a) == 2)
+			sa(&a);
+		else if (stack_len(a) == 3)
+			sort_three(&a);
+		else
+			sort_stack(&a, &b);
+	}
+}
+
 void	add_last(t_list **a, t_list *new_node)
 {
 	t_list	*tmp;
@@ -86,19 +99,9 @@ int	main(int argc, char *argv[])
 	}
 	else
 		init_a(argv + 1, &a);
-	if (!stack_sorted(a))
-	{
-		if (stack_len(a) == 2)
-			sa(&a);
-		else if (stack_len(a) == 3)
-			sort_three(&a);
-		else
-			sort_stack(&a, &b);
-	}
+	sort_the_stack(a, b);
 	free_all(a);
 	return (0);
 }
 
-
-// Regler pb main trop long
 // Faire les modifs dans le makefile pour le fichier commands
