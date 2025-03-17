@@ -29,6 +29,13 @@ void	add_last(t_list **a, t_list *new_node)
 {
 	t_list	*tmp;
 
+	// if (new_node == NULL)
+	// {
+	// 	free_all(new_node);
+	// 	free_all(*a);
+	// 	return ;
+	// }
+	tmp = NULL;
 	if (*a == NULL)
 	{
 		*a = new_node;
@@ -53,7 +60,10 @@ void	fill_stack_a(t_list **a, int argv, int i)
 
 	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
+	{
+		free_all(new_node);
 		return (free_all(*a));
+	}
 	new_node->value = argv;
 	new_node->index = i;
 	new_node->next = NULL;
@@ -101,6 +111,7 @@ int	main(int argc, char *argv[])
 		init_a(argv + 1, &a);
 	sort_the_stack(a, b);
 	free_all(a);
+	free_all(b);
 	return (0);
 }
 
