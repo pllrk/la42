@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 21:42:44 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/13 22:45:27 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/17 21:16:39 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	no_char(char *argv[])
 
 int	verif_string(char *argv[])
 {
-	if ((no_char(argv) == 1) && (no_big(argv) == 1) && (no_double(argv) == 1) 
+	if ((no_char(argv) == 1) && (no_big(argv) == 1) && (no_double(argv) == 1)
 		&& (verif_no_more(argv) == 1))
 		return (1);
 	else

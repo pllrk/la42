@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 17:03:33 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/13 22:34:05 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/17 21:14:22 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		verif_no_more(char *argv[]);
 
 //*** Commands to free
 void	free_split(char **a);
-void	free_all(t_list	*stack);
+void	free_all(t_list	**stack);
 
 //**    Commands for stack manipulation
 void	push(t_list **dst, t_list **src);
@@ -87,6 +87,6 @@ t_list	*find_big(t_list *stack);
 t_list	*find_min(t_list *stack);
 void	sort_three(t_list **a);
 t_list	*get_cheapest(t_list *stack);
-void	sort_the_stack(t_list *a, t_list *b);
+void	sort_the_stack(t_list **a, t_list **b);
 
 #endif

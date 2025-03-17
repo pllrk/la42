@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 17:05:02 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/13 21:38:43 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/17 21:16:10 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,16 @@ t_list	*find_min(t_list *stack)
 
 int	stack_len(t_list *stack)
 {
-	int	count;
+	int		count;
+	t_list	*tmp;
 
+	tmp = stack;
 	if (!stack)
 		return (0);
 	count = 0;
-	while (stack)
+	while (tmp)
 	{
-		stack = stack->next;
+		tmp = tmp->next;
 		count++;
 	}
 	return (count);
@@ -69,13 +71,16 @@ int	stack_len(t_list *stack)
 
 bool	stack_sorted(t_list *stack)
 {
+	t_list	*tmp;
+
+	tmp = stack;
 	if (!stack)
-		return (1);
-	while (stack->next)
+		return (true);
+	while (tmp->next)
 	{
-		if (stack->value > stack->next->value)
+		if (tmp->value > tmp->next->value)
 			return (false);
-		stack = stack->next;
+		tmp = tmp->next;
 	}
 	return (true);
 }
