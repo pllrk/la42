@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 18:28:35 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/13 22:02:28 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/18 16:57:28 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	cost_analysis_a(t_list *a, t_list *b)
 		if (!(a->above_median))
 			a->push_cost = len_a - (a->index);
 		if (a->target_node->above_median)
-			a->push_cost += len_b - (a->target_node->index);
+			a->push_cost += a->target_node->index;
 		else
 			a->push_cost += len_b - (a->target_node->index);
 		a = a->next;

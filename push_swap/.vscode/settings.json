@@ -1,9 +1,0 @@
-{
-    "git.decorations.enabled": false,
-    "git.showNotifications": false,
-    "git.enabled": false,
-    "files.associations": {
-        "push_swap.h": "c",
-        "climits": "c"
-    }
-}

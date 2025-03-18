@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:08:14 by plerick           #+#    #+#             */
-/*   Updated: 2024/10/17 19:21:54 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/13 21:13:54 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *str, unsigned int start, size_t lengh);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-int 	ft_printf(const char *str, ...);
-int 	ft_printchar(char c);
-int 	ft_printnbr(int nb);
-int 	ft_printstr(char *s);
-int 	ft_printbase_lo(unsigned int nb);
-int 	ft_printbase_up(unsigned int nb);
-int 	ft_printptr(void *ptr);
-int 	ft_printuint(unsigned int nb);
+int		ft_printf(const char *str, ...);
+int		ft_printchar(char c);
+int		ft_printnbr(int nb);
+int		ft_printstr(char *s);
+int		ft_printbase_lo(unsigned int nb);
+int		ft_printbase_up(unsigned int nb);
+int		ft_printptr(void *ptr);
+int		ft_printuint(unsigned int nb);
 
 #endif
