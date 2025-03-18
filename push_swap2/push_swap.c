@@ -106,4 +106,4 @@ int	main(int argc, char *argv[])
 	return (0);
 }
 
-// Faire les modifs dans le makefile pour le fichier 
+// Verif pour les chiffres plus grand que 12 je crois
