@@ -63,6 +63,24 @@ int	main(void)
 	// 		printf("waited\n");
 	// }
 
+	int fd[2];
+	pip_t pid;
+	
+	if (pipe(fd) == -1)
+	{
+		perror("pipe");
+		exit(EXIT_FAILURE);
+	}
+	pid = fork();
+	if (pid < 0)
+	{
+		perror("fork");
+		exit(EXIT_FAILURE);
+	}
+	if (pid == 0)
+	{
+		
+	}
 
 
 	return (0);
