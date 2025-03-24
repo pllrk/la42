@@ -2,7 +2,7 @@ NAME = pipex
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 LIBFT_MAKEFILE = libft/Makefile
-SRCS = pipex.c
+SRCS = pipex.c utils.c
 OBJS = ${SRCS:.c=.o}
 LIBC = -L./libft -lft
 

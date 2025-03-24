@@ -1,0 +1,4 @@
+hello motif world
+this is a test
+motif appears here
+no match here
