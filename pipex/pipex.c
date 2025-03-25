@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 15:40:17 by plerick           #+#    #+#             */
-/*   Updated: 2025/03/25 16:09:28 by plerick          ###   ########.fr       */
+/*   Updated: 2025/03/25 18:50:17 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,15 @@ int	main(int argc, char **argv, char **env)
 		if (pid2 < 0)
 			handling_error;
 		if (pid2 == 0)
-			child2(argc, argv, env, fd);
+			child2(argv, env, fd);
 	}
-	if (pid1 != 0 && pid2 != 0)
-	{
-		waitpid(pid1, NULL, 0);
-		waitpid(pid2, NULL, 0);
-	}
-
+	// if (pid1 != 0 && pid2 != 0)
+	// {
+	waitpid(pid1, NULL, 0);
+	waitpid(pid2, NULL, 0);
+	close(pid1);
+	close(pid2);
+	// }
 	return (0);
 
 
