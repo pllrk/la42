@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 16:30:04 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/01 19:38:33 by plerick          ###   ########.fr       */
+/*   Created: 2024/11/04 22:14:39 by plerick           #+#    #+#             */
+/*   Updated: 2024/11/04 23:17:12 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-
-#include "fractol.h"
-
-int	main(int argc, char **argv)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_fractol frac;
+	int	i;	
 
-	init_frac(&frac);
-	if (argc < 2)
-		error_msg(&frac);
-	init(&frac);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
+/*
+int	main(void)
+{
+	int	fd;
+	char	c[] = "hohohoho";
+
+	fd = 1;
+	ft_putstr_fd(c, fd);
+	return (0);
+}
+*/

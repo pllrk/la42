@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 16:30:04 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/01 19:38:33 by plerick          ###   ########.fr       */
+/*   Created: 2024/10/17 19:06:38 by plerick           #+#    #+#             */
+/*   Updated: 2024/10/17 19:19:42 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-
-#include "fractol.h"
-
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *str)
 {
-	t_fractol frac;
+	size_t	i;
 
-	init_frac(&frac);
-	if (argc < 2)
-		error_msg(&frac);
-	init(&frac);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }

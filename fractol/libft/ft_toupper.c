@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 16:30:04 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/01 19:38:33 by plerick          ###   ########.fr       */
+/*   Created: 2024/10/21 17:55:54 by plerick           #+#    #+#             */
+/*   Updated: 2024/10/21 18:00:31 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-
-#include "fractol.h"
-
-int	main(int argc, char **argv)
+int	ft_toupper(int c)
 {
-	t_fractol frac;
-
-	init_frac(&frac);
-	if (argc < 2)
-		error_msg(&frac);
-	init(&frac);
+	if (c > 96 && c < 123)
+		c = c - 32;
+	return (c);
 }

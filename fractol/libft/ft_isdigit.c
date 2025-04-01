@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 16:30:04 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/01 19:38:33 by plerick          ###   ########.fr       */
+/*   Created: 2024/10/21 16:49:37 by plerick           #+#    #+#             */
+/*   Updated: 2024/10/21 16:49:56 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-
-#include "fractol.h"
-
-int	main(int argc, char **argv)
+int	ft_isdigit(int c)
 {
-	t_fractol frac;
-
-	init_frac(&frac);
-	if (argc < 2)
-		error_msg(&frac);
-	init(&frac);
+	if (c < 48 || c > 57)
+		return (0);
+	return (1);
 }
