@@ -20,8 +20,8 @@
 # include "minilibx-linux/mlx.h"
 # include <stdio.h>
 # include <math.h> // a voir ce qu'elle fait
-# include <X11/keysym.h> // a voir ce qu'elle fait
-# include <X11/Xlib.h> // a voir ce qu'elle fait
+// # include <X11/keysym.h> // a voir ce qu'elle fait
+// # include <X11/Xlib.h> // a voir ce qu'elle fait
 
 # define WIDTH 800
 # define HEIGHT 800
@@ -47,6 +47,7 @@ void	error_msg(t_fractol *frac);
 void	error_exit(t_fractol *frac, int code);
 void	init(t_fractol *frac);
 void	init_point(t_fractol *frac);
-
+void	init_img(t_fractol *frac);
+int		msg(char *str, int errno);
 
 #endif

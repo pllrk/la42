@@ -12,6 +12,12 @@
 
 #include "fractol.h"
 
+int	msg(char *str, int errno)
+{
+	ft_putstr_fd(str, 2);
+	return(errno);
+}
+
 void	error_exit(t_fractol *frac, int code)
 {
 	if (!frac)

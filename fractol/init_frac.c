@@ -12,9 +12,27 @@
 
 #include "fractol.h"
 
+void	init_img(t_fractol *frac)
+{
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	char	*buf;
+
+	frac->img = mlx_new_image(frac->mlx, WIDTH, HEIGHT);
+	if (!frac->img)
+		error_exit(frac, msg("error image creation", 1));
+	buf = mlx_get_data_addr(frac->img, &bits_per_pixel, &size_line, &endian);
+	frac->buf = buf;
+}
+
 void	reinit_img(t_fractol *frac)
 {
-	
+	if (frac->mlx && frac->img)
+		mlx_destroy_image(frac->mlx, frac->img);
+	if (frac->buf)
+		frac->buf = NULL;
+	init_img(frac); // a quoi ça sert ?
 }
 
 void	init_point(t_fractol *frac)
@@ -37,7 +55,7 @@ void	init(t_fractol *frac)
 	if (!frac->img)
 		error_exit(frac, 1);
 	init_point(frac);
-	reinit_img(frac);
+	reinit_img(frac); // a quoi ça sert ?
 }
 
 void	init_frac(t_fractol *frac)
