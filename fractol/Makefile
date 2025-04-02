@@ -5,7 +5,8 @@ LIBFT_MAKEFILE = libft/Makefile
 SRCS =	fractol.c \
 		init_frac.c \
 		error.c \
-		
+		the_fracs.c \
+		utils.c \
 OBJS = ${SRCS:.c=.o}
 LIBC = -L./libft -lft
 MLXPATH = ./minilibx-linux

@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:30:10 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/01 19:53:09 by plerick          ###   ########.fr       */
+/*   Updated: 2025/04/02 18:45:32 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,14 @@ void	init(t_fractol *frac);
 void	init_point(t_fractol *frac);
 void	init_img(t_fractol *frac);
 int		msg(char *str, int errno);
+void	do_fractal(t_fractol *frac, int argc, char **argv);
+void	get_value(t_fractol *frac, char **argv);
+double	ft_atod(char *nbr, int i);
+void	get_julia(t_fractol *frac);
+int		julia(t_fractol *frac, double x, double y);
+int		get_color(int iter);
+void	set_color(t_fractol *frac, int x, int y, int color);
+void	get_mandelbrot(t_fractol *frac);
+int		mandelbrot(double cx, double cy);
 
 #endif

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 19:33:29 by plerick           #+#    #+#             */
-/*   Updated: 2024/10/28 20:22:50 by plerick          ###   ########.fr       */
+/*   Updated: 2025/04/02 18:15:45 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+/*Compare str1 with str2*/
 int	ft_strncmp(const char *str1, const char *str2, size_t n)
 {
 	size_t			i;
