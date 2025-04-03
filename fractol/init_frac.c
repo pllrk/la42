@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:30:41 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/03 21:46:09 by plerick          ###   ########.fr       */
+/*   Updated: 2025/04/03 22:41:31 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	reinit_img(t_fractol *frac)
 		mlx_destroy_image(frac->mlx, frac->img);
 	if (frac->buf)
 		frac->buf = NULL;
-	init_img(frac); // a quoi ça sert ?
+	init_img(frac);
 }
 
 void	init_point(t_fractol *frac)

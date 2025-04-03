@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 18:15:15 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/03 21:47:05 by plerick          ###   ########.fr       */
+/*   Updated: 2025/04/03 22:41:00 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	julia(t_fractol *frac, double x, double y)
 	{
 		if ((y * y + x * x) > 4.0)
 			break ;
-		temp = 2 * x * y + frac->cy; // pourquoi un autre calcul ici, c'est pour la profondeur et l'autre pour le placement ?
+		temp = 2 * x * y + frac->cy;
 		x = x * x - y * y + frac->cx;
 		y = temp;
 		i++;
