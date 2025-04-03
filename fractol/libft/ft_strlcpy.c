@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plerick <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 16:56:59 by plerick           #+#    #+#             */
-/*   Updated: 2024/11/05 03:57:17 by plerick          ###   ########.fr       */
+/*   Updated: 2025/04/03 22:15:58 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(void)
 {
 	const char	src1[] = "0122333444455555666666777777788888888999999999";
 	char	dest1[5];
-	size_t	size1 = strlen(src1);
+	size_t	size1 = (src1);
 	size_t result1 = ft_strlcpy(dest1, src1, size1);
 
 	printf("Copied string: '%s'\n", dest1);

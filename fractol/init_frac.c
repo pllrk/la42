@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:30:41 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/01 19:55:32 by plerick          ###   ########.fr       */
+/*   Updated: 2025/04/03 21:46:09 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_point(t_fractol *frac)
 	frac->min_x = -2.0;
 	frac->max_x = 2.0;
 	frac->min_y = -2.0;
-	frac->max_y = 2;
+	frac->max_y = frac->min_y + (frac->max_x - frac->min_x) * HEIGHT / WIDTH;
 }
 
 void	init(t_fractol *frac)

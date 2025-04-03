@@ -7,10 +7,12 @@ SRCS =	fractol.c \
 		error.c \
 		the_fracs.c \
 		utils.c \
+		event.c
 OBJS = ${SRCS:.c=.o}
 LIBC = -L./libft -lft
 MLXPATH = ./minilibx-linux
-MINILIBX = $(MLXPATH)/libmlx.a
+MLX = $(MLXPATH)/libmlx.a
+LIBFT = ./libft/libft.a
 
 # Rule to create .o files from .c files
 %.o: %.c
@@ -19,19 +21,25 @@ MINILIBX = $(MLXPATH)/libmlx.a
 # Main target
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@make -C libft  # Compile libft
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBC) $(MINILIBX)  # Link the object files to create the final binary
+$(NAME): $(OBJS) $(LIBFT) $(MLX)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBC) $(MLX) -L/usr/lib -lXext -lX11 -lm
+
+$(LIBFT):
+	@make -C libft
+
+$(MLX):
+	@make -C $(MLXPATH)
 
 clean:
-	rm -f ${OBJS}
-	@make -C libft clean  # Clean libft
-	$(MAKE) clean -C $(MLXPATH)
+	rm -f $(OBJS)
+	@make -C libft clean
+	@make -C $(MLXPATH) clean
 
 fclean: clean
 	rm -f $(NAME)
-	@make -C libft fclean  # Fully clean libft
+	@make -C libft fclean
+	@rm -f $(MLXPATH)/libmlx.a
 
-re: fclean all  # Rebuild everything
+re: fclean all
 
 .PHONY: all clean fclean re

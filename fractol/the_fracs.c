@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 18:15:15 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/02 18:46:08 by plerick          ###   ########.fr       */
+/*   Updated: 2025/04/03 21:47:05 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,31 @@ void	get_mandelbrot(t_fractol *frac)
 		x = 0;
 		while (x < WIDTH)
 		{
-			cx = frac->min_x + (double)x * (frac->max_x - frac->min_y) / WIDTH;
+			cx = frac->min_x + (double)x * (frac->max_x - frac->min_x) / WIDTH;
 			cy = frac->max_y + (double)y * (frac->min_y - frac->max_y) / HEIGHT;
 			iter = mandelbrot(cx, cy);
 			set_color(frac, x, y, get_color(iter));
 			x++;
 		}
-		y++;		
+		y++;
 	}
 	mlx_put_image_to_window(frac->mlx, frac->window, frac->img, 0, 0);
 }
 
 int	julia(t_fractol *frac, double x, double y)
 {
-	int	i;
+	int		i;
 	double	temp;
 
 	i = 0;
-	temp = 0;
+	temp = 0.0;
 	while (i < MAX_ITERATIONS)
 	{
 		if ((y * y + x * x) > 4.0)
 			break ;
 		temp = 2 * x * y + frac->cy; // pourquoi un autre calcul ici, c'est pour la profondeur et l'autre pour le placement ?
 		x = x * x - y * y + frac->cx;
+		y = temp;
 		i++;
 	}
 	return (i);
@@ -91,13 +92,13 @@ void	get_julia(t_fractol *frac)
 		y = 0;
 		while (y < WIDTH)
 		{
-			cx = frac->min_x + (double)x * (frac->max_x - frac->min_y) / WIDTH;
+			cx = frac->min_x + (double)x * (frac->max_x - frac->min_x) / WIDTH;
 			cy = frac->max_y + (double)y * (frac->min_y - frac->max_y) / HEIGHT;
 			iter = julia(frac, cx, cy);
 			set_color(frac, x, y, get_color(iter));
 			y++;
 		}
-		x++;		
+		x++;
 	}
 	mlx_put_image_to_window(frac->mlx, frac->window, frac->img, 0, 0);
 }

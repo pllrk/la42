@@ -6,26 +6,23 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 16:30:10 by plerick           #+#    #+#             */
-/*   Updated: 2025/04/02 18:45:32 by plerick          ###   ########.fr       */
+/*   Updated: 2025/04/03 21:45:24 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#ifndef	FRACTOL_H
+#ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "libft/libft.h"
-# include <unistd.h>
 # include "minilibx-linux/mlx.h"
+# include "libft/libft.h"
 # include <stdio.h>
 # include <math.h> // a voir ce qu'elle fait
-// # include <X11/keysym.h> // a voir ce qu'elle fait
-// # include <X11/Xlib.h> // a voir ce qu'elle fait
+# include <X11/keysym.h> // a voir ce qu'elle fait
+# include <X11/Xlib.h> // a voir ce qu'elle fait
 
-# define WIDTH 800
-# define HEIGHT 800
-# define MAX_ITERATIONS 42
+# define WIDTH 950
+# define HEIGHT 950
+# define MAX_ITERATIONS 150
 
 typedef struct s_fractol
 {
@@ -58,5 +55,10 @@ int		get_color(int iter);
 void	set_color(t_fractol *frac, int x, int y, int color);
 void	get_mandelbrot(t_fractol *frac);
 int		mandelbrot(double cx, double cy);
+int		end_fractol(t_fractol *frac);
+int		key_event(int keycode, t_fractol *frac);
+void	move(t_fractol *frac, char direction);
+int		mouse_event(int keycode, int x, int y, t_fractol *frac);
+void	zoom(t_fractol *frac, double zoom);
 
 #endif
