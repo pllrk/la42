@@ -1,9 +1,61 @@
 #include "philo.h"
+#include <pthread.h>
 
-
-
-void pass_rules(char **argv, t_rules *rule)
+void create_fork(t_all *all, int i)
 {
+	t_fork *fork;
+
+	fork = malloc(sizeof(t_fork));
+	fork->id_fork = i;
+	fork->in_use = false;
+	fork->next = NULL;
+	fork->philo_using = NULL;
+	fork->philo_to_left = NULL;
+	fork->philo_to_right = NULL;
+	if (!all->forks)
+		all->forks = fork;
+	else
+		go_to_end(all, NULL, fork);
+}
+
+void create_philo(t_all *all, int i)
+{
+	t_philo *philo;
+
+	philo = malloc(sizeof(t_philo));
+	philo->id_philo = i;
+	philo->next = NULL;
+	philo->fork_left = NULL;
+	philo->fork_right = NULL;
+	philo->rules = all->rule;
+	philo->eaten = false;
+	philo->sleep = false;
+	philo->think = false;
+	if (!all->philos)
+		all->philos = philo;
+	else
+		go_to_end(all, philo, NULL);
+}
+
+void create_philo_and_fork(t_all *all)
+{
+	int	i;
+
+	i = 0;
+	while (i < all->rule->nbr_of_philo)
+	{
+		i++;
+		create_philo(all, i);
+		create_fork(all, i);
+	}
+	put_fork_on_table(all->philos, all->forks, all);
+}
+
+void pass_rules(char **argv, t_all *all)
+{
+	t_rules	*rule;
+
+	rule = malloc(sizeof(t_rules));
 	rule->nbr_of_philo = ft_atoi(argv[1]);
 	rule->time_to_die = ft_atoi(argv[2]);
 	rule->time_to_eat = ft_atoi(argv[3]);
@@ -12,21 +64,36 @@ void pass_rules(char **argv, t_rules *rule)
 		rule->nbr_to_eat = ft_atoi(argv[5]);
 	else
 		rule->nbr_to_eat = -1;
+	all->rule = rule;
 }
 
 int main(int argc, char **argv)
 {
-	t_rules rule;
+	t_all all;
 
-	int i = 0;
-	while (argv[i])
-	{
-		printf("%d : %s\n", i, argv[i]);
-		i++;
-	}
+	// int i = 0;
 	if (argc < 5 || argc > 6)
 		return (0);
-	pass_rules(argv, &rule);
+	if (argv[1] == NULL || ft_atoi(argv[1]) == 0)
+		return (0);
+	all.forks = NULL;
+	all.philos = NULL;
+	all.rule = NULL;
+	pass_rules(argv, &all);
+	create_philo_and_fork(&all);
+	// must do a free all;
 
+
+	// printf("philo n°%d\n", all.philos->id_philo);
+	// printf("philo n°%d\n", all.philos->next->id_philo);
+	// printf("fork n°%d\n", all.forks->id_fork);
+	// printf("fork n°%d\n", all.forks->next->id_fork);
+
+	// printf("%d\n", all.rule->nbr_of_philo);
+	// printf("%d\n", all.rule->time_to_die);
+	// printf("%d\n", all.rule->time_to_eat);
+	// printf("%d\n", all.rule->time_to_sleep);
+	// printf("%d\n", all.rule->nbr_to_eat);
+	free_all(&all);
 	return (0);
 }
