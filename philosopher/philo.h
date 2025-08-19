@@ -8,6 +8,9 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/time.h>
+# include <pthread.h>
+# include <unistd.h>
 
 typedef struct s_fork
 {
@@ -26,6 +29,8 @@ typedef struct s_philo
 	bool			sleep;
 	bool			think;
 	struct s_philo	*next;
+	long			set_time_begin;
+	long			last_time_eat;
 	t_fork			*fork_right;
 	t_fork			*fork_left;
 	struct s_rules	*rules;
@@ -33,11 +38,11 @@ typedef struct s_philo
 
 typedef struct s_rules
 {
-	int		nbr_of_philo;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		nbr_to_eat;
+	long		nbr_of_philo;
+	long		time_to_die;
+	long		time_to_eat;
+	long		time_to_sleep;
+	long		nbr_to_eat;
 }					t_rules;
 
 typedef struct s_all
@@ -48,8 +53,10 @@ typedef struct s_all
 }					t_all;
 
 
-int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 void	go_to_end(t_all *all,t_philo *philo, t_fork *fork);
 void	free_all(t_all *all);
 void	put_fork_on_table(t_philo *philo,t_fork *fork, t_all *all);
+int		start_dinner(t_all *all);
+
 #endif

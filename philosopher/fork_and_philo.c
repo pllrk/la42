@@ -1,24 +1,21 @@
 
 #include "philo.h"
 
-void put_fork_on_table(t_philo *philo,t_fork *fork, t_all *all)
+void* task_to_do(void *arg)
 {
-	t_philo *tmp;
-	t_fork 	*tmp2;
+	t_philo *philo_thread;
+	philo_thread = (t_philo *)arg;
+	printf("id : %d\n", philo_thread->id_philo);
+	return (NULL);
+}
 
-	tmp = philo;
-	tmp2 = fork;
-	while (tmp->next)
-	{
-		tmp->fork_right = tmp2;
-		tmp2->philo_to_left = tmp;
-		tmp = tmp->next;
-		tmp2->philo_to_right = tmp;
-		tmp->fork_left = tmp2;
-		tmp2 = tmp2->next;
-	}
-	tmp->fork_right = tmp2;
-	tmp2->philo_to_left = tmp;
-	tmp2->philo_to_right = all->philos;
-	all->philos->fork_left = tmp2;
+int	start_dinner(t_all *all)
+{
+	pthread_t philo_treh[all->rule->nbr_of_philo];
+	
+	pthread_create(&philo_treh[0], NULL, task_to_do, &all->philos);
+	pthread_create(&philo_treh[1], NULL, task_to_do, &all->philos->next);
+	// pthread_join(philo_treh[0], NULL);
+	// pthread_join(philo_treh[1], NULL);
+	return (1);
 }

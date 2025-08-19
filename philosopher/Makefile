@@ -4,7 +4,7 @@ CFLAGS = -Wall -Werror -Wextra -g
 # LIBFT_MAKEFILE = libft/Makefile
 #PARSING_DIR = parsing/
 SRCS = 	main.c \
-		ft_atoi.c \
+		ft_atol.c \
 		utils.c \
 		fork_and_philo.c \
 #		$(PARSING_DIR)check_signs.c \

@@ -1,10 +1,10 @@
 #include "philo.h"
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
 	int	i;
-	int	neg;
-	int	chif;
+	long	neg;
+	long	chif;
 
 	i = 0;
 	neg = 1;

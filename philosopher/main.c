@@ -31,6 +31,8 @@ void create_philo(t_all *all, int i)
 	philo->eaten = false;
 	philo->sleep = false;
 	philo->think = false;
+	philo->set_time_begin = 0;
+	philo->last_time_eat = 0;
 	if (!all->philos)
 		all->philos = philo;
 	else
@@ -56,12 +58,12 @@ void pass_rules(char **argv, t_all *all)
 	t_rules	*rule;
 
 	rule = malloc(sizeof(t_rules));
-	rule->nbr_of_philo = ft_atoi(argv[1]);
-	rule->time_to_die = ft_atoi(argv[2]);
-	rule->time_to_eat = ft_atoi(argv[3]);
-	rule->time_to_sleep = ft_atoi(argv[4]);
+	rule->nbr_of_philo = ft_atol(argv[1]);
+	rule->time_to_die = ft_atol(argv[2]);
+	rule->time_to_eat = ft_atol(argv[3]);
+	rule->time_to_sleep = ft_atol(argv[4]);
 	if (argv[5])
-		rule->nbr_to_eat = ft_atoi(argv[5]);
+		rule->nbr_to_eat = ft_atol(argv[5]);
 	else
 		rule->nbr_to_eat = -1;
 	all->rule = rule;
@@ -71,29 +73,27 @@ int main(int argc, char **argv)
 {
 	t_all all;
 
-	// int i = 0;
 	if (argc < 5 || argc > 6)
 		return (0);
-	if (argv[1] == NULL || ft_atoi(argv[1]) == 0)
+	if (argv[1] == NULL || ft_atol(argv[1]) == 0)
 		return (0);
 	all.forks = NULL;
 	all.philos = NULL;
 	all.rule = NULL;
 	pass_rules(argv, &all);
 	create_philo_and_fork(&all);
-	// must do a free all;
-
-
+	if (!start_dinner(&all))
+		return (write(2, "pb during dinner\n", 17), 1);
 	// printf("philo n°%d\n", all.philos->id_philo);
 	// printf("philo n°%d\n", all.philos->next->id_philo);
 	// printf("fork n°%d\n", all.forks->id_fork);
 	// printf("fork n°%d\n", all.forks->next->id_fork);
 
-	// printf("%d\n", all.rule->nbr_of_philo);
-	// printf("%d\n", all.rule->time_to_die);
-	// printf("%d\n", all.rule->time_to_eat);
-	// printf("%d\n", all.rule->time_to_sleep);
-	// printf("%d\n", all.rule->nbr_to_eat);
+	// printf("%ld\n", all.rule->nbr_of_philo);
+	// printf("%ld\n", all.rule->time_to_die);
+	// printf("%ld\n", all.rule->time_to_eat);
+	// printf("%ld\n", all.rule->time_to_sleep);
+	// printf("%ld\n", all.rule->nbr_to_eat);
 	free_all(&all);
 	return (0);
 }
