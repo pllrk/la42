@@ -6,12 +6,15 @@ void create_fork(t_all *all, int i)
 	t_fork *fork;
 
 	fork = malloc(sizeof(t_fork));
+	// mettre une sécu
 	fork->id_fork = i;
 	fork->in_use = false;
 	fork->next = NULL;
 	fork->philo_using = NULL;
 	fork->philo_to_left = NULL;
 	fork->philo_to_right = NULL;
+	if (pthread_mutex_init(&fork->mutex, NULL) != 0)
+		return (free(fork), NULL); 
 	if (!all->forks)
 		all->forks = fork;
 	else
@@ -23,6 +26,7 @@ void create_philo(t_all *all, int i)
 	t_philo *philo;
 
 	philo = malloc(sizeof(t_philo));
+	// mettre une sécu
 	philo->id_philo = i;
 	philo->next = NULL;
 	philo->fork_left = NULL;
@@ -48,7 +52,9 @@ void create_philo_and_fork(t_all *all)
 	{
 		i++;
 		create_philo(all, i);
+		// mettre une sécu
 		create_fork(all, i);
+		// mettre une sécu
 	}
 	put_fork_on_table(all->philos, all->forks, all);
 }

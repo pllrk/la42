@@ -1,5 +1,15 @@
 #include "philo.h"
 
+long get_time_begin(void)
+{
+	struct	timeval start;
+	long	time_begin;
+
+	gettimeofday(&start, NULL);
+	time_begin = (start.tv_sec * 1000 + start.tv_usec / 1000);
+	return (time_begin);
+}
+
 long	ft_atol(const char *str)
 {
 	int	i;

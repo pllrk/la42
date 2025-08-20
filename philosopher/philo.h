@@ -20,6 +20,7 @@ typedef struct s_fork
 	struct s_philo	*philo_using;
 	struct s_philo	*philo_to_right;
 	struct s_philo	*philo_to_left;
+	pthread_mutex_t mutex;
 }					t_fork;
 
 typedef struct s_philo
@@ -58,5 +59,6 @@ void	go_to_end(t_all *all,t_philo *philo, t_fork *fork);
 void	free_all(t_all *all);
 void	put_fork_on_table(t_philo *philo,t_fork *fork, t_all *all);
 int		start_dinner(t_all *all);
+long	get_time_begin(void);
 
 #endif
