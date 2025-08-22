@@ -15,7 +15,7 @@ int check_overflaw(char **argv)
 	return (0);
 }
 
-void philo_wait(t_philo *philo, long wait_time)
+void philo_stop(t_philo *philo, long wait_time)
 {
 	long	time_it_die;
 
@@ -26,30 +26,30 @@ void philo_wait(t_philo *philo, long wait_time)
 		usleep(wait_time * 1000);
 }
 
-void fork_toggle_available(t_fork *forks)
+void fork_set_dispo(t_fork *forks)
 {
 	pthread_mutex_lock(&forks->mutex);
 	forks->in_use = !forks->in_use;
 	pthread_mutex_unlock(&forks->mutex);
 }
 
-int	fork_is_available(t_fork *forks)
+int	fork_check_dispo(t_fork *forks)
 {
 	int	is_available;
 
 	pthread_mutex_lock(&forks->mutex);
 	is_available = forks->in_use;
 	pthread_mutex_unlock(&forks->mutex);
-	return (is_available);
+	return (is_available);	
 }
 
-int	take_fork(t_philo *philo, t_fork *forks)
+int	pick_up_fork(t_philo *philo, t_fork *forks)
 {
-	while (fork_is_available(forks) && !check_end(philo))
+	while (fork_check_dispo(forks) && !check_end(philo))
 		usleep(100);
 	if (!check_end(philo))
 	{
-		fork_toggle_available(forks);
+		fork_set_dispo(forks);
 		printf("%ld philo n°%d took a fork\n", get_time_event(philo), philo->id_philo);
 		return (1);
 	}

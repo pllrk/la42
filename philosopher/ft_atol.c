@@ -23,7 +23,7 @@ int check_end(t_philo *philo)
 		philo->dead = end;
 		pthread_mutex_unlock(&mutex);
 		if (is_dead)
-			printf("%ld philo n°%d is dead - Last time eat = %ld\n", get_time_event(philo), philo->id_philo, ((philo->last_time_eat - philo->set_time_begin) - get_time_event(philo)));
+			printf("%ld philo n°%d is dead\n", get_time_event(philo), philo->id_philo);
 	}
 	return (philo->dead);
 }

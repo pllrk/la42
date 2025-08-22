@@ -5,10 +5,10 @@ CFLAGS = -Wall -Werror -Wextra -g
 #PARSING_DIR = parsing/
 SRCS = 	main.c \
 		ft_atol.c \
-		utils.c \
 		utils2.c \
 		fork_and_philo.c \
 		task.c \
+		init.c \
 
 OBJS = ${SRCS:.c=.o}
 # LIBC = -L./libft -lft -lreadline

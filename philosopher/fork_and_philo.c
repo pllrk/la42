@@ -9,7 +9,7 @@ void until_no_more_hungry(t_philo *philo)
 	if (philo->id_philo % 2)
 	{
 		philo_think(philo);
-		philo_wait(philo, philo->rules->time_to_sleep);
+		philo_stop(philo, philo->rules->time_to_sleep);
 		philo_eat(philo);
 		i++;
 		philo_sleep(philo);
@@ -17,7 +17,6 @@ void until_no_more_hungry(t_philo *philo)
 	while (!check_end(philo) && i < philo->rules->nbr_to_eat)
 	{
 		philo_think(philo);
-		philo_wait(philo, philo->rules->time_to_sleep);
 		philo_eat(philo);
 		i++;
 		philo_sleep(philo);
@@ -30,7 +29,7 @@ void until_it_dies(t_philo *philo)
 	if (philo->id_philo % 2)
 	{
 		philo_think(philo);
-		philo_wait(philo, philo->rules->time_to_sleep);
+		philo_stop(philo, philo->rules->time_to_sleep);
 		philo_eat(philo);
 		philo_sleep(philo);
 	}
@@ -56,25 +55,25 @@ void *task_to_do(void *arg)
 	return (NULL);
 }
 
-int	start_dinner(t_all *all)
+void	start_dinner(t_all_rule *all, t_philo *philo, t_fork *fork_start)
 {
-	pthread_t	philo_treh[all->rule->nbr_of_philo];
-	t_philo		*tmp;
-	int			i;
+	pthread_t	philo_treh;
+	t_philo		tmp;
 
-	i = 0;
-	tmp = all->philos;
-	while (i < all->rule->nbr_of_philo)
+	if (philo->id_philo <= all->nbr_of_philo)
 	{
-		pthread_create(&philo_treh[i], NULL, &task_to_do, tmp);
-		tmp = tmp->next;
-		i++;
+		if (philo->id_philo < all->nbr_of_philo)
+		{
+			create_philo_first(all, &tmp, philo->id_philo + 1);
+			philo->fork_left = &tmp.fork_right;
+			pthread_create(&philo_treh, NULL, &task_to_do, philo);
+			start_dinner(all, &tmp, fork_start);
+		}
+		else
+		{
+			philo->fork_left = fork_start;
+			pthread_create(&philo_treh, NULL, &task_to_do, philo);
+		}
+		pthread_join(philo_treh, NULL);
 	}
-	i = 0;
-	while(i < all->rule->nbr_of_philo)
-	{
-		pthread_join(philo_treh[i], NULL);
-		i++;
-	}	
-	return (1);
 }

@@ -1,94 +1,37 @@
 #include "philo.h"
-#include <pthread.h>
 
-int create_fork(t_all *all, int i)
+int create_philo_and_fork(t_all_rule *all)
 {
-	t_fork *fork;
+	t_philo philo;
 
-	fork = malloc(sizeof(t_fork));
-	// mettre une sécu
-	fork->id_fork = i;
-	fork->in_use = 0;
-	fork->next = NULL;
-	fork->philo_to_left = NULL;
-	fork->philo_to_right = NULL;
-	pthread_mutex_init(&fork->mutex, NULL);
-	if (!all->forks)
-		all->forks = fork;
-	else
-		go_to_end(all, NULL, fork);
+	create_philo_first(all, &philo, 1);
+	start_dinner(all, &philo, &philo.fork_right);
 	return (0);
 }
 
-void create_philo(t_all *all, int i)
+int pass_rules(char **argv, t_all_rule *all)
 {
-	t_philo *philo;
-
-
-	philo = malloc(sizeof(t_philo));
-	// mettre une sécu
-	philo->id_philo = i;
-	philo->next = NULL;
-	philo->fork_left = NULL;
-	philo->fork_right = NULL;
-	philo->rules = all->rule;
-	philo->set_time_begin = 0;
-	philo->last_time_eat = 0;
-	philo->dead = 0;
-	if (!all->philos)
-		all->philos = philo;
-	else
-		go_to_end(all, philo, NULL);
-}
-
-void create_philo_and_fork(t_all *all)
-{
-	int	i;
-
-	i = 0;
-	while (i < all->rule->nbr_of_philo)
-	{
-		i++;
-		create_philo(all, i);
-		// mettre une sécu
-		create_fork(all, i);
-		// mettre une sécu
-	}
-	put_fork_on_table(all->philos, all->forks, all);
-}
-
-int pass_rules(char **argv, t_all *all)
-{
-	t_rules	*rule;
-
-	rule = malloc(sizeof(t_rules));
-	rule->nbr_of_philo = ft_atol(argv[1]);
-	rule->time_to_die = ft_atol(argv[2]);
-	rule->time_to_eat = ft_atol(argv[3]);
-	rule->time_to_sleep = ft_atol(argv[4]);
+	memset(all, 0, sizeof(t_all_rule));
+	all->nbr_of_philo = ft_atol(argv[1]);
+	all->time_to_die = ft_atol(argv[2]);
+	all->time_to_eat = ft_atol(argv[3]);
+	all->time_to_sleep = ft_atol(argv[4]);
 	if (argv[5])
-		rule->nbr_to_eat = ft_atol(argv[5]);
+		all->nbr_to_eat = ft_atol(argv[5]);
 	else
-		rule->nbr_to_eat = -1;
-	all->rule = rule;
+		all->nbr_to_eat = -1;
 	return (0);
 }
 
 int main(int argc, char **argv)
 {
-	t_all all;
+	t_all_rule all;
 
 	if (argc < 5 || argc > 6)
 		return (write(2, "Not enough arguments\n", 21), 0);
 	if (argv[1] == NULL || ft_atol(argv[1]) == 0 || check_overflaw(argv))
 		return (write(2, "Bad arguments\n", 14), 0);
-	all.forks = NULL;
-	all.philos = NULL;
-	all.rule = NULL;
 	pass_rules(argv, &all);
 	create_philo_and_fork(&all);
-	if (!start_dinner(&all))
-		return (write(2, "pb during dinner\n", 17), 1);
-	free_all(&all);
 	return (0);
 }
