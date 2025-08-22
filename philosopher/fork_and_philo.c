@@ -37,7 +37,6 @@ void until_it_dies(t_philo *philo)
 	while (!check_end(philo))
 	{
 		philo_think(philo);
-		philo_wait(philo, philo->rules->time_to_sleep);
 		philo_eat(philo);
 		philo_sleep(philo);
 	}

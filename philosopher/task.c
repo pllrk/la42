@@ -14,8 +14,10 @@ void pick_fork_left_first(t_philo *philo)
 				philo_wait(philo, philo->rules->time_to_eat);
 			}
 			fork_toggle_available(philo->fork_right);
+			printf("%ld philo n°%d put back a fork\n", get_time_event(philo), philo->id_philo);
 		}
 		fork_toggle_available(philo->fork_left);
+		printf("%ld philo n°%d put back a fork\n", get_time_event(philo), philo->id_philo);
 	}
 }
 
@@ -32,8 +34,10 @@ void pick_fork_right_first(t_philo *philo)
 				philo_wait(philo, philo->rules->time_to_eat);
 			}
 			fork_toggle_available(philo->fork_left);
+			printf("%ld philo n°%d put back a fork\n", get_time_event(philo), philo->id_philo);
 		}
 		fork_toggle_available(philo->fork_right);
+		printf("%ld philo n°%d put back a fork\n", get_time_event(philo), philo->id_philo);
 	}
 }
 

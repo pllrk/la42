@@ -32,7 +32,7 @@ int	fork_is_available(t_fork *forks)
 int	take_fork(t_philo *philo, t_fork *forks)
 {
 	while (fork_is_available(forks) && !check_end(philo))
-		usleep(500);
+		usleep(100);
 	if (!check_end(philo))
 	{
 		fork_toggle_available(forks);
