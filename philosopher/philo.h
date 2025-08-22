@@ -15,9 +15,8 @@
 typedef struct s_fork
 {
 	int		id_fork;
-	bool	in_use;
+	int		in_use;
 	struct s_fork	*next;
-	struct s_philo	*philo_using;
 	struct s_philo	*philo_to_right;
 	struct s_philo	*philo_to_left;
 	pthread_mutex_t mutex;
@@ -26,15 +25,13 @@ typedef struct s_fork
 typedef struct s_philo
 {
 	int				id_philo;
-	bool			eaten;
-	bool			sleep;
-	bool			think;
 	struct s_philo	*next;
 	long			set_time_begin;
 	long			last_time_eat;
 	t_fork			*fork_right;
 	t_fork			*fork_left;
 	struct s_rules	*rules;
+	int				dead; 
 }					t_philo;
 
 typedef struct s_rules
@@ -60,5 +57,14 @@ void	free_all(t_all *all);
 void	put_fork_on_table(t_philo *philo,t_fork *fork, t_all *all);
 int		start_dinner(t_all *all);
 long	get_time_begin(void);
+void	philo_sleep(t_philo *philo);
+void	philo_eat(t_philo *philo);
+void	philo_think(t_philo *philo);
+long	check_time_eat(t_philo *philo);
+int		check_end(t_philo *philo);
+int		take_fork(t_philo *philo, t_fork *forks);
+void	fork_toggle_available(t_fork *forks);
+void	philo_wait(t_philo *philo, long wait_time);
+long	get_time_event(t_philo *philo);
 
 #endif

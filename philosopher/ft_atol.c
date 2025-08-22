@@ -1,5 +1,38 @@
 #include "philo.h"
 
+long get_time_event(t_philo *philo)
+{
+	return (get_time_begin() - philo->set_time_begin);
+}
+
+int check_end(t_philo *philo)
+{
+	static int				end = 0;
+	static pthread_mutex_t	mutex = PTHREAD_MUTEX_INITIALIZER;
+	int						is_dead;
+
+	is_dead = 0;
+	if (!philo->dead)
+	{
+		pthread_mutex_lock(&mutex);
+		if (!end && check_time_eat(philo) <= 0)
+		{
+			is_dead = 1;
+			end = 1;
+		}
+		philo->dead = end;
+		pthread_mutex_unlock(&mutex);
+		if (is_dead)
+			printf("%ld philo n°%d is dead - Last time eat = %ld\n", get_time_event(philo), philo->id_philo, ((philo->last_time_eat - philo->set_time_begin) - get_time_event(philo)));
+	}
+	return (philo->dead);
+}
+
+long check_time_eat(t_philo *philo)
+{
+	return (philo->rules->time_to_die - (get_time_begin() - philo->last_time_eat));
+}
+
 long get_time_begin(void)
 {
 	struct	timeval start;

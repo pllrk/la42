@@ -6,8 +6,9 @@ CFLAGS = -Wall -Werror -Wextra -g
 SRCS = 	main.c \
 		ft_atol.c \
 		utils.c \
+		utils2.c \
 		fork_and_philo.c \
-#		$(PARSING_DIR)check_signs.c \
+		task.c \
 
 OBJS = ${SRCS:.c=.o}
 # LIBC = -L./libft -lft -lreadline

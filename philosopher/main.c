@@ -1,29 +1,29 @@
 #include "philo.h"
 #include <pthread.h>
 
-void create_fork(t_all *all, int i)
+int create_fork(t_all *all, int i)
 {
 	t_fork *fork;
 
 	fork = malloc(sizeof(t_fork));
 	// mettre une sécu
 	fork->id_fork = i;
-	fork->in_use = false;
+	fork->in_use = 0;
 	fork->next = NULL;
-	fork->philo_using = NULL;
 	fork->philo_to_left = NULL;
 	fork->philo_to_right = NULL;
-	if (pthread_mutex_init(&fork->mutex, NULL) != 0)
-		return (free(fork), NULL); 
+	pthread_mutex_init(&fork->mutex, NULL);
 	if (!all->forks)
 		all->forks = fork;
 	else
 		go_to_end(all, NULL, fork);
+	return (0);
 }
 
 void create_philo(t_all *all, int i)
 {
 	t_philo *philo;
+
 
 	philo = malloc(sizeof(t_philo));
 	// mettre une sécu
@@ -32,11 +32,9 @@ void create_philo(t_all *all, int i)
 	philo->fork_left = NULL;
 	philo->fork_right = NULL;
 	philo->rules = all->rule;
-	philo->eaten = false;
-	philo->sleep = false;
-	philo->think = false;
 	philo->set_time_begin = 0;
 	philo->last_time_eat = 0;
+	philo->dead = 0;
 	if (!all->philos)
 		all->philos = philo;
 	else
@@ -59,7 +57,7 @@ void create_philo_and_fork(t_all *all)
 	put_fork_on_table(all->philos, all->forks, all);
 }
 
-void pass_rules(char **argv, t_all *all)
+int pass_rules(char **argv, t_all *all)
 {
 	t_rules	*rule;
 
@@ -73,6 +71,7 @@ void pass_rules(char **argv, t_all *all)
 	else
 		rule->nbr_to_eat = -1;
 	all->rule = rule;
+	return (0);
 }
 
 int main(int argc, char **argv)
