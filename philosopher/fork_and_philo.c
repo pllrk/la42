@@ -76,6 +76,5 @@ int	start_dinner(t_all *all)
 		pthread_join(philo_treh[i], NULL);
 		i++;
 	}	
-	//here need to destroy the mutex
 	return (1);
 }

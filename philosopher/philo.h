@@ -66,5 +66,6 @@ int		take_fork(t_philo *philo, t_fork *forks);
 void	fork_toggle_available(t_fork *forks);
 void	philo_wait(t_philo *philo, long wait_time);
 long	get_time_event(t_philo *philo);
+int		check_overflaw(char **argv);
 
 #endif

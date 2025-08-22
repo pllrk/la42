@@ -79,9 +79,9 @@ int main(int argc, char **argv)
 	t_all all;
 
 	if (argc < 5 || argc > 6)
-		return (0);
-	if (argv[1] == NULL || ft_atol(argv[1]) == 0)
-		return (0);
+		return (write(2, "Not enough arguments\n", 21), 0);
+	if (argv[1] == NULL || ft_atol(argv[1]) == 0 || check_overflaw(argv))
+		return (write(2, "Bad arguments\n", 14), 0);
 	all.forks = NULL;
 	all.philos = NULL;
 	all.rule = NULL;
@@ -89,16 +89,6 @@ int main(int argc, char **argv)
 	create_philo_and_fork(&all);
 	if (!start_dinner(&all))
 		return (write(2, "pb during dinner\n", 17), 1);
-	// printf("philo n°%d\n", all.philos->id_philo);
-	// printf("philo n°%d\n", all.philos->next->id_philo);
-	// printf("fork n°%d\n", all.forks->id_fork);
-	// printf("fork n°%d\n", all.forks->next->id_fork);
-
-	// printf("%ld\n", all.rule->nbr_of_philo);
-	// printf("%ld\n", all.rule->time_to_die);
-	// printf("%ld\n", all.rule->time_to_eat);
-	// printf("%ld\n", all.rule->time_to_sleep);
-	// printf("%ld\n", all.rule->nbr_to_eat);
 	free_all(&all);
 	return (0);
 }

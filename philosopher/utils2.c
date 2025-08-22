@@ -1,6 +1,20 @@
 
 #include "philo.h"
 
+int check_overflaw(char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (ft_atol(argv[i]) < 0)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void philo_wait(t_philo *philo, long wait_time)
 {
 	long	time_it_die;
