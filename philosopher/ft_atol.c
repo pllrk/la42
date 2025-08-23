@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/23 11:30:30 by plerick           #+#    #+#             */
+/*   Updated: 2025/08/23 11:30:32 by plerick          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
-long get_time_event(t_philo *philo)
+long	get_time_event(t_philo *philo)
 {
 	return (get_time_begin() - philo->set_time_begin);
 }
 
-int check_end(t_philo *philo)
+int	check_end(t_philo *philo)
 {
 	static int				end = 0;
 	static pthread_mutex_t	mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -23,20 +35,22 @@ int check_end(t_philo *philo)
 		philo->dead = end;
 		pthread_mutex_unlock(&mutex);
 		if (is_dead)
-			printf("%ld philo n°%d is dead\n", get_time_event(philo), philo->id_philo);
+			printf("%ld philo n°%d is dead\n", get_time_event(philo),
+				philo->id_philo);
 	}
 	return (philo->dead);
 }
 
-long check_time_eat(t_philo *philo)
+long	check_time_eat(t_philo *philo)
 {
-	return (philo->rules->time_to_die - (get_time_begin() - philo->last_time_eat));
+	return (philo->rules->time_to_die - (get_time_begin()
+			- philo->last_time_eat));
 }
 
-long get_time_begin(void)
+long	get_time_begin(void)
 {
-	struct	timeval start;
-	long	time_begin;
+	struct timeval	start;
+	long			time_begin;
 
 	gettimeofday(&start, NULL);
 	time_begin = (start.tv_sec * 1000 + start.tv_usec / 1000);
@@ -45,7 +59,7 @@ long get_time_begin(void)
 
 long	ft_atol(const char *str)
 {
-	int	i;
+	int		i;
 	long	neg;
 	long	chif;
 

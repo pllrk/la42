@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fork_and_philo.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/23 11:30:23 by plerick           #+#    #+#             */
+/*   Updated: 2025/08/23 11:30:27 by plerick          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
-void until_no_more_hungry(t_philo *philo)
+void	until_no_more_hungry(t_philo *philo)
 {
 	int	i;
 
@@ -24,7 +35,7 @@ void until_no_more_hungry(t_philo *philo)
 	return ;
 }
 
-void until_it_dies(t_philo *philo)
+void	until_it_dies(t_philo *philo)
 {
 	if (philo->id_philo % 2)
 	{
@@ -42,14 +53,15 @@ void until_it_dies(t_philo *philo)
 	return ;
 }
 
-void *task_to_do(void *arg)
+void	*task_to_do(void *arg)
 {
-	t_philo *philo;
+	t_philo	*philo;
+
 	philo = arg;
 	philo->set_time_begin = get_time_begin();
 	philo->last_time_eat = philo->set_time_begin;
 	if (philo->rules->nbr_to_eat == -1)
- 		until_it_dies(philo);
+		until_it_dies(philo);
 	else
 		until_no_more_hungry(philo);
 	return (NULL);

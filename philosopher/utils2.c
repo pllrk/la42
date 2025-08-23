@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/23 11:31:01 by plerick           #+#    #+#             */
+/*   Updated: 2025/08/23 11:33:56 by plerick          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "philo.h"
 
-int check_overflaw(char **argv)
+int	check_overflaw(char **argv)
 {
 	int	i;
 
@@ -15,7 +26,7 @@ int check_overflaw(char **argv)
 	return (0);
 }
 
-void philo_stop(t_philo *philo, long wait_time)
+void	philo_stop(t_philo *philo, long wait_time)
 {
 	long	time_it_die;
 
@@ -26,7 +37,7 @@ void philo_stop(t_philo *philo, long wait_time)
 		usleep(wait_time * 1000);
 }
 
-void fork_set_dispo(t_fork *forks)
+void	fork_set_dispo(t_fork *forks)
 {
 	pthread_mutex_lock(&forks->mutex);
 	forks->in_use = !forks->in_use;
@@ -40,7 +51,7 @@ int	fork_check_dispo(t_fork *forks)
 	pthread_mutex_lock(&forks->mutex);
 	is_available = forks->in_use;
 	pthread_mutex_unlock(&forks->mutex);
-	return (is_available);	
+	return (is_available);
 }
 
 int	pick_up_fork(t_philo *philo, t_fork *forks)
@@ -50,7 +61,8 @@ int	pick_up_fork(t_philo *philo, t_fork *forks)
 	if (!check_end(philo))
 	{
 		fork_set_dispo(forks);
-		printf("%ld philo n°%d took a fork\n", get_time_event(philo), philo->id_philo);
+		printf("%ld philo n°%d took a fork\n", get_time_event(philo),
+			philo->id_philo);
 		return (1);
 	}
 	return (0);
