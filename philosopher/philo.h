@@ -6,7 +6,7 @@
 /*   By: plerick <plerick@student.42lehavre.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 11:32:53 by plerick           #+#    #+#             */
-/*   Updated: 2025/08/23 11:32:56 by plerick          ###   ########.fr       */
+/*   Updated: 2025/08/23 11:38:29 by plerick          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,6 @@ typedef struct s_philo
 	int				dead;
 }					t_philo;
 
-// typedef struct s_rules
-// {
-// 	long		nbr_of_philo;
-// 	long		time_to_die;
-// 	long		time_to_eat;
-// 	long		time_to_sleep;
-// 	long		nbr_to_eat;
-// }					t_rules;
-
 typedef struct s_all
 {
 	long			nbr_of_philo;
@@ -63,8 +54,6 @@ typedef struct s_all
 long				ft_atol(const char *str);
 void				go_to_end(t_philo *philo, t_philo *philo_t_add,
 						t_fork *fork, t_fork *fork_t_add);
-// void	go_to_end(t_philo *philo, t_fork *fork);
-// void	free_all(t_all_rule *all);
 void				put_fork_on_table(t_philo *philo, t_fork *fork);
 void				start_dinner(t_all_rule *all, t_philo *philo,
 						t_fork *fork_start);
