@@ -2,7 +2,7 @@
 
 int	main(void)
 {
-	// PhoneBook	test;
+	PhoneBook	phonebook;
 	// Contact		test2;
 	std::string str;
 
@@ -11,10 +11,10 @@ int	main(void)
 		std::cout << "Enter ADD or SEARCH or EXIT" << std::endl;
 		std::getline(std::cin, str);
 		if (str.compare("ADD") == 0)
-			PhoneBook::addContact(void);
+			phonebook.addContact();
 		else if (str.compare("SEARCH") == 0)
-			std::cout << "searrrch" << std::endl;
-		else if (str.compare("EXIT") == 0)
+			phonebook.searchContact();
+		else if (str.compare("EXIT") == 0 || std::cin.eof())
 		{
 			std::cout << "Exited" << std::endl;
 			break;

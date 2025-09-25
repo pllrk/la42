@@ -33,7 +33,7 @@ public:
 class PhoneBook
 {
 private:
-	static	const int MAX_CONTACT = 8;
+	static	const int MAX_CONTACT = 9;
 	Contact the_contacts[MAX_CONTACT];
 	int		contactnbr;
 	int		oldestindex;

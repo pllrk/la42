@@ -41,5 +41,4 @@ bool Contact::isempty(void) const
 
 Contact::~Contact()
 {
-	std::cout << "Exit in Contact" << std::endl;
 }
