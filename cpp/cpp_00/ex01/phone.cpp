@@ -6,7 +6,7 @@ int	main(void)
 	// Contact		test2;
 	std::string str;
 
-	while (1)
+	while (std::cin)
 	{
 		std::cout << "Enter ADD or SEARCH or EXIT" << std::endl;
 		std::getline(std::cin, str);
@@ -15,10 +15,8 @@ int	main(void)
 		else if (str.compare("SEARCH") == 0)
 			phonebook.searchContact();
 		else if (str.compare("EXIT") == 0 || std::cin.eof())
-		{
-			std::cout << "Exited" << std::endl;
 			break;
-		}
 	}
+	std::cout << "Exited" << std::endl;
 	return (0);
 }

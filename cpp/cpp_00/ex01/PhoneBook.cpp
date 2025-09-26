@@ -8,16 +8,37 @@ void PhoneBook::addContact(void)
 {
 	std::string firstname, lastname, nickname, phonenumber, darksecret;
 
-	std::cout << "First name ?" << std::endl;
-	std::getline(std::cin, firstname);
-	
-	std::cout << "Last name ?" << std::endl;
-	std::getline(std::cin, lastname);
-	
-	std::cout << "Nickname ?" << std::endl;
-	std::getline(std::cin, nickname);
-	
-	while (true)
+	while (std::cin)
+	{
+		std::cout << "First name ?" << std::endl;
+		std::getline(std::cin, firstname);
+		if (!firstname.empty())
+			break ;
+		else
+			std::cout << "Can't be empty" << std::endl;
+	}
+
+	while (std::cin)
+	{
+		std::cout << "Last name ?" << std::endl;
+		std::getline(std::cin, lastname);
+		if (!lastname.empty())
+			break ;
+		else
+			std::cout << "Can't be empty" << std::endl;
+	}
+
+	while (std::cin)
+	{
+		std::cout << "Nickname ?" << std::endl;
+		std::getline(std::cin, nickname);
+		if (!nickname.empty())
+			break ;
+		else
+			std::cout << "Can't be empty" << std::endl;
+	}
+
+	while (std::cin)
 	{
 		std::cout << "Phone number ?" << std::endl;
 		std::getline(std::cin, phonenumber); 
@@ -43,8 +64,17 @@ void PhoneBook::addContact(void)
 		break;
 	}
 	
-	std::cout << "Dark secret ?" << std::endl;
-	std::getline(std::cin, darksecret);
+	while (std::cin)
+	{
+		std::cout << "Dark secret ?" << std::endl;
+		std::getline(std::cin, darksecret);
+		if (!darksecret.empty())
+			break ;
+		else
+			std::cout << "Can't be empty" << std::endl;
+	}
+
+
 
 	if (firstname.empty() || lastname.empty() || nickname.empty() || phonenumber.empty() || darksecret.empty())
 	{
