@@ -5,28 +5,18 @@
 #ifndef ZOMBIE_CLASS
 # define ZOMBIE_CLASS
 
-class Zombie
+class	Zombie
 {
-private:
-	std::string name;
-	
-	
-public:
-	Zombie(/* args */);
-	
-	void announce(void) const;
-	
+	private:
+		std::string _name;
 
-	~Zombie();
+	public:
+		Zombie(std::string name);	
+		~Zombie();
+		void announce(void) const;
 };
 
-Zombie::Zombie(void)
-{
-}
-
-Zombie::~Zombie()
-{
-}
-
-
 #endif
+
+Zombie *newZombie(std::string name);
+void	randomChump(std::string name);
