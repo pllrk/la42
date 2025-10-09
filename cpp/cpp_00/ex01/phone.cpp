@@ -3,7 +3,6 @@
 int	main(void)
 {
 	PhoneBook	phonebook;
-	// Contact		test2;
 	std::string str;
 
 	while (std::cin)
