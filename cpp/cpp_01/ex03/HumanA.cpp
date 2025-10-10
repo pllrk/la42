@@ -16,8 +16,3 @@ void	HumanA::attack(void)
 	std::cout << this->_nameA << " attacks with their " << this->_wepA.getType() << std::endl;
 	return ;
 }
-
-// void	HumanA::setWeapon(Weapon Weapon)
-// {
-// 	this->_wepA = Weapon;
-// }
