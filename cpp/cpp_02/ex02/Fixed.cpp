@@ -35,57 +35,129 @@ Fixed& Fixed::operator=(const Fixed& other)
 
 bool Fixed::operator>(const Fixed &other)
 {
-	return (this->frac_bits > other.frac_bits);
+	return (this->_fixedPoint > other._fixedPoint);
 }
 
 bool Fixed::operator<(const Fixed &other)
 {
-	return (this->frac_bits < other.frac_bits);
+	return (this->_fixedPoint < other._fixedPoint);
 }
 
 bool Fixed::operator>=(const Fixed &other)
 {
-	return (this->frac_bits >= other.frac_bits);
+	return (this->_fixedPoint >= other._fixedPoint);
 }
 
 bool Fixed::operator<=(const Fixed &other)
 {
-	return (this->frac_bits <= other.frac_bits);
+	return (this->_fixedPoint <= other._fixedPoint);
 }
 
 bool Fixed::operator==(const Fixed &other)
 {
-	return (this->frac_bits == other.frac_bits);
+	return (this->_fixedPoint == other._fixedPoint);
 }
 
 bool Fixed::operator!=(const Fixed &other)
 {
-	return (this->frac_bits != other.frac_bits);
+	return (this->_fixedPoint != other._fixedPoint);
 }
 
 Fixed& Fixed::operator+(const Fixed &other)
 {
 	Fixed *result = new Fixed();
 
+	result->setRawBits(this->_fixedPoint + other._fixedPoint);
+	return (*result);
 }
 
 Fixed& Fixed::operator-(const Fixed &other)
 {
+	Fixed *result = new Fixed();
 
+	result->setRawBits(this->_fixedPoint - other._fixedPoint);
+	return (*result);
 }
 
 Fixed& Fixed::operator*(const Fixed &other)
 {
+	Fixed *result = new Fixed();
 
+	result->setRawBits(this->_fixedPoint * other._fixedPoint);
+	return (*result);
 }
 
 Fixed& Fixed::operator/(const Fixed &other)
 {
+	Fixed *result = new Fixed();
 
+	if (other._fixedPoint == 0)
+	{
+		std::cout << "divied by 0" << std::endl;
+		return (*result);
+	}
+		
+	result->setRawBits(this->_fixedPoint / other._fixedPoint);
+	return (*result);
 }
 
 
+Fixed& Fixed::operator++()
+{
+	this->_fixedPoint += 1;
+	return *this;
+}
 
+Fixed Fixed::operator++(int)
+{
+	Fixed temp = *this;
+
+	this->_fixedPoint += 1;
+	return (temp);
+}
+
+Fixed& Fixed::operator--()
+{
+	this->_fixedPoint -= 1;
+	return *this;
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed temp = *this;
+
+	this->_fixedPoint -= 1;
+	return (temp);
+}
+
+
+Fixed& Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a._fixedPoint < b._fixedPoint)
+		return (a);
+	return (b);
+}
+
+const Fixed& Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (a._fixedPoint < b._fixedPoint)
+		return (a);
+	return (b);
+}
+
+Fixed& Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a._fixedPoint > b._fixedPoint)
+		return (a);
+	return (b);
+}
+
+const Fixed& Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (a._fixedPoint > b._fixedPoint)
+		return (a);
+	return (b);
+}
 
 Fixed::~Fixed()
 {
