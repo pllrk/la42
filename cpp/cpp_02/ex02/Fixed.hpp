@@ -16,8 +16,8 @@ public:
 	Fixed(const Fixed &other);
 	Fixed(const int to_convert);
 	Fixed(const float to_convert);
-
 	Fixed& operator=(const Fixed &other);
+
 	bool operator>(const Fixed &other);
 	bool operator<(const Fixed &other);
 	bool operator>=(const Fixed &other);
@@ -25,10 +25,10 @@ public:
 	bool operator==(const Fixed &other);
 	bool operator!=(const Fixed &other);
 
-	Fixed& operator+(const Fixed &other);
-	Fixed& operator-(const Fixed &other);
-	Fixed& operator*(const Fixed &other);
-	Fixed& operator/(const Fixed &other);
+	Fixed operator+(const Fixed &other);
+	Fixed operator-(const Fixed &other);
+	Fixed operator*(const Fixed &other);
+	Fixed operator/(const Fixed &other);
 
 	Fixed& operator++();
 	Fixed operator++(int);
@@ -48,6 +48,6 @@ public:
 	int		toInt(void) const;
 };
 
-std::ostream& operator << (std::ostream& os, const Fixed& fixed);
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
 
 #endif
