@@ -12,10 +12,10 @@ public:
  	Animal();
 	Animal(const Animal &other);
 	Animal& operator = (const Animal &other);
-	~Animal();
+	virtual ~Animal();
 
 	Animal(std::string name);
-	virtual void makeSound() const;
+	virtual void makeSound() const = 0;
 	std::string getType() const;
 };
 
