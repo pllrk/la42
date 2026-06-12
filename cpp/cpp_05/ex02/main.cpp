@@ -1,35 +1,50 @@
-
-
 #include <iostream>
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
-	std::cout << "\n--- Test 1: Form display and signing ---" << std::endl;
+	Bureaucrat boss("Boss", 1);
+	Bureaucrat signer("Signer", 70);
+	Bureaucrat intern("Intern", 150);
+
+	std::cout << "\n--- Test 1: ShrubberyCreationForm ---" << std::endl;
 	try
 	{
-		Form formA("Tax form", 50, 25, false);
-		Bureaucrat signer("Frank", 42);
-		std::cout << "Before signing:\n" << formA << std::endl;
-		std::cout << signer.getName() << " tries to sign " << formA.getName() << " with grade " << signer.getGrade() << std::endl;
-		signer.signForm(formA);
-		std::cout << "After signing:\n" << formA << std::endl;
+		ShrubberyCreationForm shrub("home");
+		std::cout << shrub << std::endl;
+		signer.signForm(shrub);
+		boss.executeForm(shrub);
 	}
 	catch (const std::exception &e)
 	{
 		std::cout << "Error: " << e.what() << std::endl;
 	}
 
-	std::cout << "\n--- Test 2: Form signing failure ---" << std::endl;
+	std::cout << "\n--- Test 2: RobotomyRequestForm ---" << std::endl;
 	try
 	{
-		Form formB("Permit", 10, 5, false);
-		Bureaucrat lowRank("Greg", 100);
-		std::cout << formB << std::endl;
-		std::cout << lowRank.getName() << " tries to sign " << formB.getName() << " with grade " << lowRank.getGrade() << std::endl;
-		lowRank.signForm(formB);
-		std::cout << "After signing attempt:\n" << formB << std::endl;
+		RobotomyRequestForm robot("Bender");
+		std::cout << robot << std::endl;
+		intern.signForm(robot);
+		signer.signForm(robot);
+		boss.executeForm(robot);
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << "Error: " << e.what() << std::endl;
+	}
+
+	std::cout << "\n--- Test 3: PresidentialPardonForm ---" << std::endl;
+	try
+	{
+		PresidentialPardonForm pardon("Arthur Dent");
+		std::cout << pardon << std::endl;
+		boss.signForm(pardon);
+		boss.executeForm(pardon);
 	}
 	catch (const std::exception &e)
 	{
