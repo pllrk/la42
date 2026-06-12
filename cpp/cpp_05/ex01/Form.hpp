@@ -5,26 +5,41 @@
 
 #include <iostream>
 #include <string>
-#include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
 private:
-	/* data */
+	const std::string _name;
+	const int _signGrade;
+	const int _executeGrade;
+	bool _isSigned;
+
 public:
 	Form();
-	Form(const std::string name, int grade);
+	Form(const std::string name, const int signGrade, const int executeGrade, bool isSigned);
 	Form(const Form &copy);
 	~Form();
+	std::string getName() const;
+	int getSignGrade() const;
+	int getExecuteGrade() const;
+	bool isSigned() const;
+	void beSigned(const Bureaucrat &bureaucrat);
+
+	class GradeTooHighException: public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
+	
+	class GradeTooLowException: public std::exception
+	{
+		public:
+			virtual const char* what() const throw();
+	};
 };
 
-Form::Form(/* args */)
-{
-}
-
-Form::~Form()
-{
-}
-
+std::ostream &operator<<(std::ostream &os, const Form &Form);
 
 #endif

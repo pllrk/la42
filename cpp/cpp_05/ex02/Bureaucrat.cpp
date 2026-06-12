@@ -1,18 +1,19 @@
 
-
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include <iostream>
+#include <string>
 
 Bureaucrat::Bureaucrat(): _name("Default"), _grade(150)
 {
 	std::cout << "Bureaucrat default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade): _name(name), _grade(grade)
+Bureaucrat::Bureaucrat(const std::string name, unsigned int grade): _name(name), _grade(grade)
 {
-	if (grade < 1)
+	if (grade < HIGHTEST_GRADE)
 		throw GradeTooHighException();
-	if (grade > 150)
+	if (grade > LOWEST_GRADE)
 		throw GradeTooLowException();
 	std::cout << "Bureaucrat parameterized constructor called" << std::endl;
 }
@@ -47,19 +48,19 @@ unsigned int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	if (_grade <= 1)
+	if (_grade <= HIGHTEST_GRADE)
 		throw GradeTooHighException();
 	_grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
-	if (_grade >= 150)
+	if (_grade >= LOWEST_GRADE)
 		throw GradeTooLowException();
 	_grade++;
 }
 
-void Bureaucrat::signForm(Form &form) const
+void Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
@@ -69,6 +70,19 @@ void Bureaucrat::signForm(Form &form) const
 	catch (std::exception &e)
 	{
 		std::cout << _name << " could not sign " << form.getName() << " because " << e.what() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const &form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << _name << " could not execute " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
 
