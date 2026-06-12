@@ -5,7 +5,7 @@ int	main(void)
 {
 	ClapTrap machine_1("Produit 1");
 	ClapTrap machine_2(machine_1);
-	std::string	test;
+	std::string	test = "lol";
 	ClapTrap machine_3;
 
 	machine_1.attack(test);
