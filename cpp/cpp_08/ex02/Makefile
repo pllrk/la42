@@ -1,8 +1,7 @@
-NAME = Span
+NAME = MutantStack
 CC = c++
 CFLAGS = -Wall -Werror -Wextra -g -std=c++98
 SRCS =	main.cpp \
-		Span.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
