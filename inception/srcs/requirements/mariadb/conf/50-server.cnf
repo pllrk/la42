@@ -1,0 +1,26 @@
+[server]
+
+[mysqld]
+user                    = mysql
+pid-file                = /run/mysqld/mysqld.pid
+socket                  = /run/mysqld/mysqld.sock
+basedir                 = /usr
+datadir                 = /var/lib/mysql
+tmpdir                  = /tmp
+lc-messages-dir         = /usr/share/mysql
+
+# Listen on every interface of the container so the wordpress container,
+# which is on the same docker network, can reach us. Debian ships
+# bind-address = 127.0.0.1 by default, which would make us unreachable.
+bind-address            = 0.0.0.0
+port                    = 3306
+
+skip-name-resolve
+skip-host-cache
+
+character-set-server    = utf8mb4
+collation-server        = utf8mb4_general_ci
+
+[embedded]
+[mariadb]
+[mariadb-10.11]

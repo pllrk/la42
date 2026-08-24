@@ -1,0 +1,36 @@
+server {
+    # 443 only. No `listen 80` anywhere in this image.
+    listen      443 ssl;
+    listen      [::]:443 ssl;
+
+    server_name ${DOMAIN_NAME};
+
+    ssl_certificate     /etc/nginx/ssl/inception.crt;
+    ssl_certificate_key /etc/nginx/ssl/inception.key;
+
+    # The whole point of the exercise: nothing older than TLS 1.2 is accepted.
+    ssl_protocols       TLSv1.2 TLSv1.3;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+    ssl_session_timeout 10m;
+
+    # Same named volume as the wordpress container: nginx serves the static
+    # files itself and only hands .php requests to php-fpm.
+    root  /var/www/html;
+    index index.php index.html;
+
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~ \.php$ {
+        include        fastcgi_params;
+        fastcgi_pass   wordpress:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
