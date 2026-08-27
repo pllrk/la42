@@ -2,7 +2,7 @@
 #                                  INCEPTION                                   #
 # **************************************************************************** #
 
-LOGIN		:= lumi
+LOGIN		:= plerick
 DATA_DIR	:= /home/$(LOGIN)/data
 COMPOSE		:= docker compose -f srcs/docker-compose.yml
 SECRETS		:= secrets
@@ -63,7 +63,7 @@ secrets:
 		exit 1 ; \
 	}
 
-# Adds the domain to /etc/hosts (needs sudo). Run once per VM.
+# Adds the domain to /etc/hosts (needs sudo). Run once per machine.
 host:
 	@grep -q "$(LOGIN).42.fr" /etc/hosts || \
 		echo "127.0.0.1 $(LOGIN).42.fr" | sudo tee -a /etc/hosts
@@ -82,12 +82,14 @@ logs:
 # Cleaning
 # ---------------------------------------------------------------------------
 
-# Stops containers and removes the named volumes (the DB and site are lost).
+# Stops the containers and removes THIS project's named volumes.
+# The database and the site content are lost.
 clean:
 	$(COMPOSE) down -v --remove-orphans
 
-# clean + removes the images we built + wipes the host data directories.
+# clean + removes the three images built by this project + wipes the host
+# data directories. Deliberately does NOT run `docker system prune`, which
+# would delete images, containers and volumes belonging to other projects.
 fclean: clean
 	-docker image rm -f nginx:1.0 wordpress:1.0 mariadb:1.0 2>/dev/null || true
 	-sudo rm -rf $(DATA_DIR)/mariadb/* $(DATA_DIR)/wordpress/*
-	docker system prune -af --volumes
