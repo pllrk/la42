@@ -19,7 +19,7 @@ services:
       - db_password
       - db_root_password
     healthcheck:
-      test: ["CMD-SHELL", "mariadb -u root -p\"$$(cat /run/secrets/db_root_password)\" -e 'SELECT 1;' >/dev/null 2>&1"]
+      test: ["CMD-SHELL", "mariadb --protocol=socket -u root -p\"$$(cat /run/secrets/db_root_password)\" -e 'SELECT 1;' >/dev/null 2>&1"]
       interval: 5s
       timeout: 5s
       retries: 30
@@ -44,6 +44,8 @@ services:
     secrets:
       - db_password
       - credentials
+    environment:
+      MYSQL_HOST: mariadb
 
   nginx:
     container_name: nginx
