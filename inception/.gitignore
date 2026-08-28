@@ -1,0 +1,4 @@
+srcs/.env
+srcs/.env.save
+secrets/*.txt
+.env.save
